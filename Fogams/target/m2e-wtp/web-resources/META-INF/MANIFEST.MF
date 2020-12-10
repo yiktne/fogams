@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< Updated upstream
-Built-By: a
-=======
 Built-By: gimgayeon
->>>>>>> Stashed changes
 Build-Jdk: 1.8.0_265
 Created-By: Maven Integration for Eclipse
 
