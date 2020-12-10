@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
     <title>Fogams</title>
     <meta name="final project" content="Fogams"/>
     <!-- CSS 링크 넣기 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css"/>
+    <link rel="stylesheet" href="<c:url value='/resources/css/front.css'/>"/>
     <!-- 구글폰트 링크넣기-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" 
 rel="stylesheet">
