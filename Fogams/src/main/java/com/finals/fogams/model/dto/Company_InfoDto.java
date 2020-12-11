@@ -5,7 +5,7 @@ public class Company_InfoDto {
 	private int company_no;
 	private String company_content;
 	private String company_tel;
-	private String company_number;
+	private String company_number; //사업자번호 
 	private String company_addr1;
 	private String company_addr2;
 
