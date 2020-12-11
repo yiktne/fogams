@@ -8,35 +8,71 @@
 <style type="text/css">
 
 
-	nav {
-		background-color: gray;
-		margin: -8px;
-		padding: 8px;
+	header {
+		background-color: var(--color-dark-grey);
+		vertical-align: middle;
 	}
-
-	nav h1 {
+	
+	.nav_logo {
 		display: inline-block;
 	}
-	
-	nav div {
-		display:inline-block;
+
+	.nav_userinfo {
 		float:right;
 	}
-	
-	
+
+	.nav_usermenu {
+		position: absolute;
+		top:50px;
+		right:10px;
+		background-color: #00000066;
+		width: 300px;
+		padding: 8px;
+	}
 
 </style>
 
 </head>
 <body>
-    <nav>
-        <h1><a href="">Fogams</a></h1>
 
-		<div>
-			<input type="button" value="login"/>
-			<input type="button" value="register"/>
-		</div>
-    </nav>
+	<header>
+	    <h1 class="nav_logo"><a href="">Fogams</a></h1>
+	
+	    <nav class="nav_userinfo">
+			<%if(session.getAttribute("dto") == null) { %>
+				<input type="button" value="login"/>
+				<input type="button" value="register"/>
+			<% } else { %>
+				<img src="" alt="" />
+				사용자님 안녕하세요!
+				<input type="button" value="temp" onclick="handleOpenMenu()"/>
+			<% } %>
+	    </nav>
+	    
+	    <div class="nav_usermenu">
+	    	<ul>
+	    		<li><a href="">1</a></li>
+	    		<li><a href="">2</a></li>
+	    		<li><a href="">3</a></li>
+	    		<li><a href="">4</a></li>
+	    	</ul>
+	    </div>
+	</header>
 
 </body>
+<script type="text/javascript">
+
+handleOpenMenu();
+
+function handleOpenMenu() {
+	var menu = document.getElementsByClassName("nav_usermenu")[0];
+	
+	if(menu.style.visibility === "hidden") {
+		menu.style.visibility = "visible";
+	} else {
+		menu.style.visibility = "hidden";
+	}
+}
+
+</script>
 </html>
