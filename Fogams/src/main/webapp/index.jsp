@@ -19,7 +19,7 @@ rel="stylesheet">
 </head>
 <body>
  <!-- Navbar 따로만들기 -->
-<%@ include file="./WEB-INF/views/header.jsp" %>
+
 
     <!-- maketrip (내 여행을 만들어보세요) -->
     <section id="maketrip">
@@ -77,6 +77,5 @@ rel="stylesheet">
     </section>
 
 
-<%@ include file="./WEB-INF/views/footer.jsp" %>
 </body>
 </html>
