@@ -3,6 +3,11 @@
 
 <mapper namespace="cityDetail">
 
-
+	<select id="selectlist" resultType="Company_InfoDto" parameterType="String">
+		SELECT COMPANY_INFO.COMPANY_NO, COMPANY.COMPANY_NAME
+		FROM COMPANY_INFO, COMPANY
+		WHERE COMPANY_INFO.COMPANY_ADDR1 LIKE '%' ||  #{keyword} || '%'
+	</select>
+	
 
 </mapper>

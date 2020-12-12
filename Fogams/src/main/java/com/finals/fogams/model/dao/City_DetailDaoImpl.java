@@ -1,5 +1,6 @@
 package com.finals.fogams.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,12 +16,24 @@ public class City_DetailDaoImpl implements City_DetailDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<Company_InfoDto> selectlist() {
-		return null;
+	public List<Company_InfoDto> selectlist(String keyword) {
+		
+		List<Company_InfoDto> list = new ArrayList<Company_InfoDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectlist");
+		} catch (Exception e) {
+			System.out.println("[ERROR] selectlist");
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 	@Override
 	public Company_InfoDto selectOne(int myno) {
+		
+		
 		return null;
 	}
 

@@ -2,6 +2,7 @@ package com.finals.fogams.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.finals.fogams.model.biz.City_DetailBiz;
@@ -14,8 +15,12 @@ public class indexController {
 	@Autowired
 	private City_DetailBiz biz;
 	
-	//@RequestMapping("/company_info.do")
-	//값을 보낼 땐 model객체가 필요하다.
+	@RequestMapping("/company_info.do")
+	public String moveToCityDetail(String keyword, Model model) {
+		System.out.println("selectlist");
+		model.addAttribute("list", biz.selectlist(keyword));
+		return "city_detail";
+	}
 
 	
 	
