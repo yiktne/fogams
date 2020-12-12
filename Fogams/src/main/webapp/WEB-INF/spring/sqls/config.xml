@@ -5,7 +5,6 @@
 	<typeAliases>
 		<typeAlias type="com.finals.fogams.model.dto.CompanyDto" alias="CompanyDto"/>
 		<typeAlias type="com.finals.fogams.model.dto.Company_InfoDto" alias="Company_InfoDto"/>
-	
 	</typeAliases>
 
 
@@ -14,8 +13,8 @@
 	<mappers>
 		<mapper resource="/mybatis/Company-mapper.xml"/>
 		<mapper resource="/mybatis/CompanyInfo-mapper.xml"/>
-		<mapper resource="/mybatis/cityDetail_mapper.xml"/>
 	</mappers>
+
 
 
 </configuration>

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
     /* Color */
     --color-white: #ffffff;
@@ -27,7 +29,6 @@
     /* Size(패딩,마진 등의 규격) */
     --size-border-radius: 4px;
     --size-img : 150px;
-    --size-margin : 16px 0px 28px 0px;
 
     /* Animation */
     --animation-duration: 300ms;
@@ -136,7 +137,7 @@
     /* pickcity (이런 여행지 어때요?) */
     .pickcity__container{
         display: flex;
-        margin: var(--size-margin);
+        margin: 16px 0px 28px 0px;
     }
 
     .pickcity__img_container{
@@ -151,19 +152,12 @@
         margin: 8px;
     }
 
-    .pickcity__img{
-	    max-width: 100%;
-	    max-height: 100%;
-    /*자기 컨테이너 안에서만 크고작아지게*/
-    }
-
-
 
     /* reviews (다른 사람 여행 보기) */
 
     .reviews__container{
         display: flex;
-        margin: var(--size-margin);
+        margin: 16px 0px 28px 0px;
     }
 
     .reviews__img_container{
@@ -177,12 +171,6 @@
     .reviews__name,
     .reviews__img_container{
         margin: 8px;
-    }
-
-    .reviews__img{
-	    max-width: 100%;
-	    max-height: 100%;
-    /*자기 컨테이너 안에서만 크고작아지게*/
     }
 
 

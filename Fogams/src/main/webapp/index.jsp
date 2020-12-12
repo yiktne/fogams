@@ -34,16 +34,13 @@ rel="stylesheet">
         <div class="pickcity__container">
             <div class="pickcity__city">
                 <div class="pickcity__img_container">
-                
-                    <a href="#" >
-                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
-                    </a>
+                    <a href="#"><img src="" alt="city_image" class="pickcity__img"></a>
                 </div>
                 <p class="pickcity__city_name">서울</p>
             </div>
             <div class="pickcity__city">
                 <div class="pickcity__img_container">
-                    <a href=""><img src="resources/img/seoul.jpeg" alt="" class="pickcity__img"></a>
+                    <a href=""><img src="" alt="" class="pickcity__img"></a>
                 </div>
                 <p class="pickcity__city_name">서울</p>
             </div><div class="pickcity__city">
