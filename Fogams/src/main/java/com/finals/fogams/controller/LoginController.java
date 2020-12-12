@@ -81,4 +81,36 @@ public class LoginController {
 		
 		return result;
 	}
+	
+	@RequestMapping(path="/register.do", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Boolean> register(@RequestBody HashMap<String, String> body) {
+		
+		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+		
+		// Spring Security 이용해서 비밀번호 암호화
+		
+		// DB 적용
+		
+		result.put("result", true);
+		
+		return result;
+	}
+	
+	@RequestMapping(path="/login.do", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Boolean> login(@RequestBody HashMap<String, String> body) {
+		
+		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+		
+		// DB 가져오기
+		
+		// 비밀번호 체크
+		
+		// session 적용
+
+		result.put("result", true);
+		
+		return result;
+	}
 }
