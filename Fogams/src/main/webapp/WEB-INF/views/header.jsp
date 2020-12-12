@@ -40,8 +40,7 @@
 	
 	    <nav class="nav_userinfo">
 			<%if(session.getAttribute("dto") == null) { %>
-				<input type="button" value="login"/>
-				<input type="button" value="register"/>
+				<input type="button" value="login" onclick="handleLogin()"/>
 			<% } else { %>
 				<img src="" alt="" />
 				사용자님 안녕하세요!
@@ -72,6 +71,10 @@ function handleOpenMenu() {
 	} else {
 		menu.style.visibility = "hidden";
 	}
+}
+
+function handleLogin() {
+	location.href = "loginform.do";
 }
 
 </script>
