@@ -16,7 +16,7 @@ public class City_DetailDaoImpl implements City_DetailDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<Company_InfoDto> selectlist(String keyword) {
+	public List<Company_InfoDto> selectlist() {
 		
 		List<Company_InfoDto> list = new ArrayList<Company_InfoDto>();
 		

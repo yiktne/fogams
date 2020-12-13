@@ -15,8 +15,8 @@ public class City_DetailBizImpl implements City_DetailBiz{
 	private City_DetailDao dao;
 
 	@Override
-	public List<Company_InfoDto> selectlist(String keyword) {
-		return dao.selectlist(keyword);
+	public List<Company_InfoDto> selectlist() {
+		return dao.selectlist();
 	}
 
 	@Override

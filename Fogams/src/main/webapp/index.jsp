@@ -35,7 +35,7 @@ rel="stylesheet">
             <div class="pickcity__city">
                 <div class="pickcity__img_container">
                 
-                    <a href="company_info.do?keyword='서울'" >
+                    <a href="company_info.do?" >
                     <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
                     </a>
                 </div>

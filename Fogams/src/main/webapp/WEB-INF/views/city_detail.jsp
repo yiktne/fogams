@@ -23,7 +23,7 @@
 
 	<!-- 맵 -->
     <section id="map" class="section">
-        <p>맵 넣을 자리</p>
+        <p>${list}</p>
         <div class="map__container">
 
         </div>

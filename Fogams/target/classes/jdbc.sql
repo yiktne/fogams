@@ -31,7 +31,7 @@ CREATE SEQUENCE PLANLIST_SEQ;
 CREATE SEQUENCE COMPANY_SEQ;
 CREATE SEQUENCE BOOKMARK_SEQ;
 
-select * from company_info;
+select company_img from company_info;
 select * from member;
 select * from company;
 
@@ -53,7 +53,30 @@ insert into company
 values(COMPANY_SEQ.nextval, '맛나', 1 ,'음식점')
 
 insert into company_info
-values(1, '우와 서울의 맛집!', '01063631010', '1234567', '서울시 강남구 강남동 101-10', '123-123', '이미지넣을곳')
+values(1, '우와 서울의 맛집!', '01063631010', '1234567', '서울시 강남구 강남동 101-10', '123-123', (UTL_RAW.CAST_TO_RAW('TEST')))
+
+insert into company_info
+values(1, '우와 서울의 맛집!', '01063631010', '1234567', '서울시 강남구 강남동 101-10', '123-123', '12345')
+
+
+select DATA_TYPE  
+from ALL_TAB_COLUMNS
+where TABLE_NAME = 'company' ;
+
+select company_no, utl_raw.cast_to_varchar2(COMPANY_IMG)
+from company_info
+where company_addr1 like '%서울%';
+
+		SELECT COMPANY_INFO.COMPANY_NO, COMPANY.COMPANY_NAME
+		FROM COMPANY_INFO, COMPANY
+		WHERE COMPANY_INFO.COMPANY_ADDR1 LIKE '%'||#{keyword}||'%'
+
+
+		SELECT COMPANY_NO, COMPANY_ADDR1
+		FROM COMPANY_INFO
+		WHERE COMPANY_INFO.COMPANY_ADDR1 '%'||#{keyword}||'%'
+
+delete from company_info;
 
 CREATE TABLE MEMBER(
 	MEMBER_NO NUMBER PRIMARY KEY NOT NULL,

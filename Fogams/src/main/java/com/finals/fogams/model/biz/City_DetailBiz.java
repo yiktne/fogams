@@ -8,7 +8,7 @@ public interface City_DetailBiz {
 	
 	String NAMESPACE = "cityDetail.";
 	
-	public List<Company_InfoDto> selectlist(String keyword);
+	public List<Company_InfoDto> selectlist();
 	public Company_InfoDto selectOne(int myno);
 	public int insert(Company_InfoDto dto);
 	public int update(Company_InfoDto dto);
