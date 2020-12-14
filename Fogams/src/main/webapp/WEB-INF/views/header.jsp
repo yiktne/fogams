@@ -39,7 +39,7 @@
 	    <h1 class="nav_logo"><a href="">Fogams</a></h1>
 	
 	    <nav class="nav_userinfo">
-			<%if(session.getAttribute("dto") == null) { %>
+			<%if(session.getAttribute("memberDto") == null) { %>
 				<input type="button" value="login" onclick="handleLogin()"/>
 			<% } else { %>
 				<img src="" alt="" />

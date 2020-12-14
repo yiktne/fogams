@@ -6,9 +6,9 @@ public interface MemberDao {
 
 	String NAMESPACE = "com.member.";
 	
-	public MemberDto login(int member_id);
+	public MemberDto login(String member_id);
 	
 	public int register(MemberDto dto);
 	
-	public int checkID(String id);
+	public boolean checkID(String id);
 }

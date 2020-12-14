@@ -14,7 +14,7 @@ public class MemberDaoImpl implements MemberDao {
 	
 	
 	@Override
-	public MemberDto login(int member_id) {
+	public MemberDto login(String member_id) {
 		
 		MemberDto dto = null;
 		
@@ -44,7 +44,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int checkID(String id) {
+	public boolean checkID(String id) {
 
 		int res = 0;
 		
@@ -55,6 +55,6 @@ public class MemberDaoImpl implements MemberDao {
 			e.printStackTrace();
 		}
 		
-		return res;
+		return res == 0;
 	}
 }
