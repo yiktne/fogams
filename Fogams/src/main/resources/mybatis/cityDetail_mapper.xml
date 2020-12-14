@@ -3,9 +3,13 @@
 
 <mapper namespace="cityDetail">
 
-	<select id="selectlist" resultType="Company_InfoDto" parameterType="String">
-		SELECT COMPANY_NO, COMPANY_ADDR1
-		FROM COMPANY_INFO
+
+	<select id="selectlist" resultType="Company_join_Company_infoDto" parameterType="String">
+		SELECT COM.COMPANY_NO, COM.COMPANY_NAME, COM.COMPANY_SORT
+		FROM COMPANY COM, COMPANY_INFO INFO
+		WHERE INFO.COMPANY_ADDR1 LIKE '%'||#{city}||'%'
+		AND COM.COMPANY_NO = INFO.COMPANY_NO
 	</select>
+
 
 </mapper>

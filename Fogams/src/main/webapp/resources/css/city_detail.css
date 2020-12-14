@@ -85,7 +85,7 @@
     }
     
     h2{
-        font-size: var(--font-regular);
+        font-size: var(--font-medium);
         font-weight: var(--weight-semi-bold);
         color:var(--color-black);
         margin: 8px 0px;

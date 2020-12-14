@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.finals.fogams.model.dto.Company_InfoDto;
+import com.finals.fogams.model.dto.Company_join_Company_infoDto;
 
 @Repository
 public class City_DetailDaoImpl implements City_DetailDao {
@@ -16,12 +17,13 @@ public class City_DetailDaoImpl implements City_DetailDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<Company_InfoDto> selectlist() {
+	public List<Company_join_Company_infoDto> selectlist(String city) {
 		
-		List<Company_InfoDto> list = new ArrayList<Company_InfoDto>();
+		List<Company_join_Company_infoDto> list = new ArrayList<Company_join_Company_infoDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE + "selectlist");
+			list = sqlSession.selectList(NAMESPACE + "selectlist", city);
+			System.out.println("dao : " + city);
 		} catch (Exception e) {
 			System.out.println("[ERROR] selectlist");
 			e.printStackTrace();

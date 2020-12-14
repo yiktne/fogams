@@ -23,9 +23,8 @@
 
 	<!-- 맵 -->
     <section id="map" class="section">
-        <p>${list}</p>
         <div class="map__container">
-
+			map
         </div>
     </section>
 

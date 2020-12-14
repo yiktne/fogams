@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.finals.fogams.model.dao.City_DetailDao;
 import com.finals.fogams.model.dto.Company_InfoDto;
+import com.finals.fogams.model.dto.Company_join_Company_infoDto;
 
 @Service
 public class City_DetailBizImpl implements City_DetailBiz{
@@ -15,8 +16,8 @@ public class City_DetailBizImpl implements City_DetailBiz{
 	private City_DetailDao dao;
 
 	@Override
-	public List<Company_InfoDto> selectlist() {
-		return dao.selectlist();
+	public List<Company_join_Company_infoDto> selectlist(String city) {
+		return dao.selectlist(city);
 	}
 
 	@Override

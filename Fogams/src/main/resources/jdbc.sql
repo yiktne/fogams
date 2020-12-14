@@ -34,6 +34,10 @@ CREATE SEQUENCE BOOKMARK_SEQ;
 select company_img from company_info;
 select * from member;
 select * from company;
+select * from company_info;
+
+insert into company_info
+values(1, 'ㅎㅎㅎ','0101919191','2345566','서울시 강남구 가남', '123-123', (UTL_RAW.CAST_TO_RAW('TEST'))
 
 INSERT INTO 테이블명(특정 컬럼명)
 VALUES(특정 컬럼 내용);
@@ -45,6 +49,23 @@ VALUES(특정 컬럼 내용);
 		SELECT COMPANY_INFO.COMPANY_NO, COMPANY.COMPANY_NAME
 		FROM COMPANY_INFO, COMPANY
 		WHERE COMPANY_INFO.COMPANY_ADDR1 LIKE '%서울%'
+		
+		SELECT COM.COMPANY_NO, COM.COMPANY_NAME, COM.COMPANY_SORT
+		FROM COMPANY COM, COMPANY_INFO INFO
+		WHERE INFO.COMPANY_ADDR1 LIKE '%서울%'
+		AND COM.COMPANY_NO = INFO.COMPANY_NO
+		
+	SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT
+		FROM COMPANY
+		
+select com.company_no, com.company_name, com.company_sort
+from company com, company_info info
+where info.company_addr1 like '%서울%'
+and com.company_no = info.company_no
+
+select company_img
+from company_info
+
 
 insert into member
 values(member_seq.nextval, 'firstMember', '12345678', '김모모', 'kaste91@naver.com', 1)
@@ -67,9 +88,10 @@ select company_no, utl_raw.cast_to_varchar2(COMPANY_IMG)
 from company_info
 where company_addr1 like '%서울%';
 
+
 		SELECT COMPANY_INFO.COMPANY_NO, COMPANY.COMPANY_NAME
 		FROM COMPANY_INFO, COMPANY
-		WHERE COMPANY_INFO.COMPANY_ADDR1 LIKE '%'||#{keyword}||'%'
+		WHERE COMPANY_INFO.COMPANY_ADDR1 LIKE '%서울%'
 
 
 		SELECT COMPANY_NO, COMPANY_ADDR1
@@ -102,7 +124,7 @@ CREATE TABLE COMPANY_INFO(
 	COMPANY_NUMBER VARCHAR2(30) NOT NULL,
 	COMPANY_ADDR1 VARCHAR2(200) NOT NULL,
 	COMPANY_ADDR2 VARCHAR2(200) NOT NULL,
-	COMPANY_IMG VARCHAR2(200) NOT NULL,
+	COMPANY_IMG VARCHAR2(200),
 	CONSTRAINT FK_COMPANY_INFO_COMPANY FOREIGN KEY(COMPANY_NO) REFERENCES COMPANY (COMPANY_NO)
 );
 
