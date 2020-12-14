@@ -9,10 +9,9 @@
 
 
 	
-	
 	<mappers>
 		<mapper resource="/mybatis/Company-mapper.xml"/>
-		<mapper resource="/mybatis/CompanyInfo-mapper.xml"/>
+		<mapper resource="/mybatis/company_info-mapper.xml"/>
 		<mapper resource="/mybatis/cityDetail_mapper.xml"/>
 	</mappers>
 

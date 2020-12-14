@@ -11,7 +11,7 @@
 <body>
 
 	<form:form method="post" enctype="multipart/form-data" modelAttribute="dto" action="upload.do">
-		No : <input type="number" name="company_no"><br>
+		No : <input type="number" name="company_no">
 		Content : <input type="text" name="company_content"><br>
 		Tel : <input type="text" name="company_tel"><br>
 		Number : <input type="text" name="company_number"><br>

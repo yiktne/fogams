@@ -28,12 +28,13 @@ import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.Company_InfoDto;
 
 @Controller
-public class CompanyController {
+public class CompanyInfoController {
 
 	@Autowired
 	private CompanyBiz companybiz;
 	@Autowired
 	private Company_InfoBiz infobiz;
+	@Autowired
 	private FileValidator fileValidator;
 	
 	
@@ -105,12 +106,7 @@ public class CompanyController {
 			return "redirect:company_list.do";
 		} else
 			return "redirect:company_insertform";
-//		int res = biz.insert(dto);
-//		if(res > 0) {
-//			return "redirect:list.do";
-//		}else {
-//			return "redirect:insertform.do";
-//		}
+
 
 	}
 
