@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.finals.fogams.model.biz.MemberBiz;
+
 @Controller
 public class LoginController {
 
-	// biz 추가
+	@Autowired
+	private MemberBiz biz;
 	
 	@Autowired
 	private JavaMailSender mailSender;
