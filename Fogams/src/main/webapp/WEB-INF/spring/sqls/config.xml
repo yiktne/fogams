@@ -4,8 +4,8 @@
 
 	<typeAliases>
 		<typeAlias type="com.finals.fogams.model.dto.CompanyDto" alias="CompanyDto"/>
-		<typeAlias type="com.finals.fogams.model.dto.Company_InfoDto" alias="Company_InfoDto"/>
 		<typeAlias type="com.finals.fogams.model.dto.Company_join_Company_infoDto" alias="Company_join_Company_infoDto"/>
+		<typeAlias type="com.finals.fogams.model.dto.Company_InfoDto" alias="Company_InfoDto"/>
 	</typeAliases>
 
 
