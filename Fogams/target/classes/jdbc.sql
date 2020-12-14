@@ -63,8 +63,6 @@ from company com, company_info info
 where info.company_addr1 like '%서울%'
 and com.company_no = info.company_no
 
-select company_img
-from company_info
 
 
 insert into member
