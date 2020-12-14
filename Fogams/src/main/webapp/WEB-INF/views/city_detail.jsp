@@ -44,43 +44,23 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${list }" var="dto">
-							<c:when test="${dto.company_sort = '음식점' }">
-								<div class="contents__detail">
-									<div class="contents__img">
-										<a href="" class="project"> <img src="img/seoul.jpeg"
-											alt="city_img" />
-										</a>
+							<c:choose>
+								<c:when test="${dto.company_sort eq '음식점' }">
+									<div class="contents__detail">
+										<div class="contents__img">
+											<a href="" class="project"> <img src="img/seoul.jpeg"
+												alt="city_img" />
+											</a>
+										</div>
+										<div class="contents__name">
+											<span>${dto.company_name }</span>
+										</div>
 									</div>
-									<div class="contents__name">
-										<span>${dto.company_name }</span>
-									</div>
-								</div>
-							</c:when>
+								</c:when>
+							</c:choose>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
-
-				<div class="contents__detail">
-					<div class="contents__img">
-						<a href="" class="project"> <img src="img/seoul.jpeg"
-							alt="city_img" />
-						</a>
-					</div>
-					<div class="contents__name">
-						<span>경복궁</span>
-					</div>
-				</div>
-				
-				<div class="contents__detail">
-					<div class="contents__img">
-						<a href="" class="project"> <img src="img/seoul.jpeg"
-							alt="city_img" />
-						</a>
-					</div>
-					<div class="contents__name">
-						<span>경복궁</span>
-					</div>
-				</div>
 			</div>
 			<div class="content-dis">Color의 body안 내용을 넣으세요.</div>
 			<div class="content-dis">Textile의 body안 내용을 넣으세요.</div>
