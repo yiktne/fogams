@@ -1,4 +1,4 @@
 
-Fogams/.metadata
-Fogams/target
-/.metadata/
+Fogams/.metadata/
+Fogams/target/
+Fogams/src/main/resources/secret.properties

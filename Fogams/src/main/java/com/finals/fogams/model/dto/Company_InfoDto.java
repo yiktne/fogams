@@ -11,12 +11,13 @@ public class Company_InfoDto {
 	private String company_addr1;
 	private String company_addr2;
 	private String company_img;
+	private MultipartFile uploadfile;
 
 	public Company_InfoDto() {
 	}
 
 	public Company_InfoDto(int company_no, String company_content, String company_tel, String company_number,
-			String company_addr1, String company_addr2, String company_img) {
+			String company_addr1, String company_addr2, String company_img, MultipartFile uploadfile) {
 		this.company_no = company_no;
 		this.company_content = company_content;
 		this.company_tel = company_tel;
@@ -24,6 +25,7 @@ public class Company_InfoDto {
 		this.company_addr1 = company_addr1;
 		this.company_addr2 = company_addr2;
 		this.company_img = company_img;
+		this.uploadfile = uploadfile;
 	}
 
 	public int getCompany_no() {
@@ -80,6 +82,14 @@ public class Company_InfoDto {
 
 	public void setCompany_img(String company_img) {
 		this.company_img = company_img;
+	}
+
+	public MultipartFile getUploadfile() {
+		return uploadfile;
+	}
+
+	public void setUploadfile(MultipartFile uploadfile) {
+		this.uploadfile = uploadfile;
 	}
 
 }

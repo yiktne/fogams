@@ -1,0 +1,8 @@
+2020-12-13 04:03:24,824 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2020-12-13 04:05:23,436 [Worker-14: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.finals:fogams:1.0.0-BUILD-SNAPSHOT @ /Users/gimgayeon/myfolder/Workspaces/Workspace_final/fogams/Fogams/pom.xml.
+2020-12-13 04:05:23,436 [Worker-22: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.finals:fogams:1.0.0-BUILD-SNAPSHOT @ /Users/gimgayeon/myfolder/Workspaces/Workspace_final/fogams/Fogams/pom.xml.
+2020-12-13 04:05:25,501 [Worker-22: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-13 04:05:25,512 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 7 resources
+2020-12-13 04:05:25,538 [Worker-22: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-12-13 04:05:25,539 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-12-13 04:05:26,814 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.finals:fogams:1.0.0-BUILD-SNAPSHOT @ /Users/gimgayeon/myfolder/Workspaces/Workspace_final/fogams/Fogams/pom.xml.
