@@ -1,3 +1,4 @@
+<%@page import="com.finals.fogams.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,22 +39,23 @@
 	<header>
 	    <h1 class="nav_logo"><a href="">Fogams</a></h1>
 	
+		<% MemberDto memberDto = (MemberDto)session.getAttribute("memberDto"); %>
 	    <nav class="nav_userinfo">
-			<%if(session.getAttribute("memberDto") == null) { %>
+			<%if(memberDto == null) { %>
 				<input type="button" value="login" onclick="handleLogin()"/>
 			<% } else { %>
 				<img src="" alt="" />
-				사용자님 안녕하세요!
+				<%=memberDto.getMember_name() %>님 안녕하세요!
 				<input type="button" value="temp" onclick="handleOpenMenu()"/>
 			<% } %>
 	    </nav>
 	    
 	    <div class="nav_usermenu">
 	    	<ul>
-	    		<li><a href="">1</a></li>
-	    		<li><a href="">2</a></li>
-	    		<li><a href="">3</a></li>
-	    		<li><a href="">4</a></li>
+	    		<li><a>1</a></li>
+	    		<li><a>2</a></li>
+	    		<li><a>3</a></li>
+	    		<li><a onclick="handleLogout()">로그아웃</a></li>
 	    	</ul>
 	    </div>
 	</header>
@@ -75,6 +77,23 @@ function handleOpenMenu() {
 
 function handleLogin() {
 	location.href = "loginform.do";
+}
+
+function handleLogout() {
+	if(confirm("정말로 로그아웃 하시겠습니까?")) {
+		var req = new XMLHttpRequest();
+
+		req.addEventListener("load", function() {
+		    if(JSON.parse(this.responseText)["result"]) {
+				location.href = "./";
+		    } else {
+		    	alert("로그아웃에 실패하였습니다.")
+		    }
+		});
+		
+		req.open("POST", "logout.do");
+		req.send();
+	}
 }
 
 </script>

@@ -2,17 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.member">
 
-	<select id="login" parameterType="String">
+	<select id="login" parameterType="String" resultType="MemberDto">
 		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_GRADE
 		FROM MEMBER WHERE MEMBER_ID = #{member_id}
 	</select>
 
-	<select id="checkID" parameterType="String" resultType="MemberDto">
+	<select id="checkID" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		FROM MEMBER WHERE MEMBER_ID = #{member_id}
 	</select>
 
-	<insert id="register" parameterType="CompanyInfo">
+	<insert id="register" parameterType="MemberDto">
 		INSERT INTO MEMBER
 		VALUES(MEMBER_SEQ.NEXTVAL, #{member_id}, #{member_pw}, #{member_name}, #{member_email}, #{member_grade})
 	</insert>

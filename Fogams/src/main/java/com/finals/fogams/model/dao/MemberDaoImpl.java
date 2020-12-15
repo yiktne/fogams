@@ -19,7 +19,7 @@ public class MemberDaoImpl implements MemberDao {
 		MemberDto dto = null;
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "login");
+			dto = sqlSession.selectOne(NAMESPACE + "login", member_id);
 		} catch (Exception e) {
 			System.out.println("[ERROR] member login error");
 			e.printStackTrace();
@@ -49,7 +49,7 @@ public class MemberDaoImpl implements MemberDao {
 		int res = 0;
 		
 		try {
-			res = sqlSession.selectOne(NAMESPACE + "checkID", res);
+			res = sqlSession.selectOne(NAMESPACE + "checkID", id);
 		} catch (Exception e) {
 			System.out.println("[ERROR] member checkID");
 			e.printStackTrace();

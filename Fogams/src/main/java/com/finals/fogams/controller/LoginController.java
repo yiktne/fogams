@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,9 @@ public class LoginController {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping("loginform.do")
 	public String loginForm() {
@@ -103,7 +107,7 @@ public class LoginController {
 		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
 		
 		// Spring Security 이용해서 비밀번호 암호화
-		String password = "";
+		String password = passwordEncoder.encode(body.get("member_pw"));
 		
 		// DB 적용
 		MemberDto dto = new MemberDto();
@@ -114,7 +118,11 @@ public class LoginController {
 		dto.setMember_email(body.get("member_email"));
 		dto.setMember_grade(1);
 		
-		result.put("result", true);
+		if(biz.register(dto) > 0) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
 		
 		return result;
 	}
@@ -126,16 +134,38 @@ public class LoginController {
 		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
 		
 		// DB 가져오기
-		MemberDto dto = biz.login(body.get("id"));
+		MemberDto dto = biz.login(body.get("member_id"));
 		
 		// 비밀번호 체크
+		if(dto != null) {
+
+			if(passwordEncoder.matches(body.get("member_pw"), dto.getMember_pw())) {
+				// session 적용
+				HttpSession session = request.getSession();
+				session.setAttribute("memberDto", dto);
+				
+				result.put("result", true);
+			}
+		}
 		
-		// session 적용
-		HttpSession session = request.getSession();
-		session.setAttribute("memberDto", dto);
-		
-		result.put("result", true);
+		if(!result.containsKey("result")) {
+			result.put("result", false);
+		}
 		
 		return result;
 	}
+	
+	@RequestMapping(path="/logout.do", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Boolean> logout(HttpServletRequest request) {
+		
+		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("memberDto", null);
+		
+		result.put("result", true);
+		return result;
+	}
+	
 }
