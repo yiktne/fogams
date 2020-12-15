@@ -12,14 +12,21 @@ public class Company_join_Company_infoDto {
 	private String company_name;
 	private int member_no;
 	private String company_sort;
+	private String company_city;
 	
 
 
-	public Company_join_Company_infoDto(int company_no, String company_name, String company_sort) {
+	
+
+
+	public Company_join_Company_infoDto(int company_no, String company_name, String company_sort, String company_img, String company_city) {
 		this.company_no = company_no;
 		this.company_name = company_name;
 		this.company_sort = company_sort;
+		this.company_img = company_img;
+		this.company_city = company_city;
 	}
+	
 
 
 	public int getCompany_no() {
@@ -121,6 +128,13 @@ public class Company_join_Company_infoDto {
 		this.company_sort = company_sort;
 	}
 
+	public String getCompany_city() {
+		return company_city;
+	}
+
+	public void setCompany_city(String company_city) {
+		this.company_city = company_city;
+	}
 	
 
 }

@@ -17,7 +17,6 @@
 		Number : <input type="text" name="company_number"><br>
 		addr1 : <input type="text" name="company_addr1"><br>
 		addr2 : <input type="text" name="company_addr2"><br>
-		filename : <input type="text" name="company_img">
 		file : <input type="file" name="uploadfile"><br>
 		<p style="color:red; font-weight: bold;">
 		<form:errors path="uploadfile"></form:errors>

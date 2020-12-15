@@ -22,6 +22,7 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 
 	@Override
 	public int insert(Company_InfoDto dto) {
+		dto.setCompany_img(dto.getUploadfile().getOriginalFilename());
 		return dao.insert(dto);
 	}
 

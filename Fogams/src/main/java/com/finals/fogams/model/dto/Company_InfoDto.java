@@ -16,6 +16,7 @@ public class Company_InfoDto {
 	public Company_InfoDto() {
 	}
 
+
 	public Company_InfoDto(int company_no, String company_content, String company_tel, String company_number,
 			String company_addr1, String company_addr2, String company_img, MultipartFile uploadfile) {
 		this.company_no = company_no;

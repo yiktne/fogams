@@ -30,88 +30,78 @@ import com.finals.fogams.model.dto.Company_InfoDto;
 @Controller
 public class CompanyController {
 
-//	@Autowired
-//	private CompanyBiz companybiz;
-//	@Autowired
-//	private Company_InfoBiz infobiz;
-//	private FileValidator fileValidator;
+	@Autowired
+	private CompanyBiz companybiz;
+	@Autowired
+	private Company_InfoBiz infobiz;
+	private FileValidator fileValidator;
 	
 	
-//	@RequestMapping("/form.do")
-//	public String list() {
-//			
-//		return "upload";
-//	
-//	}
-//	
+	@RequestMapping("/form.do")
+	public String list() {
+			
+		return "upload";
+	
+	}
+	
 
-//	@RequestMapping("/upload.do")
-//	public String insertres(Model model, HttpServletRequest request, Company_InfoDto dto, BindingResult result) {
-//
-//		System.out.println("Company insertres.do");
-//		
-//		int res = infobiz.insert(dto);
-//		if (res > 0) {
-//			MultipartFile file = dto.getUploadfile();
-//			String company_img = file.getOriginalFilename();
-//
-//			Company_InfoDto infoObj = new Company_InfoDto();
-//			infoObj.setCompany_img(company_img);
-//
-//			InputStream inputStream = null;
-//			OutputStream outputStream = null;
-//
-//			try {
-//				inputStream = file.getInputStream();
-//				String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
-//				System.out.println("업로드 실제 경로 : " + path);
-//
-//				File storage = new File(path);
-//
-//				if (!storage.exists()) {
-//					storage.mkdir();
-//				}
-//
-//				File newFile = new File(path + "/" + company_img);
-//				if (!newFile.exists()) {
-//					newFile.createNewFile();
-//				}
-//				outputStream = new FileOutputStream(newFile);
-//
-//				int read = 0;
-//				byte[] b = new byte[(int) file.getSize()];
-//
-//				while ((read = inputStream.read(b)) != -1) {
-//					outputStream.write(b, 0, read);
-//				}
-//
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			} finally {
-//				try {
-//					inputStream.close();
-//					outputStream.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//
-//			model.addAttribute("infoObj", infoObj);
-//
-//			return "redirect:company_list.do";
-//		} else
-//			return "redirect:company_insertform";
-		
-		
-//--------------
-		
-//		int res = biz.insert(dto);
-//		if(res > 0) {
-//			return "redirect:list.do";
-//		}else {
-//			return "redirect:insertform.do";
-//		}
+	@RequestMapping("/upload.do")
+	public String insertres(Model model, HttpServletRequest request, Company_InfoDto dto, BindingResult result) {
 
-//	}
+		System.out.println("Company insertres.do");
+		
+		int res = infobiz.insert(dto);
+		if (res > 0) {
+			MultipartFile file = dto.getUploadfile();
+			String company_img = file.getOriginalFilename();
+
+			Company_InfoDto infoObj = new Company_InfoDto();
+			infoObj.setCompany_img(company_img);
+
+			InputStream inputStream = null;
+			OutputStream outputStream = null;
+
+			try {
+				inputStream = file.getInputStream();
+				String path = WebUtils.getRealPath(request.getSession().getServletContext(), "/resources/storage");
+				System.out.println("업로드 실제 경로 : " + path);
+
+				File storage = new File(path);
+
+				if (!storage.exists()) {
+					storage.mkdir();
+				}
+
+				File newFile = new File(path + "/" + company_img);
+				if (!newFile.exists()) {
+					newFile.createNewFile();
+				}
+				outputStream = new FileOutputStream(newFile);
+
+				int read = 0;
+				byte[] b = new byte[(int) file.getSize()];
+
+				while ((read = inputStream.read(b)) != -1) {
+					outputStream.write(b, 0, read);
+				}
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					inputStream.close();
+					outputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			model.addAttribute("infoObj", infoObj);
+
+			return "redirect:company_list.do";
+		} else
+			return "redirect:company_insertform";
+	}
 
 }
+

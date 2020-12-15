@@ -17,7 +17,6 @@
 		INSERT INTO COMPANY
 		VALUES(COMPANY_SEQ.NEXTVAL, #{company_name}, #{member_no}, #{company_sort})
 	</insert>
-	
-	
+
 
 </mapper>

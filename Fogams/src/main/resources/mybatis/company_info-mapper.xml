@@ -10,5 +10,6 @@
 		INSERT INTO COMPANY_INFO
 		VALUES(#{company_no}, #{company_content}, #{company_tel}, #{company_number}, #{company_addr1}, #{company_addr2}, #{company_img} )
 	</insert>
+	
 
 </mapper>

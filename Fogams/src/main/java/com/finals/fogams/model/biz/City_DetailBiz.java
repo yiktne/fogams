@@ -10,9 +10,9 @@ public interface City_DetailBiz {
 	String NAMESPACE = "cityDetail.";
 	
 	public List<Company_join_Company_infoDto> selectlist(String city);
-	public Company_InfoDto selectOne(int myno);
-	public int insert(Company_InfoDto dto);
-	public int update(Company_InfoDto dto);
+	public Company_InfoDto selectOne(String img);
+	public int insert(Company_join_Company_infoDto dto);
+	public int update(Company_join_Company_infoDto dto);
 	public int delete(int myno);
 
 }

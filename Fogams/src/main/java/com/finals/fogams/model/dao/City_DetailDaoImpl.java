@@ -33,19 +33,18 @@ public class City_DetailDaoImpl implements City_DetailDao {
 	}
 
 	@Override
-	public Company_InfoDto selectOne(int myno) {
-		
+	public Company_InfoDto selectOne(String img) {
 		
 		return null;
 	}
 
 	@Override
-	public int insert(Company_InfoDto dto) {
+	public int insert(Company_join_Company_infoDto dto) {
 		return 0;
 	}
 
 	@Override
-	public int update(Company_InfoDto dto) {
+	public int update(Company_join_Company_infoDto dto) {
 		return 0;
 	}
 

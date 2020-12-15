@@ -11,7 +11,7 @@
 	
 	<insert id="insert" parameterType="Company_InfoDto">
 		INSERT INTO COMPANY_INFO
-		VALUES(COMPANY_SEQ.NEXTVAL, #{company_content}, #{company_tel}, #{company_number}, #{company_addr1}, #{company_addr2}, #{company_img})
+		VALUES(#{company_no}, #{company_content}, #{company_tel}, #{company_number}, #{company_addr1}, #{company_addr2}, #{company_img})
 	</insert>
 
 </mapper>

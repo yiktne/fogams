@@ -6,15 +6,18 @@ public class CompanyDto {
 	private String company_name;
 	private int member_no;
 	private String company_sort;
+	private String company_city;
+
 
 	public CompanyDto() {
 	}
 
-	public CompanyDto(int company_no, String company_name, int member_no, String company_sort) {
+	public CompanyDto(int company_no, String company_name, int member_no, String company_sort, String company_city) {
 		this.company_no = company_no;
 		this.company_name = company_name;
 		this.member_no = member_no;
 		this.company_sort = company_sort;
+		this.company_city = company_city;
 	}
 
 	public int getCompany_no() {
@@ -48,5 +51,14 @@ public class CompanyDto {
 	public void setCompany_sort(String company_sort) {
 		this.company_sort = company_sort;
 	}
+	
+	public String getCompany_city() {
+		return company_city;
+	}
+
+	public void setCompany_city(String company_city) {
+		this.company_city = company_city;
+	}
+
 
 }

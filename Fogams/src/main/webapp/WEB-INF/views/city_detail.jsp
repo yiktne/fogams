@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도시 상세</title>
+<title>city detail</title>
 </head>
 
 <!-- CSS 링크 넣기 -->
@@ -28,7 +28,11 @@
 
 	<!-- 본문 (버튼, 이미지, 제목) -->
 	<section class="contents">
-		<h1 class="contents__title">서울</h1>
+		<h1 class="contents__title">
+			<c:forEach items="${list }" var="dto">
+				${dto.company_city }
+			</c:forEach>
+		</h1>
 		<input type="radio" id="tab-1" name="show" checked /> <input
 			type="radio" id="tab-2" name="show" /> <input type="radio"
 			id="tab-3" name="show" />
@@ -40,15 +44,41 @@
 			<div class="content-dis">
 				<c:choose>
 					<c:when test="${empty list }">
-						<span>작성된 글이없습니다.</span>
+						<span>등록된 정보가 없습니다.</span>
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${list }" var="dto">
 							<c:choose>
-								<c:when test="${dto.company_sort eq '음식점' }">
+								<c:when test="${dto.company_sort eq '숙소' }">
 									<div class="contents__detail">
 										<div class="contents__img">
-											<a href="" class="project"> <img src="img/seoul.jpeg"
+											<a href="" class="project">
+											<img src="/img.do?imgName=${dto.company_img }"
+												alt="${dto.company_img }" />
+											</a>
+										</div>
+										<div class="contents__name">
+											<span>${dto.company_name }</span>
+										</div>
+									</div>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<div class="content-dis">
+				<c:choose>
+					<c:when test="${empty list }">
+						<span>등록된 정보가 없습니다.</span>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list }" var="dto">
+							<c:choose>
+								<c:when test="${dto.company_sort eq '명소' }">
+									<div class="contents__detail">
+										<div class="contents__img">
+											<a href="" class="project"> <img src=""
 												alt="city_img" />
 											</a>
 										</div>
@@ -62,8 +92,31 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div class="content-dis">Color의 body안 내용을 넣으세요.</div>
-			<div class="content-dis">Textile의 body안 내용을 넣으세요.</div>
+			<div class="content-dis">
+				<c:choose>
+					<c:when test="${empty list }">
+						<span>등록된 정보가 없습니다.</span>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list }" var="dto">
+							<c:choose>
+								<c:when test="${dto.company_sort eq '음식점' }">
+									<div class="contents__detail">
+										<div class="contents__img">
+											<a href="" class="project"> <img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
+												alt="${dto.company_img }" />
+											</a>
+										</div>
+										<div class="contents__name">
+											<span>${dto.company_name }</span>
+										</div>
+									</div>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 	</section>
 

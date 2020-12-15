@@ -34,7 +34,13 @@ CREATE SEQUENCE BOOKMARK_SEQ;
 select company_img from company_info;
 select * from member;
 select * from company;
+ALTER TABLE company ADD company_city VARCHAR(25) DEFAULT '서울' not null;
 select * from company_info;
+delete from company_info;
+
+		SELECT COMPANY_IMG
+		FROM COMPANY_INFO
+		WHERE COMPANY_IMG = 'file1'
 
 insert into company_info
 values(1, 'ㅎㅎㅎ','0101919191','2345566','서울시 강남구 가남', '123-123', (UTL_RAW.CAST_TO_RAW('TEST'))

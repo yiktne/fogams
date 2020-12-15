@@ -47,21 +47,13 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 
 		return res;
 	}
-
+	
 	@Override
 	public int update(Company_InfoDto dto) {
-
-		int res = 0;
-
-		try {
-			res = sqlSession.update(NAMESPACE + "update", dto);
-		} catch (Exception e) {
-			System.out.println("[ERROR] Company_Info update");
-			e.printStackTrace();
-		}
-
-		return res;
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
 
 	@Override
 	public int delete(int company_no) {
@@ -77,5 +69,7 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 
 		return res;
 	}
+
+
 
 }
