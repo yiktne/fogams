@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +23,7 @@ import com.finals.fogams.model.biz.MemberBiz;
 import com.finals.fogams.model.dto.MemberDto;
 
 @Controller
+@PropertySource("classpath:secret.properties")
 public class LoginController {
 
 	@Autowired
@@ -31,6 +34,11 @@ public class LoginController {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+
+	@Value("${kakao.key}")
+	private String keyKakao;
+	@Value("${fb.key}")
+	private String keyFB;
 	
 	@RequestMapping("loginform.do")
 	public String loginForm() {
@@ -53,6 +61,17 @@ public class LoginController {
 			result.put("result", false);
 		}
 		
+		
+		return result;
+	}
+
+	@RequestMapping("/getSecret.do")
+	@ResponseBody
+	public HashMap<String, String> getSecret() {
+		HashMap<String, String> result = new HashMap<String, String>();
+		
+		result.put("kakao", keyKakao);
+		result.put("fb", keyFB);
 		
 		return result;
 	}
@@ -102,7 +121,7 @@ public class LoginController {
 	
 	@RequestMapping(path="/register.do", method=RequestMethod.POST)
 	@ResponseBody
-	public HashMap<String, Boolean> register(@RequestBody HashMap<String, String> body) {
+	public HashMap<String, Boolean> register(@RequestBody HashMap<String, String> body, HttpServletRequest request) {
 		
 		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
 		
@@ -119,6 +138,7 @@ public class LoginController {
 		dto.setMember_grade(1);
 		
 		if(biz.register(dto) > 0) {
+			login(body, request);
 			result.put("result", true);
 		} else {
 			result.put("result", false);
