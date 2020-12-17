@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.WebUtils;
 
 import com.finals.fogams.model.biz.City_DetailBiz;
-import com.finals.fogams.model.dto.Company_join_Company_infoDto;
+import com.finals.fogams.model.dto.CompanyDto;
 
 @Controller
 public class indexController {
@@ -26,7 +26,7 @@ public class indexController {
 
 	@RequestMapping("/company_info.do")
 	public String moveToCityDetail(Model model, String city) {
-		List<Company_join_Company_infoDto> list = biz.selectlist(city);
+		List<CompanyDto> list = biz.selectlist(city);
 		System.out.println("selectlist");
 		model.addAttribute("list", list);
 
@@ -55,9 +55,20 @@ public class indexController {
 			while ((length = input.read(buffer)) != -1) {
 				imgout.write(buffer, 0, length);
 			}
-
+			input.close();
 		}
-		input.close();
+		
 	}
+	
+	@RequestMapping("company_detail.do")
+	public String company_selectOne(int company_no, Model model) {
+		
+		System.out.println("company_selectOne");
+		CompanyDto dto = biz.selectOne(company_no);
+		model.addAttribute("dto", dto);
+		return "company_detail";
+	}
+
+	
 
 }

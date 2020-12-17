@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.finals.fogams.model.dao.Company_InfoDao;
 import com.finals.fogams.model.dao.Company_InfoDaoImpl;
+import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.Company_InfoDto;
 
 @Service
@@ -16,18 +17,18 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 	private Company_InfoDao dao = new Company_InfoDaoImpl();
 	
 	@Override
-	public List<Company_InfoDto> selectList(int company_no) {
+	public List<CompanyDto> selectList(int company_no) {
 		return dao.selectList(company_no);
 	}
 
 	@Override
-	public int insert(Company_InfoDto dto) {
+	public int insert(CompanyDto dto) {
 		dto.setCompany_img(dto.getUploadfile().getOriginalFilename());
 		return dao.insert(dto);
 	}
 
 	@Override
-	public int update(Company_InfoDto dto) {
+	public int update(CompanyDto dto) {
 		return dao.update(dto);
 	}
 

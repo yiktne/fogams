@@ -25,7 +25,6 @@ import com.finals.fogams.model.biz.CompanyBizImpl;
 import com.finals.fogams.model.biz.Company_InfoBiz;
 import com.finals.fogams.model.biz.Company_InfoBizImpl;
 import com.finals.fogams.model.dto.CompanyDto;
-import com.finals.fogams.model.dto.Company_InfoDto;
 
 @Controller
 public class CompanyController {
@@ -46,16 +45,17 @@ public class CompanyController {
 	
 
 	@RequestMapping("/upload.do")
-	public String insertres(Model model, HttpServletRequest request, Company_InfoDto dto, BindingResult result) {
+	public String insertres(Model model, HttpServletRequest request, CompanyDto dto, BindingResult result) {
 
 		System.out.println("Company insertres.do");
-		
+		System.out.println(dto.getCompany_city());
+		System.out.println(dto.getCompany_addr());
 		int res = infobiz.insert(dto);
 		if (res > 0) {
 			MultipartFile file = dto.getUploadfile();
 			String company_img = file.getOriginalFilename();
 
-			Company_InfoDto infoObj = new Company_InfoDto();
+			CompanyDto infoObj = new CompanyDto();
 			infoObj.setCompany_img(company_img);
 
 			InputStream inputStream = null;

@@ -11,6 +11,7 @@ public class Company_InfoDto {
 	private String company_addr1;
 	private String company_addr2;
 	private String company_img;
+	private String company_city;
 	private MultipartFile uploadfile;
 
 	public Company_InfoDto() {
@@ -18,7 +19,7 @@ public class Company_InfoDto {
 
 
 	public Company_InfoDto(int company_no, String company_content, String company_tel, String company_number,
-			String company_addr1, String company_addr2, String company_img, MultipartFile uploadfile) {
+			String company_addr1, String company_addr2, String company_img,String company_city, MultipartFile uploadfile) {
 		this.company_no = company_no;
 		this.company_content = company_content;
 		this.company_tel = company_tel;
@@ -26,6 +27,7 @@ public class Company_InfoDto {
 		this.company_addr1 = company_addr1;
 		this.company_addr2 = company_addr2;
 		this.company_img = company_img;
+		this.company_city = company_city;
 		this.uploadfile = uploadfile;
 	}
 
@@ -85,6 +87,16 @@ public class Company_InfoDto {
 		this.company_img = company_img;
 	}
 
+
+	public String getCompany_city() {
+		return company_city;
+	}
+
+
+	public void setCompany_city(String company_city) {
+		this.company_city = company_city;
+	}
+
 	public MultipartFile getUploadfile() {
 		return uploadfile;
 	}
@@ -92,5 +104,6 @@ public class Company_InfoDto {
 	public void setUploadfile(MultipartFile uploadfile) {
 		this.uploadfile = uploadfile;
 	}
+
 
 }
