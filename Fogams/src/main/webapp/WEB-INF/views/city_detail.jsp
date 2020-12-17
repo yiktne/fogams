@@ -52,9 +52,9 @@
 								<c:when test="${dto.company_sort eq '숙소' }">
 									<div class="contents__detail">
 										<div class="contents__img">
-											<a href="" class="project">
-											<img src="/img.do?imgName=${dto.company_img }"
-												alt="${dto.company_img }" />
+										${dto.company_no }
+											<a href="company_detail.do?company_no=${dto.company_no }" class="project"> 
+											<img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" />
 											</a>
 										</div>
 										<div class="contents__name">
@@ -78,8 +78,8 @@
 								<c:when test="${dto.company_sort eq '명소' }">
 									<div class="contents__detail">
 										<div class="contents__img">
-											<a href="" class="project"> <img src=""
-												alt="city_img" />
+											<a href="company_detail.do?company_no=${dto.company_no }" class="project"> 
+											<img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" />
 											</a>
 										</div>
 										<div class="contents__name">
@@ -103,7 +103,7 @@
 								<c:when test="${dto.company_sort eq '음식점' }">
 									<div class="contents__detail">
 										<div class="contents__img">
-											<a href="" class="project"> <img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
+											<a href="company_detail.do?company_no=${dto.company_no }" class="project"> <img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
 												alt="${dto.company_img }" />
 											</a>
 										</div>

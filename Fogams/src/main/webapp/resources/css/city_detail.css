@@ -208,13 +208,14 @@
     .contents__img{
         width: var(--size-img);
         height: var(--size-img);
+        cursor: pointer;
     }
-
+    
     .contents__img img{
         max-width: 100%;
         min-width: 100%;
     }
-
+    
     /* 페이징 */
     
 

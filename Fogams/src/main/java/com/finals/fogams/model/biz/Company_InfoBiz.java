@@ -2,15 +2,15 @@ package com.finals.fogams.model.biz;
 
 import java.util.List;
 
-import com.finals.fogams.model.dto.Company_InfoDto;
+import com.finals.fogams.model.dto.CompanyDto;
 
 public interface Company_InfoBiz {
 
-public List<Company_InfoDto> selectList(int company_no);
+public List<CompanyDto> selectList(int company_no);
 	
-	public int insert(Company_InfoDto dto);
+	public int insert(CompanyDto dto);
 	
-	public int update(Company_InfoDto dto);
+	public int update(CompanyDto dto);
 	
 	public int delete(int company_no);
 }

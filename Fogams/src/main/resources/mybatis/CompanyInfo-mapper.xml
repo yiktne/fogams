@@ -2,16 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.companyinfo">
 
-	<select id="selectList" resultType="Company_InfoDto">
-		SELECT COMPANY_NO, COMPANY_CONTENT, COMPANY_TEL, COMPANY_NUMBER, COMPANY_ADDR1, COMPANY_ADDR2, COMPANY_IMG
-		FROM COMPANY_INFO
+	<select id="selectList" resultType="CompanyDto">
+		SELECT COMPANY_NO, COMPANY_CONTENT, COMPANY_TEL, COMPANY_NUMBER, COMPANY_ADDR, COMPANY_IMG
+		FROM COMPANY
 	</select>
 	
 	
 	
-	<insert id="insert" parameterType="Company_InfoDto">
-		INSERT INTO COMPANY_INFO
-		VALUES(#{company_no}, #{company_content}, #{company_tel}, #{company_number}, #{company_addr1}, #{company_addr2}, #{company_img})
+	<insert id="insert" parameterType="CompanyDto">
+		INSERT INTO COMPANY
+		VALUES(COMPANY_SEQ.NEXTVAL, #{company_name}, 1, #{company_sort}, #{company_content}, 
+		#{company_tel}, #{company_number}, #{company_img},
+		#{company_addr} , #{company_city})
 	</insert>
 
 </mapper>

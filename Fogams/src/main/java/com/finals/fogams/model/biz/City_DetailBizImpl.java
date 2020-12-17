@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.finals.fogams.model.dao.City_DetailDao;
-import com.finals.fogams.model.dto.Company_InfoDto;
-import com.finals.fogams.model.dto.Company_join_Company_infoDto;
+import com.finals.fogams.model.dto.CompanyDto;
 
 @Service
 public class City_DetailBizImpl implements City_DetailBiz{
@@ -16,22 +15,22 @@ public class City_DetailBizImpl implements City_DetailBiz{
 	private City_DetailDao dao;
 
 	@Override
-	public List<Company_join_Company_infoDto> selectlist(String city) {
+	public List<CompanyDto> selectlist(String city) {
 		return dao.selectlist(city);
 	}
 
 	@Override
-	public Company_InfoDto selectOne(String img) {
-		return null;
+	public CompanyDto selectOne(int company_no) {
+		return dao.selectOne(company_no);
 	}
 
 	@Override
-	public int insert(Company_join_Company_infoDto dto) {
+	public int insert(CompanyDto dto) {
 		return 0;
 	}
 
 	@Override
-	public int update(Company_join_Company_infoDto dto) {
+	public int update(CompanyDto dto) {
 		return 0;
 	}
 

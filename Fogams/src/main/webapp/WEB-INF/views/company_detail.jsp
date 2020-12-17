@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" 
 rel="stylesheet">
     <link rel="stylesheet" href="<c:url value='/resources/css/company_detail.css'/>"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 
@@ -16,12 +20,12 @@ rel="stylesheet">
     <section id="company">
         <div class="company__left">
             <div class="company__left_imgBox">
-                <img src="img/seoul.jpeg" alt="업체이미지" class="company__left_img">
+                <img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" alt="${dto.company_img }" class="company__left_img">
             </div>
             <div class="company__left_description">
-                <h2>숙소이름</h2>
-                <p>1박 50,000원</p>
-                <p>이곳은 정말 좋은곳이다.</p>
+                <h2>${dto.company_name }</h2>
+                <p>${dto.company_addr }</p>
+                <p>${dto.company_sort }</p>
             </div>
         </div>
 
@@ -52,7 +56,7 @@ rel="stylesheet">
             </div>
             <div class="content">
               <div class="content-dis">
-                Concept의 body안 내용을 넣으세요.
+                ${dto.company_content }
               </div>
               <div class="content-dis">
                 Color의 body안 내용을 넣으세요.
