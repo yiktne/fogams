@@ -13,7 +13,7 @@ public class MemberBizImpl implements MemberBiz {
 	private MemberDao dao;
 	
 	@Override
-	public MemberDto login(int member_id) {
+	public MemberDto login(String member_id) {
 		return dao.login(member_id);
 	}
 	
@@ -23,7 +23,7 @@ public class MemberBizImpl implements MemberBiz {
 	}
 	
 	@Override
-	public int checkID(String id) {
+	public boolean checkID(String id) {
 		return dao.checkID(id);
 	}
 }

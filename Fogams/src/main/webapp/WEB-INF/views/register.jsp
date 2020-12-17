@@ -52,6 +52,11 @@
 				<td><input type="button" value="중복 체크" id="checkId"/></td>
 			</tr>
 			<tr>
+				<td colspan="3" id="idInvalid">
+					아이디는 영문, 숫자로 이루어진 6자 이상 20자로 정해주세요.
+				</td>
+			</tr>
+			<tr>
 				<td>비밀번호</td>
 				<td><input type="password" id="pw1"/></td>
 				<td></td>
@@ -62,13 +67,13 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="3" id="pwIncorrect">
+				<td colspan="3" id="pwInvalid">
 					비밀번호가 일치하지 않습니다.
 				</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" /></td>
+				<td><input type="text" id="name"/></td>
 				<td> </td>
 			</tr>
 			<tr>
