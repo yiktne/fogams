@@ -15,6 +15,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
 	rel="stylesheet">
+<style type="text/css">
+	li {list-style: none; float: left; padding: 6px;}
+</style>
 <script src="" defer></script>
 <body>
 <body>
@@ -29,8 +32,8 @@
 	<!-- 본문 (버튼, 이미지, 제목) -->
 	<section class="contents">
 		<h1 class="contents__title">
-			<c:forEach items="${list }" var="dto">
-				${dto.company_city }
+			<c:forEach items="${list }" var="dto" begin="1" end="1">
+					${dto.company_city }
 			</c:forEach>
 		</h1>
 		<input type="radio" id="tab-1" name="show" checked /> <input
@@ -52,7 +55,6 @@
 								<c:when test="${dto.company_sort eq '숙소' }">
 									<div class="contents__detail">
 										<div class="contents__img">
-										${dto.company_no }
 											<a href="company_detail.do?company_no=${dto.company_no }" class="project"> 
 											<img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" />
 											</a>
@@ -103,7 +105,7 @@
 								<c:when test="${dto.company_sort eq '음식점' }">
 									<div class="contents__detail">
 										<div class="contents__img">
-											<a href="company_detail.do?company_no=${dto.company_no }" class="project"> <img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
+											<a href="company_detail.do?company_no=${dto.company_no }" class="project">  <img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
 												alt="${dto.company_img }" />
 											</a>
 										</div>
@@ -122,7 +124,25 @@
 
 
 	<!-- 페이징버튼 (페이징 기능 만들어야 함 ) -->
-	<section id="paging" class="section"></section>
+	<section id="paging" class="section">
+		<div>
+			<ul>
+				<c:if test="${pagemaker.prev}">
+					<li><a
+						href="list.do${pagemaker.makeQuery(pagemaker.startPage - 1)}">이전</a></li>
+				</c:if>
+
+				<c:forEach begin="${pagemaker.startPage}" end="${pagemaker.endPage}" var="idx">
+					<li><a href="list.do${pagemaker.makeQuery(idx, num.company_city)}">${idx}</a></li>
+				</c:forEach>
+
+				<c:if test="${pagemaker.next && pagemaker.endPage > 0}">
+					<li><a
+						href="list.do${pagemaker.makeQuery(pagemaker.endPage + 1)}">다음</a></li>
+				</c:if>
+			</ul>
+		</div>
+	</section>
 
 	<%@ include file="footer.jsp"%>
 </body>
