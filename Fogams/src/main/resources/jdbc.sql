@@ -35,7 +35,8 @@ drop table company
 
 select company_img from company_info;
 select * from member;
-select * from company;
+select * from company
+select * from BOOKMARK;
 ALTER TABLE company ADD COMPANY_CONTENT VARCHAR2(2000) DEFAULT '애름다운곳' not null;
 ALTER TABLE company ADD COMPANY_TEL VARCHAR2(30) DEFAULT '020989-3339' not null;
 ALTER TABLE company ADD COMPANY_NUMBER VARCHAR2(30) DEFAULT '00099888' not null;
@@ -44,40 +45,24 @@ ALTER TABLE company ADD COMPANY_ADDR VARCHAR2(200) DEFAULT '경기도 어쩌구�
 ALTER TABLE company ADD company_city VARCHAR2(50) DEFAULT '경기도' not null;
 ALTER TABLE company DROP COLUMN company_city;
 
-	select * from  (select * from 테이블명
 
-order by dbms_random.value)
-
-          where rownum <= 5;
-SELECT COMPANY_CITY
-FROM (SELECT COMPANY_CITY FROM COMPANY WHERE COMPANY_CITY = '서울'
-ORDER BY DBMS_RANDOM.VALUE)
-WHERE ROWNUM <= 1;
-
-
-		SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CITY, COMPANY_IMG
-		FROM(SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CITY, COMPANY_IMG,
-			ROW_NUMBER() OVER(ORDER BY COMPANY_NO DESC)AS RNUM
-			FROM COMPANY)COM
-		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-		AND COMPANY_CITY = '서울'
-		ORDER BY COMPANY_NO DESC
-
-insert into bookmark
-values(BOOKMARK_SEQ.nextval, 1, 1)
-where
-(select m.member_id, b.member_no
-from member m, bookmark b
-where m.member_id = 'firstMember'
-and m.member_no = b.member_no);
+업체등록 시, 멤버테이블 멤버등급을 1 -> 2 바꾸기
+insert, update 따로. -> 하나의 컨트롤러에서.
+컨트롤러에서 유효성 검사 후.
+update member set member_grade = 2
+where member_grade = 1
+and member_no = #{};
 
 
 
-insert into member
-values(member_seq.nextval, 'firstMember', '12345678', '김모모', 'kaste91@naver.com', 1)
+일반멤버(1)
+사업자등록하면(2)
+관리자(3)
+탈퇴(0)
 
-insert into company
-values(COMPANY_SEQ.nextval, '맛나', 1 ,'음식점')
+		UPDATE MEMBER SET MEMBER_GRADE = 1 
+		WHERE MEMBER_GRADE = 1
+		AND MEMBER_NO = 1
 
 
 CREATE TABLE MEMBER(

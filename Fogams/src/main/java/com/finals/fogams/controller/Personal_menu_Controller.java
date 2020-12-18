@@ -10,18 +10,18 @@ import com.finals.fogams.model.biz.Company_InfoBiz;
 import com.finals.fogams.model.dto.MemberDto;
 
 @Controller
-public class Company_DetailController {
-	
+public class Personal_menu_Controller {
+
 	@Autowired
 	private Company_InfoBiz biz;
-	
+
 	@RequestMapping("bookmark.do")
 	public void bookMark(HttpServletRequest request) {
-		
-		MemberDto session = (MemberDto)request.getSession();
+
+		MemberDto session = (MemberDto) request.getSession();
 		String id = session.getMember_id();
-		
-		//MemberDto login = (MemberDto) request.getSession().getAttribute("login");
+
+		// MemberDto login = (MemberDto) request.getSession().getAttribute("login");
 	}
 
 }

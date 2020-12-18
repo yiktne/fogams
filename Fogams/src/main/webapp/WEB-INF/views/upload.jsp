@@ -11,7 +11,7 @@
 <body>
 
 	<form:form method="post" enctype="multipart/form-data" modelAttribute="dto" action="upload.do">
-
+		<input type="hidden" value="${member_no.member_no }" name="member_no">
 		Company name : <input type="text" name="company_name"><br>
 		Company sort : 
 		<select name="company_sort">

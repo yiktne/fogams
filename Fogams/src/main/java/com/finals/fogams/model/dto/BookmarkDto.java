@@ -9,6 +9,12 @@ public class BookmarkDto {
 
 	public BookmarkDto() {
 	}
+	
+	public BookmarkDto(int bookmark_no, int company_no, int member_no) {
+		this.bookmark_no = bookmark_no;
+		this.company_no = company_no;
+		this.member_no = member_no;
+	}
 
 	public BookmarkDto(int bookmark_no, int company_no, int member_no, String member_id) {
 		this.bookmark_no = bookmark_no;

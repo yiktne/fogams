@@ -11,9 +11,15 @@
 	
 	<insert id="insert" parameterType="CompanyDto">
 		INSERT INTO COMPANY
-		VALUES(COMPANY_SEQ.NEXTVAL, #{company_name}, 1, #{company_sort}, #{company_content}, 
+		VALUES(COMPANY_SEQ.NEXTVAL, #{company_name}, #{member_no}, #{company_sort}, #{company_content}, 
 		#{company_tel}, #{company_number}, #{company_img},
 		#{company_addr} , #{company_city})
 	</insert>
+	
+	<update id="updateMemberGrade" parameterType="int">
+		UPDATE MEMBER SET MEMBER_GRADE = 2
+		WHERE MEMBER_GRADE = 1
+		AND MEMBER_NO = #{member_no}
+	</update>
 
 </mapper>
