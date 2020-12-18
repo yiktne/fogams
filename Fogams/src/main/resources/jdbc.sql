@@ -7,6 +7,7 @@ DROP SEQUENCE PLANLIST_SEQ;
 DROP SEQUENCE COMPANY_SEQ;
 DROP SEQUENCE BOOKMARK_SEQ;
 
+
 DROP TABLE MEMBER;
 DROP TABLE REVIEW;
 DROP TABLE COMMENT;
@@ -30,10 +31,93 @@ CREATE SEQUENCE PLANLIST_SEQ;
 CREATE SEQUENCE COMPANY_SEQ;
 CREATE SEQUENCE BOOKMARK_SEQ;
 
+drop table company
+
+select company_img from company_info;
+select * from member;
+select * from company;
+ALTER TABLE company ADD COMPANY_CONTENT VARCHAR2(2000) DEFAULT '애름다운곳' not null;
+ALTER TABLE company ADD COMPANY_TEL VARCHAR2(30) DEFAULT '020989-3339' not null;
+ALTER TABLE company ADD COMPANY_NUMBER VARCHAR2(30) DEFAULT '00099888' not null;
+ALTER TABLE company ADD COMPANY_IMG VARCHAR2(200) DEFAULT '스크린샷 2020-12-16 오전 1.19.47.png' not null;
+ALTER TABLE company ADD COMPANY_ADDR VARCHAR2(200) DEFAULT '경기도 어쩌구저쩌' not null;
+ALTER TABLE company ADD company_city VARCHAR2(50) DEFAULT '경기도' not null;
+ALTER TABLE company DROP COLUMN company_city;
+
+company_no, company_name, member_no, company_sort, company_content, company_tel, company_number, company_img, company_addr
+
+		SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CITY, COMPANY_IMG
+		FROM COMPANY
+		WHERE COMPANY_CITY = '서울'
+select * from member
+
+SELECT * FROM BOOKMARK
+
+
+CREATE TABLE COMPANY_INFO(
+
+	COMPANY_CONTENT VARCHAR2(2000) NOT NULL,
+	COMPANY_TEL VARCHAR2(30) NOT NULL,
+	COMPANY_NUMBER VARCHAR2(30) NOT NULL,
+	COMPANY_ADDR VARCHAR2(200) NOT NULL,
+	COMPANY_IMG VARCHAR2(200),
+);
+
+
+SELECT COM.COMPANY_NO, COM.COMPANY_NAME, INFO.COMPANY_ADDR1
+FROM COMPANY COM, COMPANY_INFO INFO
+WHERE COM.COMPANY_NO = INFO.COMPANY_NO
+
+insert into bookmark
+values(BOOKMARK_SEQ.nextval, 1, 1)
+where
+(select m.member_id, b.member_no
+from member m, bookmark b
+where m.member_id = 'firstMember'
+and m.member_no = b.member_no);
+
+
+INSERT INTO 테이블명(특정 컬럼명)
+VALUES(특정 컬럼 내용);
+
+		
+		SELECT COM.COMPANY_NO, COM.COMPANY_NAME, COM.COMPANY_SORT
+		FROM COMPANY COM, COMPANY_INFO INFO
+		WHERE INFO.COMPANY_ADDR1 LIKE '%서울%'
+		AND COM.COMPANY_NO = INFO.COMPANY_NO
+		
+
+		
+select com.company_no, com.company_name, com.company_sort
+from company com, company_info info
+where info.company_addr1 like '%서울%'
+and com.company_no = info.company_no
+
+insert into member
+values(member_seq.nextval, 'firstMember', '12345678', '김모모', 'kaste91@naver.com', 1)
+
+insert into company
+values(COMPANY_SEQ.nextval, '맛나', 1 ,'음식점')
+
+insert into company_info
+values(1, '우와 서울의 맛집!', '01063631010', '1234567', '서울시 강남구 강남동 101-10', '123-123', '12345')
+
+
+select DATA_TYPE  
+from ALL_TAB_COLUMNS
+where TABLE_NAME = 'company' ;
+
+
+
+		SELECT COMPANY_INFO.COMPANY_NO, COMPANY.COMPANY_NAME
+		FROM COMPANY_INFO, COMPANY
+		WHERE COMPANY_INFO.COMPANY_ADDR1 LIKE '%서울%'
+
+
 CREATE TABLE MEMBER(
 	MEMBER_NO NUMBER PRIMARY KEY NOT NULL,
 	MEMBER_ID VARCHAR2(20) UNIQUE NOT NULL,
-	MEMBER_PW VARCHAR2(20) NOT NULL,
+	MEMBER_PW VARCHAR2(64) NOT NULL,
 	MEMBER_NAME VARCHAR2(20) NOT NULL,
 	MEMBER_EMAIL VARCHAR2(40) NOT NULL,
 	MEMBER_GRADE NUMBER
@@ -46,6 +130,8 @@ CREATE TABLE COMPANY(
 	COMPANY_SORT VARCHAR2(20),
 	CONSTRAINT FK_COMPANY_MEMBER FOREIGN KEY(MEMBER_NO) REFERENCES MEMBER (MEMBER_NO)
 );
+
+
 
 CREATE TABLE REVIEW(
 	REVIEW_NO NUMBER PRIMARY KEY,

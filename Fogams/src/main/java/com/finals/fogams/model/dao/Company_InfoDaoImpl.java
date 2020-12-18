@@ -3,12 +3,11 @@ package com.finals.fogams.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.finals.fogams.model.dto.Company_InfoDto;
+import com.finals.fogams.model.dto.CompanyDto;
 
 @Repository
 public class Company_InfoDaoImpl implements Company_InfoDao {
@@ -18,15 +17,15 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 
 	
 	@Override
-	public List<Company_InfoDto> selectList(int company_no) {
+	public List<CompanyDto> selectList(int company_no) {
 		System.out.println(sqlSession);
 
-		List<Company_InfoDto> list = new ArrayList<Company_InfoDto>();
+		List<CompanyDto> list = new ArrayList<CompanyDto>();
 
 		try {
 			list = sqlSession.selectList(NAMESPACE + "selectList");
 		} catch (Exception e) {
-			System.out.println("[ERROR] Company_info selectList");
+			System.out.println("[ERROR] CompanyDto selectList");
 			e.printStackTrace();
 		}
 
@@ -34,34 +33,27 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 	}
 
 	@Override
-	public int insert(Company_InfoDto dto) {
+	public int insert(CompanyDto dto) {
+		//업체 정보 등록 ( + 이미지 정보)
 		System.out.println(sqlSession);
 		int res = 0;
 
 		try {
 			res = sqlSession.insert(NAMESPACE + "insert", dto);
 		} catch (Exception e) {
-			System.out.println("[ERROR] Company_Info Insert");
+			System.out.println("[ERROR] CompanyDto Insert");
 			e.printStackTrace();
 		}
 
 		return res;
 	}
-
+	
 	@Override
-	public int update(Company_InfoDto dto) {
-
-		int res = 0;
-
-		try {
-			res = sqlSession.update(NAMESPACE + "update", dto);
-		} catch (Exception e) {
-			System.out.println("[ERROR] Company_Info update");
-			e.printStackTrace();
-		}
-
-		return res;
+	public int update(CompanyDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
+
 
 	@Override
 	public int delete(int company_no) {
@@ -77,5 +69,7 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 
 		return res;
 	}
+
+
 
 }

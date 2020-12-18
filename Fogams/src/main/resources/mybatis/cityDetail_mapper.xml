@@ -4,5 +4,17 @@
 <mapper namespace="cityDetail">
 
 
+	<select id="selectlist" resultType="CompanyDto" parameterType="String">		
+		SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CITY, COMPANY_IMG
+		FROM COMPANY
+		WHERE COMPANY_CITY = #{company_city}
+	</select>
+
+	<select id="selectOne" resultType="CompanyDto" parameterType="int">
+		SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CONTENT, COMPANY_TEL,
+		COMPANY_NUMBER, COMPANY_IMG, COMPANY_ADDR, COMPANY_CITY
+		FROM COMPANY
+		WHERE COMPANY_NO = #{company_no}
+	</select>
 
 </mapper>

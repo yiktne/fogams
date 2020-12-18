@@ -14,12 +14,12 @@ public class MemberDaoImpl implements MemberDao {
 	
 	
 	@Override
-	public MemberDto login(int member_id) {
+	public MemberDto login(String member_id) {
 		
 		MemberDto dto = null;
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE + "login");
+			dto = sqlSession.selectOne(NAMESPACE + "login", member_id);
 		} catch (Exception e) {
 			System.out.println("[ERROR] member login error");
 			e.printStackTrace();
@@ -44,17 +44,17 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int checkID(String id) {
+	public boolean checkID(String id) {
 
 		int res = 0;
 		
 		try {
-			res = sqlSession.selectOne(NAMESPACE + "checkID", res);
+			res = sqlSession.selectOne(NAMESPACE + "checkID", id);
 		} catch (Exception e) {
 			System.out.println("[ERROR] member checkID");
 			e.printStackTrace();
 		}
 		
-		return res;
+		return res == 0;
 	}
 }

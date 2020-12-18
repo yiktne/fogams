@@ -1,22 +1,74 @@
 package com.finals.fogams.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.util.WebUtils;
 
 import com.finals.fogams.model.biz.City_DetailBiz;
+import com.finals.fogams.model.dto.CompanyDto;
 
 @Controller
 public class indexController {
-	
-	//company_info 테이블에서 정보 가져오기
-	
+
 	@Autowired
 	private City_DetailBiz biz;
+
+	@RequestMapping("/company_info.do")
+	public String moveToCityDetail(Model model, String city) {
+		List<CompanyDto> list = biz.selectlist(city);
+		System.out.println("selectlist");
+		model.addAttribute("list", list);
+
+		System.out.println(list.size());
+
+		return "city_detail";
+	}
+
+	@RequestMapping("/img.do")
+	public void getImg(HttpServletRequest req, HttpServletResponse res, String img) throws IOException {
+		ServletOutputStream imgout = res.getOutputStream();
+		String imgpath = WebUtils.getRealPath(req.getSession().getServletContext(), "/resources/storage");
+
+		String imgName = req.getParameter("img");
+
+		File file = new File(imgpath + File.separator + imgName);
+		System.out.println(file);
+		FileInputStream input = null;
+
+		if (file.exists()) {
+			imgpath = imgpath + File.separator + imgName;
+			input = new FileInputStream(imgpath);
+			int length;
+
+			byte[] buffer = new byte[10];
+			while ((length = input.read(buffer)) != -1) {
+				imgout.write(buffer, 0, length);
+			}
+			input.close();
+		}
+		
+	}
 	
-	//@RequestMapping("/company_info.do")
-	//값을 보낼 땐 model객체가 필요하다.
+	@RequestMapping("company_detail.do")
+	public String company_selectOne(int company_no, Model model) {
+		
+		System.out.println("company_selectOne");
+		CompanyDto dto = biz.selectOne(company_no);
+		model.addAttribute("dto", dto);
+		return "company_detail";
+	}
 
 	
-	
+
 }
