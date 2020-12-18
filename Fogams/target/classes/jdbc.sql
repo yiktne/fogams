@@ -35,7 +35,8 @@ drop table company
 
 select company_img from company_info;
 select * from member;
-select * from company;
+select * from company
+select * from BOOKMARK;
 ALTER TABLE company ADD COMPANY_CONTENT VARCHAR2(2000) DEFAULT '애름다운곳' not null;
 ALTER TABLE company ADD COMPANY_TEL VARCHAR2(30) DEFAULT '020989-3339' not null;
 ALTER TABLE company ADD COMPANY_NUMBER VARCHAR2(30) DEFAULT '00099888' not null;
@@ -44,74 +45,24 @@ ALTER TABLE company ADD COMPANY_ADDR VARCHAR2(200) DEFAULT '경기도 어쩌구�
 ALTER TABLE company ADD company_city VARCHAR2(50) DEFAULT '경기도' not null;
 ALTER TABLE company DROP COLUMN company_city;
 
-company_no, company_name, member_no, company_sort, company_content, company_tel, company_number, company_img, company_addr
 
-		SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CITY, COMPANY_IMG
-		FROM COMPANY
-		WHERE COMPANY_CITY = '서울'
-select * from member
-
-SELECT * FROM BOOKMARK
-
-
-CREATE TABLE COMPANY_INFO(
-
-	COMPANY_CONTENT VARCHAR2(2000) NOT NULL,
-	COMPANY_TEL VARCHAR2(30) NOT NULL,
-	COMPANY_NUMBER VARCHAR2(30) NOT NULL,
-	COMPANY_ADDR VARCHAR2(200) NOT NULL,
-	COMPANY_IMG VARCHAR2(200),
-);
-
-
-SELECT COM.COMPANY_NO, COM.COMPANY_NAME, INFO.COMPANY_ADDR1
-FROM COMPANY COM, COMPANY_INFO INFO
-WHERE COM.COMPANY_NO = INFO.COMPANY_NO
-
-insert into bookmark
-values(BOOKMARK_SEQ.nextval, 1, 1)
-where
-(select m.member_id, b.member_no
-from member m, bookmark b
-where m.member_id = 'firstMember'
-and m.member_no = b.member_no);
-
-
-INSERT INTO 테이블명(특정 컬럼명)
-VALUES(특정 컬럼 내용);
-
-		
-		SELECT COM.COMPANY_NO, COM.COMPANY_NAME, COM.COMPANY_SORT
-		FROM COMPANY COM, COMPANY_INFO INFO
-		WHERE INFO.COMPANY_ADDR1 LIKE '%서울%'
-		AND COM.COMPANY_NO = INFO.COMPANY_NO
-		
-
-		
-select com.company_no, com.company_name, com.company_sort
-from company com, company_info info
-where info.company_addr1 like '%서울%'
-and com.company_no = info.company_no
-
-insert into member
-values(member_seq.nextval, 'firstMember', '12345678', '김모모', 'kaste91@naver.com', 1)
-
-insert into company
-values(COMPANY_SEQ.nextval, '맛나', 1 ,'음식점')
-
-insert into company_info
-values(1, '우와 서울의 맛집!', '01063631010', '1234567', '서울시 강남구 강남동 101-10', '123-123', '12345')
-
-
-select DATA_TYPE  
-from ALL_TAB_COLUMNS
-where TABLE_NAME = 'company' ;
+업체등록 시, 멤버테이블 멤버등급을 1 -> 2 바꾸기
+insert, update 따로. -> 하나의 컨트롤러에서.
+컨트롤러에서 유효성 검사 후.
+update member set member_grade = 2
+where member_grade = 1
+and member_no = #{};
 
 
 
-		SELECT COMPANY_INFO.COMPANY_NO, COMPANY.COMPANY_NAME
-		FROM COMPANY_INFO, COMPANY
-		WHERE COMPANY_INFO.COMPANY_ADDR1 LIKE '%서울%'
+일반멤버(1)
+사업자등록하면(2)
+관리자(3)
+탈퇴(0)
+
+		UPDATE MEMBER SET MEMBER_GRADE = 1 
+		WHERE MEMBER_GRADE = 1
+		AND MEMBER_NO = 1
 
 
 CREATE TABLE MEMBER(

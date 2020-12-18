@@ -12,7 +12,7 @@ public interface Company_InfoDao {
 	
 	public int insert(CompanyDto dto);
 	
-	public int update(CompanyDto dto);
+	public int updateMemberGrade(int member_no);
 	
 	public int delete(int company_no);
 

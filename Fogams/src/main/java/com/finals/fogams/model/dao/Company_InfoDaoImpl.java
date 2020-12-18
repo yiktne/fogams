@@ -47,11 +47,19 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 
 		return res;
 	}
-	
+
 	@Override
-	public int update(CompanyDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateMemberGrade(int member_no) {
+		
+		int res = 0;
+		try {
+			res = sqlSession.insert(NAMESPACE + "updateMemberGrade", member_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR] updateMemberGrade");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 

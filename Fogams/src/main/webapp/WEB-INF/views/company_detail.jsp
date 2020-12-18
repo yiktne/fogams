@@ -36,7 +36,7 @@ rel="stylesheet">
                 </div>
             </div>
             <div class="company__right_wish">
-                <button class="company__right_wish_btn">
+                <button class="company__right_wish_btn" onclick="">
                     즐겨찾기
                 </button>
             </div>

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.finals.fogams.model.dao.Company_InfoDao;
 import com.finals.fogams.model.dao.Company_InfoDaoImpl;
 import com.finals.fogams.model.dto.CompanyDto;
-import com.finals.fogams.model.dto.Company_InfoDto;
 
 @Service
 public class Company_InfoBizImpl implements Company_InfoBiz {
@@ -28,8 +27,8 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 	}
 
 	@Override
-	public int update(CompanyDto dto) {
-		return dao.update(dto);
+	public int updateMemberGrade(int member_no) {
+		return dao.updateMemberGrade(member_no);
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +26,11 @@ import com.finals.fogams.model.biz.CompanyBizImpl;
 import com.finals.fogams.model.biz.Company_InfoBiz;
 import com.finals.fogams.model.biz.Company_InfoBizImpl;
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.MemberDto;
 
 @Controller
 public class CompanyController {
+	//업체 정보 등록 컨트롤러
 
 	@Autowired
 	private CompanyBiz companybiz;
@@ -37,19 +40,33 @@ public class CompanyController {
 	
 	
 	@RequestMapping("/form.do")
-	public String list() {
-			
+	public String list(HttpServletRequest request, Model model) {
+		MemberDto session = (MemberDto) request.getSession();
+		//int member_no = session.getMember_no();
+		//model.addAttribute("member_no", member_no);
+		System.out.println(session.getMember_id());
 		return "upload";
-	
 	}
 	
 
 	@RequestMapping("/upload.do")
-	public String insertres(Model model, HttpServletRequest request, CompanyDto dto, BindingResult result) {
+	public String insertres(Model model, HttpServletRequest request, int member_no, CompanyDto dto, BindingResult result) {
 
 		System.out.println("Company insertres.do");
 		System.out.println(dto.getCompany_city());
 		System.out.println(dto.getCompany_addr());
+		
+		MemberDto member = new MemberDto();
+		//int member_no = session.getMember_no();
+		dto.setMember_no(member_no);
+		
+		//업체 등급변경
+		int updateGrade = infobiz.updateMemberGrade(member_no);
+		if(updateGrade > 0) {
+			System.out.println("멤버 등급이 업체(2)로 변경되었습니다. 멤버등급 : " + member.getMember_grade());
+		}
+		
+		//업체 정보 등록
 		int res = infobiz.insert(dto);
 		if (res > 0) {
 			MultipartFile file = dto.getUploadfile();

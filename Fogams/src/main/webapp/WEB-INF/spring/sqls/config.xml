@@ -6,6 +6,8 @@
 		<typeAlias type="com.finals.fogams.model.dto.CompanyDto" alias="CompanyDto"/>
 		<typeAlias type="com.finals.fogams.model.dto.MemberDto" alias="MemberDto"/>
 		<typeAlias type="com.finals.fogams.model.dto.BookmarkDto" alias="BookmarkDto"/>
+		<typeAlias type="com.finals.fogams.common.util.PagingDto" alias="PagingDto"/>
+		<typeAlias type="com.finals.fogams.common.util.Criteria" alias="Criteria"/>
 	</typeAliases>
 
 
@@ -17,6 +19,7 @@
 		<mapper resource="/mybatis/cityDetail_mapper.xml"/>
 		<mapper resource="/mybatis/member-mapper.xml"/>
 		<mapper resource="/mybatis/Company_detail.xml"/>
+		<mapper resource="/mybatis/Personal_menu-mapper.xml"/>
 	</mappers>
 
 
