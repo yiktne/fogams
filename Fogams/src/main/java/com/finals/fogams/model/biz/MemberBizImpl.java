@@ -18,12 +18,32 @@ public class MemberBizImpl implements MemberBiz {
 	}
 	
 	@Override
+	public MemberDto findUser(String id, String name, String email) {
+		return dao.findUser(id, name, email);
+	}
+
+	@Override
+	public String findUserID(String name, String email) {
+		return dao.findUserID(name, email);
+	}
+	
+	@Override
 	public int register(MemberDto dto) {
 		return dao.register(dto);
 	}
 	
 	@Override
+	public int updatePassword(String id, String password) {
+		return dao.updatePassword(id, password);
+	}
+	
+	@Override
 	public boolean checkID(String id) {
 		return dao.checkID(id);
+	}
+	
+	@Override
+	public boolean checkEmail(String email) {
+		return dao.checkEmail(email);
 	}
 }

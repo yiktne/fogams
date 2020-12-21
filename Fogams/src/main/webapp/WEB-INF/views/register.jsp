@@ -29,6 +29,10 @@
 		border-color: sliver;
 	}
 	
+	#idInvalid, #pwInvalid {
+		color:red;
+	}
+	
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="resources/js/register.js"></script>
@@ -53,7 +57,7 @@
 			</tr>
 			<tr>
 				<td colspan="3" id="idInvalid">
-					아이디는 영문, 숫자로 이루어진 6자 이상 20자로 정해주세요.
+					아이디는 영어 소문자로 시작하며,<br/>소문자, 숫자로만 이루어진 6~20자만 가능합니다.
 				</td>
 			</tr>
 			<tr>

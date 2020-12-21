@@ -43,18 +43,32 @@
 		
 		$("#sendEmail").on("click", function() {
 			if(checkEmail()) {
-				$("#emailInfo").css("visibility", "visible");
-				$("#emailValid").css("visibility", "visible");
 				$.ajax({
 					contentType:"application/json",
-					url:encodeURI("sendCert.do"),
-					data:JSON.stringify({mail:$("#email").val()}),
-					dataType:"json",
-					method:"POST",
+					url:encodeURI("checkEmailOverlap.do?email=" + $("#email").val()),
 					success:function(res) {
-						certString = res.cert;
-						alert($("#email").val() + "으로 인증번호를 보냈습니다.");
-						$("#cert").val(certString);
+						if(res.result) {
+							$("#emailInfo").css("visibility", "visible");
+							$("#emailValid").css("visibility", "visible");
+							$.ajax({
+								contentType:"application/json",
+								url:encodeURI("sendCert.do"),
+								data:JSON.stringify({mail:$("#email").val()}),
+								dataType:"json",
+								method:"POST",
+								success:function(res) {
+									certString = res.cert;
+									alert($("#email").val() + "으로 인증번호를 보냈습니다.");
+									$("#cert").val(certString);
+								},
+								error:function(res, status, err) {
+									console.log(res);
+									console.log(err);
+								},
+							});
+						} else {
+							alert("이미 사용중인 이메일입니다. 다른 이메일을 사용해주세요.");
+						}
 					},
 					error:function(res, status, err) {
 						console.log(res);
@@ -145,7 +159,7 @@
 				},
 			});
 		} else {
-			alert("6자 이상, 20자 이하의 영문, 숫자로 이루어진 아이디를 입력해주세요.");
+			alert("소문자 영문으로 시작하는 6자 이상, 20자 이하의 소문자 영문, 숫자로 이루어진 아이디를 입력해주세요.");
 		}
 	}
 	

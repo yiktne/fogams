@@ -34,7 +34,7 @@
 		<input class="button" type="button" value="카카오ID를 이용하여 로그인" onclick="handleKakaoLogin()"/><br/>
 		<input class="button" type="button" value="Facebook을 이용하여 로그인" onclick="handleFBLogin()"/><br/>
 		<input class="button" type="button" value="회원가입" onclick="handleRegister()"/><br/>
-		<a href="">아이디/비밀번호를 잃어버리셨나요?</a>
+		<a href="finduserform.do">아이디/비밀번호를 잃어버리셨나요?</a>
 	</div>
 </body>
 </html>

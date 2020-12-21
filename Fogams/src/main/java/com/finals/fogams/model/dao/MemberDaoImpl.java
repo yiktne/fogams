@@ -29,6 +29,41 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
+	public MemberDto findUser(String id, String name, String email) {
+		MemberDto dto = null;
+		
+		try {
+			MemberDto findData = new MemberDto();
+			findData.setMember_id(id);
+			findData.setMember_name(name);
+			findData.setMember_email(email);
+			dto = sqlSession.selectOne(NAMESPACE + "findUser", findData);
+		} catch (Exception e) {
+			System.out.println("[ERROR] member findUser");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
+	@Override
+	public String findUserID(String name, String email) {
+		String id = null;
+		
+		try {
+			MemberDto findData = new MemberDto();
+			findData.setMember_name(name);
+			findData.setMember_email(email);
+			id = sqlSession.selectOne(NAMESPACE + "findUserID", findData);
+		} catch (Exception e) {
+			System.out.println("[ERROR] member findUserID");
+			e.printStackTrace();
+		}
+		
+		return id;
+	}
+	
+	@Override
 	public int register(MemberDto dto) {
 
 		int res = 0;
@@ -44,6 +79,23 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
+	public int updatePassword(String id, String password) {
+		int res = 0;
+		
+		try {
+			MemberDto dto = new MemberDto();
+			dto.setMember_id(id);
+			dto.setMember_pw(password);
+			res = sqlSession.update(NAMESPACE + "updatePassword", dto);
+		} catch (Exception e) {
+			System.out.println("[ERROR] member updatePassword");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	@Override
 	public boolean checkID(String id) {
 
 		int res = 0;
@@ -52,6 +104,20 @@ public class MemberDaoImpl implements MemberDao {
 			res = sqlSession.selectOne(NAMESPACE + "checkID", id);
 		} catch (Exception e) {
 			System.out.println("[ERROR] member checkID");
+			e.printStackTrace();
+		}
+		
+		return res == 0;
+	}
+	
+	@Override
+	public boolean checkEmail(String email) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "checkEmail", email);
+		} catch (Exception e) {
+			System.out.println("[ERROR] member checkEmail");
 			e.printStackTrace();
 		}
 		

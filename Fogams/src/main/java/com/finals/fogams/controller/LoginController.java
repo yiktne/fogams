@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,6 +50,29 @@ public class LoginController {
 	public String registerForm() {
 		return "register";
 	}
+
+	@RequestMapping("/finduserform.do")
+	public String findUser() {
+		return "finduser";
+	}
+
+	@RequestMapping("/findpwauth.do")
+	public String findPwAuth() {
+		return "findpwauth";
+	}
+	
+	@RequestMapping(path="/resetpwform.do", method=RequestMethod.POST)
+	public String resetPWForm(Model model, String id) {
+		
+		model.addAttribute("id", id);
+		
+		return "resetpw";
+	}
+
+	@RequestMapping("/idpopup.do")
+	public String idPopup() {
+		return "idpopup";
+	}
 	
 	@RequestMapping("/checkIdOverlap.do")
 	@ResponseBody
@@ -61,6 +85,19 @@ public class LoginController {
 			result.put("result", false);
 		}
 		
+		return result;
+	}
+
+	@RequestMapping("/checkEmailOverlap.do")
+	@ResponseBody
+	public HashMap<String, Boolean> checkEmailOverlap(String email) {
+		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+		
+		if(biz.checkEmail(email)) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
 		
 		return result;
 	}
@@ -72,6 +109,31 @@ public class LoginController {
 		
 		result.put("kakao", keyKakao);
 		result.put("fb", keyFB);
+		
+		return result;
+	}
+
+	@RequestMapping("/findUserID.do")
+	@ResponseBody
+	public HashMap<String, String> findUserID(String name, String email) {
+		HashMap<String, String> result = new HashMap<String, String>();
+		
+		result.put("id", biz.findUserID(name, email));
+		
+		return result;
+	}
+
+	@RequestMapping(path="/findUser.do")
+	@ResponseBody
+	public HashMap<String, Boolean> findUser(String id, String name, String email) {
+		
+		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+		
+		if(biz.findUser(id, name, email) != null) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
 		
 		return result;
 	}
@@ -115,6 +177,21 @@ public class LoginController {
 		*/
 		
 		result.put("cert", cert);
+		
+		return result;
+	}
+	
+	@RequestMapping(path="/updatePassword.do", method=RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, Boolean> updatePassword(@RequestBody HashMap<String, String> body) {
+		
+		HashMap<String, Boolean> result = new HashMap<String, Boolean>();
+		
+		if(biz.updatePassword(body.get("id"), passwordEncoder.encode(body.get("password"))) > 0) {
+			result.put("result", true);
+		} else {
+			result.put("result", false);
+		}
 		
 		return result;
 	}
