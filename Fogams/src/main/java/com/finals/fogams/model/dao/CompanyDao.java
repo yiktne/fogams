@@ -6,7 +6,7 @@ import com.finals.fogams.model.dto.CompanyDto;
 
 public interface CompanyDao {
 
-	String NAMESPACE = "com.company.";
+	String NAMESPACE = "com.companyinfo.";
 	
 	public List<CompanyDto> selectList();
 	

@@ -29,13 +29,13 @@ import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.MemberDto;
 
 @Controller
-public class CompanyController {
-	//업체 정보 등록 컨트롤러
+public class CompanyInfoController {
 
 	@Autowired
 	private CompanyBiz companybiz;
 	@Autowired
 	private Company_InfoBiz infobiz;
+	@Autowired
 	private FileValidator fileValidator;
 	
 	
@@ -118,6 +118,8 @@ public class CompanyController {
 			return "redirect:company_list.do";
 		} else
 			return "redirect:company_insertform";
+
+
 	}
 
 }

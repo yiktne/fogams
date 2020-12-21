@@ -85,12 +85,31 @@ public class City_DetailDaoImpl implements City_DetailDao {
 
 	@Override
 	public int update(CompanyDto dto) {
-		return 0;
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE + "update", dto);
+		} catch (Exception e) {
+			System.out.println("[ERROR] City_DetailDaoImpl Update");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	@Override
-	public int delete(int myno) {
-		return 0;
+	public int delete(int company_no) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "delete", company_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR] City_detailDaoImpl Delete");
+			e.printStackTrace();
+		}
+		
+		
+		return res;
 	}
 
 

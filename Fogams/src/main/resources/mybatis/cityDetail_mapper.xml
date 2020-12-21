@@ -31,17 +31,16 @@
 		WHERE COMPANY_NO = #{company_no}
 	</select>
 	
-
-	<select id="selectCity" resultType="CompanyDto" parameterType="String">
-		<![CDATA[
-		SELECT COMPANY_CITY
-		FROM (SELECT COMPANY_CITY FROM COMPANY WHERE COMPANY_CITY = #{company_city}
-		ORDER BY DBMS_RANDOM.VALUE)
-		WHERE ROWNUM <= 1
-		]]>
+	<update id="update" parameterType="CompanyDto">
+		UPDATE COMPANY
+		SET COMPANY_NAME = #{company_name}, COMPANY_CONTENT = #{company_content}
+		, COMPANY_TEL = #{company_tel}, COMPANY_ADDR = #{company_addr}
+		WHERE COMPANY_NO = #{company_no}
+	</update>
 	
-
-	</select>
-
+	<delete id="delete" parameterType="int">
+		DELETE FROM COMPANY
+		WHERE COMPANY_NO = #{company_no}
+	</delete>
 
 </mapper>
