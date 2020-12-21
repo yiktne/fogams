@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.WebUtils;
 
 import com.finals.fogams.model.biz.City_DetailBiz;
+import com.finals.fogams.model.biz.ReplyBiz;
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.ReplyDto;
 
 @Controller
 public class indexController {
 
 	@Autowired
 	private City_DetailBiz biz;
+	@Autowired
+	private ReplyBiz replybiz;
 
 	@RequestMapping("/company_info.do")
 	public String moveToCityDetail(Model model, String city) {
@@ -66,9 +70,43 @@ public class indexController {
 		System.out.println("company_selectOne");
 		CompanyDto dto = biz.selectOne(company_no);
 		model.addAttribute("dto", dto);
+		
+		List<ReplyDto> replyList = replybiz.selectList(company_no);
+		model.addAttribute("replyList", replyList);
+		
 		return "company_detail";
 	}
-
+	
+	@RequestMapping("company_updateform.do")
+	public String company_updateform(Model model, int company_no) {
+		model.addAttribute("dto", biz.selectOne(company_no));
+		
+		return "company_updateform";
+	}
+	
+	@RequestMapping("company_updateres.do")
+	public String company_updateres(CompanyDto dto, int company_no) {
+		int res = biz.update(dto);
+		if(res > 0) {
+			return "redirect:company_detail.do?company_no="+company_no;
+		}else {
+			return "redirect:company_updateform.do?company_no="+company_no;
+		}
+		
+	}
+	
+	@RequestMapping("company_delete.do")
+	public String company_delete(int company_no) {
+		
+		int res = biz.delete(company_no);
+		if(res > 0) {
+			return "redirect:company_info.do";
+		}else {
+			return "redirect:company_delete.do";
+		}
+		
+	}
+	
 	
 
 }

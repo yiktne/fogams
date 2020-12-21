@@ -31,12 +31,12 @@ public class City_DetailBizImpl implements City_DetailBiz{
 
 	@Override
 	public int update(CompanyDto dto) {
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
-	public int delete(int myno) {
-		return 0;
+	public int delete(int company_no) {
+		return dao.delete(company_no);
 	}
 
 }

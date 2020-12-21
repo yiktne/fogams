@@ -18,7 +18,8 @@ rel="stylesheet">
 </head>
 <body>
 	<%@ include file="header.jsp" %>
-	
+   <form action="company_updateres.do" method="post">
+	<input type="hidden" name="company_no" value="${dto.company_no }">
     <!-- 숙소 이미지, 맵, 등 첫번째 섹션 -->
     <section id="company">
         <div class="company__left">
@@ -26,11 +27,12 @@ rel="stylesheet">
                 <img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" alt="${dto.company_img }" class="company__left_img">
             </div>
             <div class="company__left_description">
-                <h2>${dto.company_name }</h2>
-                <p>${dto.company_addr }</p>
+                <h2><input type="text" name="company_name" value="${dto.company_name }"></h2>
+                <p><input type="text" name="company_addr" value="${dto.company_addr }"></p>
                 <p>${dto.company_sort }</p>
-                <p>${dto.company_tel }</p>
+                <p><input type="text" name="company_tel" value="${dto.company_tel }"></p>
             </div>
+            
         </div>
 
         <div class="company_right">
@@ -60,12 +62,12 @@ rel="stylesheet">
             </div>
             <div class="content">
               <div class="content-dis">
-                ${dto.company_content }
+                <textarea rows="10" cols="60" name="company_content">${dto.company_content }</textarea>
 				<table>
 					<tr>
 						<td align="right">
-							<input type="button" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}'">
-							<input type="button" value="삭제" onclick="location.href='company_delete.do?company_no=${dto.company_no}'">
+							<input type="submit" value="수정"/>
+							<input type="button" value="취소" onclick="">
 						</td>
 					</tr>
 				</table>
@@ -87,6 +89,7 @@ rel="stylesheet">
                	
                	</c:choose>
                	<div id="disqus_thread"></div>
+               	
 <script>
     (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -106,6 +109,7 @@ rel="stylesheet">
             </div>
         </div>
     </section>
+    </form>
 <%@ include file="footer.jsp" %>
 
 </body>

@@ -4,19 +4,20 @@
 
 	<typeAliases>
 		<typeAlias type="com.finals.fogams.model.dto.CompanyDto" alias="CompanyDto"/>
-		<typeAlias type="com.finals.fogams.model.dto.Company_InfoDto" alias="Company_InfoDto"/>
 		<typeAlias type="com.finals.fogams.model.dto.MemberDto" alias="MemberDto"/>
 		<typeAlias type="com.finals.fogams.model.dto.BookmarkDto" alias="BookmarkDto"/>
+		<typeAlias type="com.finals.fogams.model.dto.ReplyDto" alias="ReplyDto"/>
 	</typeAliases>
 
 
 	
 	<mappers>
+		<mapper resource="/mybatis/CompanyInfo-mapper.xml"/>
 		<mapper resource="/mybatis/Company-mapper.xml"/>
-		<mapper resource="/mybatis/company_info-mapper.xml"/>
 		<mapper resource="/mybatis/cityDetail_mapper.xml"/>
 		<mapper resource="/mybatis/member-mapper.xml"/>
 		<mapper resource="/mybatis/Company_detail.xml"/>
+		<mapper resource="/mybatis/Reply-mapper.xml"/>
 	</mappers>
 
 
