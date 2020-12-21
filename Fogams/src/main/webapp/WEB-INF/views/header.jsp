@@ -48,13 +48,12 @@
 				<%=memberDto.getMember_name() %>님 안녕하세요!
 				<input type="button" value="temp" onclick="handleOpenMenu()"/>
 			<% } %>
-	    </nav>
-	    
+	    </nav>   
 	    <div class="nav_usermenu">
 	    	<ul>
 	    		<li><a>1</a></li>
 	    		<li><a>2</a></li>
-	    		<li><a>3</a></li>
+	    		<li><a href="bookmarklist.do">나의 북마크 보기</a></li>
 	    		<li><a onclick="handleLogout()">로그아웃</a></li>
 	    	</ul>
 	    </div>

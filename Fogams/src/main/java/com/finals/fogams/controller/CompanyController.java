@@ -5,29 +5,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
 import com.finals.fogams.common.util.FileValidator;
 import com.finals.fogams.model.biz.CompanyBiz;
-import com.finals.fogams.model.biz.CompanyBizImpl;
 import com.finals.fogams.model.biz.Company_InfoBiz;
-import com.finals.fogams.model.biz.Company_InfoBizImpl;
 import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.MemberDto;
 

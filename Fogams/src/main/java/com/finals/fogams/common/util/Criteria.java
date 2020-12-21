@@ -65,9 +65,6 @@ public class Criteria {
 	public void setCompany_city(String company_city) {
 		this.company_city = company_city;
 	}
-	
-	
-
 
 
 }

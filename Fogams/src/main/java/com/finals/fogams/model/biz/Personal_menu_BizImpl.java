@@ -15,23 +15,24 @@ public class Personal_menu_BizImpl implements Personal_menu_Biz {
 	private Personal_menu_Dao dao;
 
 	@Override
-	public List<BookmarkDto> bookMarkList() {
-		return null;
+	public List<BookmarkDto> bookMarkList(int member_no) {
+		return dao.bookMarkList(member_no);
 	}
-
+	
 	@Override
-	public BookmarkDto bookMarkselectOne() {
-		return null;
+	public int bookmarkValidityCheck(BookmarkDto dto) {
+		return dao.bookmarkValidityCheck(dto);
 	}
 
 	@Override
 	public int bookMarkInsert(BookmarkDto dto) {
-		return 0;
+		return dao.bookMarkInsert(dto);
 	}
 
 	@Override
 	public int bookMarkDelete(int bookmark_no) {
-		return 0;
+		return dao.bookMarkDelete(bookmark_no);
 	}
+
 
 }
