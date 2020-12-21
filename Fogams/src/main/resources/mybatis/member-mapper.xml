@@ -7,10 +7,31 @@
 		FROM MEMBER WHERE MEMBER_ID = #{member_id}
 	</select>
 
+	<select id="findUserID" parameterType="MemberDto" resultType="String">
+		SELECT MEMBER_ID
+		FROM MEMBER WHERE MEMBER_NAME = #{member_name} AND MEMBER_EMAIL = #{member_email}
+		AND SUBSTR(MEMBER_ID, 1, 1) NOT IN ('F', 'K')
+	</select>
+
+	<select id="findUser" parameterType="MemberDto" resultType="MemberDto">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_GRADE
+		FROM MEMBER WHERE MEMBER_NAME = #{member_name} AND MEMBER_EMAIL = #{member_email} AND MEMBER_ID = #{member_id}
+		AND SUBSTR(MEMBER_ID, 1, 1) NOT IN ('F', 'K')
+	</select>
+
 	<select id="checkID" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		FROM MEMBER WHERE MEMBER_ID = #{member_id}
 	</select>
+
+	<select id="checkEmail" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER WHERE MEMBER_EMAIL = #{member_email}
+	</select>
+
+	<update id="updatePassword" parameterType="MemberDto">
+		UPDATE MEMBER SET MEMBER_PW = #{member_pw} WHERE MEMBER_ID = #{member_id}
+	</update>
 
 	<insert id="register" parameterType="MemberDto">
 		INSERT INTO MEMBER
