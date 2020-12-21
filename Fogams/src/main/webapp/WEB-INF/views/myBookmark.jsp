@@ -29,7 +29,7 @@ function moveCompany(){
 
 $(function(){
     $('.btns__delete').click(function(){
-    	var bookmark_no = $(".bookmark_no").val();
+    	var bookmark_no = $(this).val();
     	var data = {"bookmark_no" : bookmark_no};
        $.ajax({
     	   type: "post",
@@ -74,21 +74,20 @@ $(function(){
 			<c:otherwise>
 				<c:forEach items="${list }" var="dto">
 				<input type="hidden" class="company_no" value="${dto.company_no }">
-				<input type="hidden" class="bookmark_no" value="${dto.bookmark_no }">
 					<div class="Bookmark__box">
 						<div class="Bookmark__dis">
 							<div class="dis__img_Container">
 								<img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" style="cursor:pointer;" class="dis__sortImg" onclick="moveCompany();"/>
 							</div>
 							<div class="dis__text">
-								<h2 class="dis__title" style="cursor:pointer;" onclick="moveCompany();">${dto.company_name }</h2>
+								<h2 class="dis__title" style="cursor:pointer;" onclick="moveCompany();">${dto.bookmark_no } ${dto.company_name }</h2>
 								<span>${dto.company_sort }</span> <span>${dto.company_tel }</span> <span>${dto.company_addr }</span>
 							</div>
 						</div>
 						<div class="Bookmark__btns">
 							<!-- ajax로 컨트롤러요청하기 -->
 							<button class="btns__detail btn" onclick="moveCompany();">보기</button>
-							<button class="btns__delete btn">삭제</button>
+							<button class="btns__delete btn bookmark_no" value="${dto.bookmark_no }">${dto.bookmark_no } 삭제</button>
 						</div>
 					</div>
 				</c:forEach>
