@@ -26,6 +26,7 @@ rel="stylesheet">
         <h1 class="maketrip__title">내 여행을 만들어보세요</h1>
         <p class="maketrip__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti voluptates reprehenderit veritatis distinctio blanditiis tempore officia eos amet! Magni dolorum, incidunt sapiente sit aut unde! Sapiente maiores molestias aut quo.</p>  
         <button class="maketrip__btn">여행 만들러 가기</button>
+        <a href="form.do">업로드</a>
     </section>
 
     <!-- pickcity (이런 여행지 어때요?) -->
@@ -34,7 +35,7 @@ rel="stylesheet">
         <div class="pickcity__container">
             <div class="pickcity__city">
                 <div class="pickcity__img_container">
-                
+                	<!--컨트롤러 요청 -->
                     <a href="company_info.do?company_city=서울" >
                     <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
                     </a>

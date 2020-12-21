@@ -45,6 +45,8 @@ ALTER TABLE company ADD COMPANY_ADDR VARCHAR2(200) DEFAULT '경기도 어쩌구�
 ALTER TABLE company ADD company_city VARCHAR2(50) DEFAULT '경기도' not null;
 ALTER TABLE company DROP COLUMN company_city;
 
+select * from company
+where company_sort = '숙소';
 
 업체등록 시, 멤버테이블 멤버등급을 1 -> 2 바꾸기
 insert, update 따로. -> 하나의 컨트롤러에서.
@@ -53,12 +55,24 @@ update member set member_grade = 2
 where member_grade = 1
 and member_no = #{};
 
+select * from company where company_city = '서울';
 
 
 일반멤버(1)
 사업자등록하면(2)
 관리자(3)
 탈퇴(0)
+
+DELETE FROM bookmark 
+WHERE bookmark_no = 22
+
+
+		SELECT B.BOOKMARK_NO, B.COMPANY_NO, B.MEMBER_NO, 
+		C.COMPANY_IMG, C.COMPANY_NAME, C.COMPANY_ADDR, C.COMPANY_TEL, C.COMPANY_SORT, C.COMPANY_CITY
+		FROM BOOKMARK B, COMPANY C
+		WHERE B.MEMBER_NO = 21
+		AND B.COMPANY_NO = C.COMPANY_NO
+
 
 		UPDATE MEMBER SET MEMBER_GRADE = 1 
 		WHERE MEMBER_GRADE = 1
@@ -68,7 +82,7 @@ and member_no = #{};
 CREATE TABLE MEMBER(
 	MEMBER_NO NUMBER PRIMARY KEY NOT NULL,
 	MEMBER_ID VARCHAR2(20) UNIQUE NOT NULL,
-	MEMBER_PW VARCHAR2(20) NOT NULL,
+	MEMBER_PW VARCHAR2(64) NOT NULL,
 	MEMBER_NAME VARCHAR2(20) NOT NULL,
 	MEMBER_EMAIL VARCHAR2(40) NOT NULL,
 	MEMBER_GRADE NUMBER

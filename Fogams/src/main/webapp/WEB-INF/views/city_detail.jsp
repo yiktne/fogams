@@ -40,8 +40,9 @@
 			type="radio" id="tab-2" name="show" /> <input type="radio"
 			id="tab-3" name="show" />
 		<div class="tab">
-			<label for="tab-1" class="tab_btn">숙소</label> <label for="tab-2"
-				class="tab_btn">명소</label> <label for="tab-3" class="tab_btn">음식점</label>
+			<label for="tab-1" class="tab_btn">숙소</label> 
+			<label for="tab-2" class="tab_btn">명소</label> 
+				<label for="tab-3" class="tab_btn">음식점</label>
 		</div>
 		<div class="content">
 			<div class="content-dis">
@@ -55,7 +56,9 @@
 								<c:when test="${dto.company_sort eq '숙소' }">
 									<div class="contents__detail">
 										<div class="contents__img">
+											<!-- 업체 상세정보 보기 컨트롤러 요청 -->
 											<a href="company_detail.do?company_no=${dto.company_no }" class="project"> 
+											<!-- 이미지뿌리기 컨트롤러 요청 -->
 											<img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" />
 											</a>
 										</div>
@@ -69,6 +72,8 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
+			
+			
 			<div class="content-dis">
 				<c:choose>
 					<c:when test="${empty list }">
@@ -121,31 +126,5 @@
 			</div>
 		</div>
 	</section>
-
-
-	<!-- 페이징버튼 (페이징 기능 만들어야 함 ) -->
-	<section id="paging" class="section">
-		<div>
-			<ul>
-				<c:if test="${pagemaker.prev}">
-					<li><a
-						href="list.do${pagemaker.makeQuery(pagemaker.startPage - 1)}">이전</a></li>
-				</c:if>
-
-				<c:forEach begin="${pagemaker.startPage}" end="${pagemaker.endPage}" var="idx">
-					<li><a href="list.do${pagemaker.makeQuery(idx, num.company_city)}">${idx}</a></li>
-				</c:forEach>
-
-				<c:if test="${pagemaker.next && pagemaker.endPage > 0}">
-					<li><a
-						href="list.do${pagemaker.makeQuery(pagemaker.endPage + 1)}">다음</a></li>
-				</c:if>
-			</ul>
-		</div>
-	</section>
-
-	<%@ include file="footer.jsp"%>
-</body>
-
 
 </html>

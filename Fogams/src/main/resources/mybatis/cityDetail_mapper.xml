@@ -4,28 +4,13 @@
 <mapper namespace="cityDetail">
 
 
-	<select id="selectlist" resultType="CompanyDto" parameterType="Criteria">		
-		SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CITY, COMPANY_IMG
-		FROM(SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CITY, COMPANY_IMG,
-			ROW_NUMBER() OVER(ORDER BY COMPANY_NO DESC)AS RNUM
-			FROM COMPANY)COM
-		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-		AND COMPANY_CITY = #{company_city}
-		ORDER BY COMPANY_NO DESC
+	<select id="selectlist" resultType="CompanyDto" parameterType="String">		
+		SELECT * FROM COMPANY WHERE COMPANY_CITY = #{company_city}
 	</select>
-	
-	<select id="listCount" resultType="int" parameterType="CompanyDto">
-	<![CDATA[
-		SELECT COUNT(COMPANY_NO)
-		  FROM COMPANY
-		 WHERE COMPANY_NO > 0
-		 AND COMPANY_CITY = #{company_city}
-	]]>
-	</select>
-	
+
 
 	<select id="selectOne" resultType="CompanyDto" parameterType="int">
-		SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_CONTENT, COMPANY_TEL,
+		SELECT COMPANY_NO, COMPANY_NAME, MEMBER_NO, COMPANY_SORT, COMPANY_CONTENT, COMPANY_TEL,
 		COMPANY_NUMBER, COMPANY_IMG, COMPANY_ADDR, COMPANY_CITY
 		FROM COMPANY
 		WHERE COMPANY_NO = #{company_no}
