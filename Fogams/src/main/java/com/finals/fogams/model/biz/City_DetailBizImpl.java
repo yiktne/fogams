@@ -35,8 +35,8 @@ public class City_DetailBizImpl implements City_DetailBiz{
 	}
 
 	@Override
-	public int delete(int company_no) {
-		return dao.delete(company_no);
+	public int delete(CompanyDto dto) {
+		return dao.delete(dto);
 	}
 
 }

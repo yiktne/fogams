@@ -11,40 +11,39 @@ import com.finals.fogams.model.dto.CompanyDto;
 
 @Repository
 public class City_DetailDaoImpl implements City_DetailDao {
-	
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+
 	@Override
 	public List<CompanyDto> selectlist(String company_city) {
-		
+
 		List<CompanyDto> list = new ArrayList<CompanyDto>();
-		
+
 		try {
 			list = sqlSession.selectList(NAMESPACE + "selectlist", company_city);
 		} catch (Exception e) {
 			System.out.println("[ERROR] selectlist");
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 
 	@Override
 	public CompanyDto selectOne(int company_no) {
-		
+
 		CompanyDto dto = null;
-		
+
 		try {
 			dto = sqlSession.selectOne(NAMESPACE + "selectOne", company_no);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("[ERROR] selectOne");
 			e.printStackTrace();
 		}
-		
+
 		return dto;
 	}
-
 
 	@Override
 	public int insert(CompanyDto dto) {
@@ -54,31 +53,29 @@ public class City_DetailDaoImpl implements City_DetailDao {
 	@Override
 	public int update(CompanyDto dto) {
 		int res = 0;
-		
+
 		try {
 			res = sqlSession.update(NAMESPACE + "update", dto);
 		} catch (Exception e) {
 			System.out.println("[ERROR] City_DetailDaoImpl Update");
 			e.printStackTrace();
 		}
-		
+
 		return res;
 	}
 
 	@Override
-	public int delete(int company_no) {
+	public int delete(CompanyDto dto) {
 		int res = 0;
-		
+
 		try {
-			res = sqlSession.delete(NAMESPACE + "delete", company_no);
+			res = sqlSession.delete(NAMESPACE + "delete", dto);
 		} catch (Exception e) {
 			System.out.println("[ERROR] City_detailDaoImpl Delete");
 			e.printStackTrace();
 		}
-		
-		
+
 		return res;
 	}
-
 
 }

@@ -20,6 +20,7 @@ rel="stylesheet">
 	<%@ include file="header.jsp" %>
    <form action="company_updateres.do" method="post">
 	<input type="hidden" name="company_no" value="${dto.company_no }">
+	<input type="hidden" name="member_no" value="${dto.member_no }">
     <!-- 숙소 이미지, 맵, 등 첫번째 섹션 -->
     <section id="company">
         <div class="company__left">

@@ -8,8 +8,10 @@ import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.ColumnMapRowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.util.WebUtils;
 import com.finals.fogams.model.biz.City_DetailBiz;
 import com.finals.fogams.model.biz.ReplyBiz;
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.MemberDto;
 import com.finals.fogams.model.dto.ReplyDto;
 
 @Controller
@@ -68,32 +71,51 @@ public class indexController {
 	//업체 상세페이지 이동
 	@RequestMapping("company_detail.do")
 	public String company_selectOne(HttpServletRequest request, int company_no, Model model) {
+		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
 		
 		//MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
 		//int member_no = session.getMember_no();
 		System.out.println("company_selectOne");
 		CompanyDto dto = biz.selectOne(company_no);
-		
 		//model.addAttribute("member_no", member_no);
 		model.addAttribute("dto", dto);
 		
-		List<ReplyDto> replyList = replybiz.selectList(company_no);
-		model.addAttribute("replyList", replyList);
+		
 		
 		return "company_detail";
 	}
 	
+	
+	
 	@RequestMapping("company_updateform.do")
-	public String company_updateform(Model model, int company_no) {
-		model.addAttribute("dto", biz.selectOne(company_no));
+	public String company_updateform(Model model, int company_no,int member_no , HttpServletRequest request) {
+		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
 		
-		return "company_updateform";
+		System.out.println(member_no);
+		
+		
+		if(member_no == session.getMember_no()) {
+			model.addAttribute("dto", biz.selectOne(company_no));
+			return "company_updateform";
+		}else {
+			return "redirect:company_info.do";
+		}
+
+		
+		
+		
+		
+		
 	}
 	
+	
+	
 	@RequestMapping("company_updateres.do")
-	public String company_updateres(CompanyDto dto, int company_no) {
+	public String company_updateres(HttpServletRequest request, CompanyDto dto, int company_no, int member_no) {
+		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
+
 		int res = biz.update(dto);
-		if(res > 0) {
+		if(res > 0 && member_no == session.getMember_no()) {
 			return "redirect:company_detail.do?company_no="+company_no;
 		}else {
 			return "redirect:company_updateform.do?company_no="+company_no;
@@ -102,10 +124,17 @@ public class indexController {
 	}
 	
 	@RequestMapping("company_delete.do")
-	public String company_delete(int company_no) {
-		
-		int res = biz.delete(company_no);
-		if(res > 0) {
+	public String company_delete(HttpServletRequest request,int company_no, int member_no) {
+		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
+		System.out.println("company_no : " + company_no );
+		System.out.println("member_no : " + member_no);
+		CompanyDto dto = new CompanyDto();
+		dto.setCompany_no(company_no);
+		dto.setMember_no(member_no);
+		int res = biz.delete(dto);
+		if(res > 0 && member_no == session.getMember_no()) {
+			
+			
 			return "redirect:company_info.do";
 		}else {
 			return "redirect:company_delete.do";

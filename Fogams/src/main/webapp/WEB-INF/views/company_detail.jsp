@@ -97,15 +97,10 @@ rel="stylesheet">
             <div class="content">
               <div class="content-dis">
                 ${dto.company_content }
-				<table>
-					<tr>
-						<td align="right">
-							<input type="button" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}'">
-							<input type="button" value="삭제" onclick="location.href='company_delete.do?company_no=${dto.company_no}'">
-						</td>
-					</tr>
-				</table>
               </div>
+			<input type="button" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}&member_no=${dto.member_no } '">
+			<input type="button" value="삭제" onclick="location.href='company_delete.do?company_no=${dto.company_no}&member_no=${dto.member_no }'">
+				
               <div class="content-dis">
                 Color의 body안 내용을 넣으세요.
                 <!-- 댓글 -->
@@ -124,7 +119,7 @@ rel="stylesheet">
                	</c:choose>
                	<div id="disqus_thread"></div>
 <script>
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { 
     var d = document, s = d.createElement('script');
  	   s.src = 'https://fogams.disqus.com/embed.js';
    		 s.setAttribute('data-timestamp', +new Date());

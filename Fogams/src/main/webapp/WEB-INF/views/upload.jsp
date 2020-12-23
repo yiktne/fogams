@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form:form method="post" enctype="multipart/form-data" modelAttribute="dto" action="upload.do">
+	<form:form method="post" enctype="multipart/form-data" modelAttribute="dto" action="comupload.do">
 		<input type="hidden" value="${member_no }" name="member_no">
 		Company name : <input type="text" name="company_name"><br>
 		Company sort : 

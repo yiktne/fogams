@@ -13,6 +13,6 @@ public interface City_DetailDao {
 	public CompanyDto selectOne(int company_no);
 	public int insert(CompanyDto dto);
 	public int update(CompanyDto dto);
-	public int delete(int company_no);
+	public int delete(CompanyDto dto);
 
 }
