@@ -37,7 +37,7 @@
 <body>
 
 	<header>
-	    <h1 class="nav_logo"><a href="">Fogams</a></h1>
+	    <h1 class="nav_logo"><a href="index.jsp">Fogams</a></h1>
 	
 		<% MemberDto memberDto = (MemberDto)session.getAttribute("memberDto"); %>
 	    <nav class="nav_userinfo">
@@ -52,7 +52,7 @@
 	    <div class="nav_usermenu">
 	    	<ul>
 	    		<li><a>1</a></li>
-	    		<li><a>2</a></li>
+	    		<li><a onclick="handleCom_info()">업체정보 등록하기</a></li>
 	    		<li><a href="bookmarklist.do">나의 북마크 보기</a></li>
 	    		<li><a onclick="handleLogout()">로그아웃</a></li>
 	    	</ul>
@@ -93,6 +93,14 @@ function handleLogout() {
 		req.open("POST", "logout.do");
 		req.send();
 	}
+}
+
+function handleCom_info(){
+		<%if(memberDto == null) { %>
+		location.href="loginform.do";
+		<%}else{%>
+		location.href="form.do?member_no="+<%=memberDto.getMember_no()%>;
+	<%}%>
 }
 
 </script>

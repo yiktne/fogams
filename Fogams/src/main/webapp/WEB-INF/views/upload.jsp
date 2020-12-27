@@ -1,3 +1,4 @@
+<%@page import="com.finals.fogams.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -7,11 +8,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+<% MemberDto memberDto = (MemberDto)session.getAttribute("memberDto"); %>
+<% int member_no =  memberDto.getMember_no(); %>
+
+window.onload=function(){
+	<%if(member_no == 0) { %>
+	location.href="loginform.do";
+	<%}%>
+}
+</script>
 </head>
 <body>
 
+
+
 	<form:form method="post" enctype="multipart/form-data" modelAttribute="dto" action="upload.do">
 		<input type="hidden" value="${member_no }" name="member_no">
+		멤버번호 : ${member_no }<br/>
 		Company name : <input type="text" name="company_name"><br>
 		Company sort : 
 		<select name="company_sort">
@@ -43,6 +57,5 @@
 		</p><br>
 		<input type="submit" value="전송">
 	</form:form>
-
 </body>
 </html>

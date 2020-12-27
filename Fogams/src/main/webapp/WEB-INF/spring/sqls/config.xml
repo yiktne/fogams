@@ -15,7 +15,7 @@
 	
 	<mappers>
 		<mapper resource="/mybatis/CompanyInfo-mapper.xml"/>
-		<mapper resource="/mybatis/Company-mapper.xml"/>
+
 		<mapper resource="/mybatis/cityDetail_mapper.xml"/>
 		<mapper resource="/mybatis/member-mapper.xml"/>
 		<mapper resource="/mybatis/Personal_menu-mapper.xml"/>
