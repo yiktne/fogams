@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@charset "UTF-8";
-
 :root {
     /* Color */
     --color-white: #ffffff;
@@ -107,62 +105,32 @@
         margin: 4px 0;
     }
 
-    /* Section Common (각 섹션에 공통으로 줄 스타일) */
 
+    /* upload_container */
 
-    /* 맵 */
-    #map{
-        width: 100%;
-        height: 250px;
-        background-color: #555555;
-    }
-
-
-    /* 본문 박스 */
-    .contents__title,
-    .contents__btns{
+    .upload_container{
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px;
     }
 
-    /* 본문 - 버튼 */
-    .contents__btn{
-        border: 1px solid var(--color-white-grey);
-        border-radius: var(--size-border-radius);
-        font-size: var(--font-regular);
-        padding: 8px 48px;
-        margin: 3px;
-    }
-    
-    .contents__btn:hover{
-        background-color: var(--color-orange);
-        color: var(--color-white);
-    }
-
-    /* 본문 탭 스타일 */
-    .contents input[type=radio] {
-        display: none;
-    }
-
-    .tab_btn:hover,
-    #tab-1:checked ~ .tab label:nth-child(1),
-    #tab-2:checked ~ .tab label:nth-child(2),
-    #tab-3:checked ~ .tab label:nth-child(3){
-        background-color: var(--color-orange);
-        color: var(--color-white);
-    }
-    .content > div {
-        display: none;
-    }
-    #tab-1:checked ~ .content div:nth-child(1),
-    #tab-2:checked ~ .content div:nth-child(2),
-    #tab-3:checked ~ .content div:nth-child(3),
-    #tab-4:checked ~ .content div:nth-child(4)  {
+    #formTag{
         display: flex;
-        justify-content: center;
+        flex-direction:column;
+        width: 400px;
     }
 
-    .tab_btn{
+    .upload_input{
+        width: 200px;
+        padding: 8px;
+        margin: 0;
+        margin-left: 30px;
+        border-radius: 5px;
+        border: 1px solid var(--color-dark-grey);
+    }
+
+    .upload_submit{
         border: 1px solid var(--color-white-grey);
         border-radius: var(--size-border-radius);
         font-size: var(--font-regular);
@@ -170,65 +138,16 @@
         margin: 3px;
     }
 
-
-    .content {
-        margin: 0 auto;
-        min-width:1380px;
-        max-width: 100%;
+    .upload_submit:hover{
+        background-color: var(--color-orange);
+        color: var(--color-white);
     }
 
-    .tab{
+    .inputBox_set{
         display: flex;
-        justify-content: center;
-        overflow: hidden;
-    }
-    
-    .tab label {
-        font-size: 18px;
-        cursor: pointer;
-        float: left;
-        width: 30%;
-        text-align: center;
-        padding: 15px 0;
-        text-transform: uppercase;
-        font-weight: bold;
-        letter-spacing: 2px;
-        user-select: none;
-        -webkit-user-select: none;
-    }
-    .content {
-        min-height: 250px;
-        margin-bottom: 20%;
-    }
-    .content > div{
-        padding: 30px;
-        line-height: 1.5;
-        font-size: 17px;
+        justify-content:flex-end;
+        margin: 8px;
+        line-height: 43px;
     }
 
-    /* 콘텐츠 */
-    .content-dis{
-        display:flex;
-        flex-wrap:wrap;
-        overflow-y: scroll;
-    }
-    .contents__img{
-        width: var(--size-img);
-        height: var(--size-img);
-        cursor: pointer;
-    } 
-    
-    .contents__img img{
-        max-width: 100%;
-        min-width: 100%;
-    }
-    
-    .contents__detail{
-        max-width: 100%;
-        margin: 20px;
-    } 
-    
-    /* 페이징 */
-    
-
-
+   
