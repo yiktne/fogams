@@ -131,12 +131,15 @@
         max-width: 800px;
         margin: auto;
     }
+    
 
 
     /* pickcity (이런 여행지 어때요?) */
     .pickcity__container{
         display: flex;
         margin: var(--size-margin);
+        flex-wrap:wrap;
+        overflow-y: scroll;
     }
 
     .pickcity__img_container{
@@ -164,6 +167,8 @@
     .reviews__container{
         display: flex;
         margin: var(--size-margin);
+        flex-wrap:wrap;
+        overflow-y: scroll;
     }
 
     .reviews__img_container{
