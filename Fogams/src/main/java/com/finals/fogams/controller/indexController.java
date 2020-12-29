@@ -81,7 +81,6 @@ public class indexController {
 		model.addAttribute("dto", dto);
 		
 		
-		
 		return "company_detail";
 	}
 	

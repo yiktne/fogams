@@ -1,0 +1,11 @@
+#container{
+	display: flex;
+}
+
+.box1{
+	width: 50%;
+}
+
+#accordion{
+	width: 50%;
+}

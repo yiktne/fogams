@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" 
 rel="stylesheet">
     <link rel="stylesheet" href="<c:url value='/resources/css/company_detail.css'/>"/>
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 
@@ -100,7 +101,6 @@ rel="stylesheet">
               </div>
 			<input type="button" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}&member_no=${dto.member_no } '">
 			<input type="button" value="삭제" onclick="location.href='company_delete.do?company_no=${dto.company_no}&member_no=${dto.member_no }'">
-				
               <div class="content-dis">
                 Color의 body안 내용을 넣으세요.
                 <!-- 댓글 -->
@@ -133,6 +133,7 @@ rel="stylesheet">
               </div>
               <div class="content-dis">
                 Textile의 body안 내용을 넣으세요.
+                
               </div>
             </div>
         </div>

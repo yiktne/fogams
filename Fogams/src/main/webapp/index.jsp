@@ -42,17 +42,71 @@ rel="stylesheet">
                 </div>
                 <p class="pickcity__city_name">서울</p>
             </div>
+            
             <div class="pickcity__city">
                 <div class="pickcity__img_container">
                     <a href=""><img src="resources/img/seoul.jpeg" alt="" class="pickcity__img"></a>
                 </div>
-                <p class="pickcity__city_name">서울</p>
-            </div><div class="pickcity__city">
+                <p class="pickcity__city_name">경기도</p>
+            </div>
+            
+            <div class="pickcity__city">
                 <div class="pickcity__img_container">
                     <a href=""><img src="" alt="" class="pickcity__img"></a>
                 </div>
-                <p class="pickcity__city_name">서울</p>
+                <p class="pickcity__city_name">강원도</p>
             </div>
+            
+             <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                    <a href=""><img src="" alt="" class="pickcity__img"></a>
+                </div>
+                <p class="pickcity__city_name">충청남도</p>
+            </div>
+            
+             <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                    <a href=""><img src="" alt="" class="pickcity__img"></a>
+                </div>
+                <p class="pickcity__city_name">충청북도</p>
+            </div>
+            
+             <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                    <a href=""><img src="" alt="" class="pickcity__img"></a>
+                </div>
+                <p class="pickcity__city_name">경상남도</p>
+            </div>
+            
+           	 <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                    <a href=""><img src="" alt="" class="pickcity__img"></a>
+                </div>
+                <p class="pickcity__city_name">경상북도</p>
+            </div>
+            
+             <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                    <a href=""><img src="" alt="" class="pickcity__img"></a>
+                </div>
+                <p class="pickcity__city_name">전라남도</p>
+            </div>
+            
+             <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                    <a href=""><img src="" alt="" class="pickcity__img"></a>
+                </div>
+                <p class="pickcity__city_name">전라북도</p>
+            </div>
+            
+             <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                    <a href=""><img src="" alt="" class="pickcity__img"></a>
+                </div>
+                <p class="pickcity__city_name">제주도</p>
+            </div>
+            
+            
         </div>
     </section>
     
