@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@charset "UTF-8";
+
 :root {
     /* Color */
     --color-white: #ffffff;
@@ -138,8 +140,6 @@
     }
 
     /* 본문 탭 스타일 */
-
-
     .contents input[type=radio] {
         display: none;
     }
@@ -158,7 +158,8 @@
     #tab-2:checked ~ .content div:nth-child(2),
     #tab-3:checked ~ .content div:nth-child(3),
     #tab-4:checked ~ .content div:nth-child(4)  {
-        display: block;
+        display: flex;
+        margin-left:3%;
     }
 
     .tab_btn{
@@ -176,9 +177,12 @@
         max-width: 100%;
     }
 
-    .tab {
+    .tab{
+        display: flex;
+        justify-content: center;
         overflow: hidden;
     }
+    
     .tab label {
         font-size: 18px;
         cursor: pointer;
@@ -194,6 +198,7 @@
     }
     .content {
         min-height: 250px;
+        margin-bottom: 20%;
     }
     .content > div{
         padding: 30px;
@@ -204,6 +209,8 @@
     /* 콘텐츠 */
     .content-dis{
         display:flex;
+        flex-wrap:wrap;
+        overflow-y: scroll;
     }
     .contents__img{
         width: var(--size-img);
@@ -215,10 +222,13 @@
         max-width: 100%;
         min-width: 100%;
     }
-     
+    
+    .contents__detail{
+        max-width: 100%;
+        margin: 40px 30px 40px 30px;
+    } 
     
     /* 페이징 */
     
-
 
 

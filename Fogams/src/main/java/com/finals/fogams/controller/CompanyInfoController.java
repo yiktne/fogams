@@ -30,22 +30,18 @@ public class CompanyInfoController {
 	@Autowired
 	private FileValidator fileValidator;
 
-	@RequestMapping("/comform.do")
-	public String list(HttpServletRequest request, Model model) throws IOException {
-		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
-		if (session == null) {
-			return "login";
-			
-		} else {
-			System.out.println("session - " + session.getMember_id());
-			model.addAttribute("member_no", session.getMember_no());
-			return "upload";
-		}
+	@RequestMapping("/form.do")
+	public String list(HttpServletRequest request, Model model, int member_no) throws IOException {
 		
+//		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
+//		int member_no =  session.getMember_no();
+//		System.out.println("멤버번호 : "+member_no);
+		model.addAttribute("member_no", member_no);
+		return "upload";
 	}
 
-	@RequestMapping("/comupload.do")
-	public String insertres(Model model, HttpServletRequest request, int member_no, CompanyDto dto,
+	@RequestMapping("/upload.do")
+	public String insertres(Model model, HttpServletRequest request, String member_no, CompanyDto dto,
 			BindingResult result) {
 
 		System.out.println("Company insertres.do");
@@ -53,10 +49,10 @@ public class CompanyInfoController {
 		System.out.println(dto.getCompany_addr());
 
 		// int member_no = session.getMember_no();
-		dto.setMember_no(member_no);
+		dto.setMember_no(Integer.parseInt(member_no));
 
 		// 업체 등급변경
-		int updateGrade = infobiz.updateMemberGrade(member_no);
+		int updateGrade = infobiz.updateMemberGrade(Integer.parseInt(member_no));
 		if (updateGrade > 0) {
 			System.out.println("멤버 등급이 업체(2)로 변경되었습니다.");
 		}

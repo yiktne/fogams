@@ -9,8 +9,10 @@
 </head>
 
 <!-- CSS 링크 넣기 -->
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/city_detail.css'/>" />
+<!-- <link rel="stylesheet"
+	href="<c:url value='/resources/css/city_detail.css'/>" />  -->
+<link rel="stylesheet" href="resources/css/city.css"/>
+
 <!-- 구글폰트 링크넣기-->
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
@@ -18,7 +20,8 @@
 <style type="text/css">
 	li {list-style: none; float: left; padding: 6px;}
 </style>
-<script src="" defer></script>
+<script type="text/javascript">
+</script>
 <body>
 <body>
 	<!-- Navbar -->

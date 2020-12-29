@@ -10,7 +10,7 @@
     <title>Fogams</title>
     <meta name="final project" content="Fogams"/>
     <!-- CSS 링크 넣기 -->
-    <link rel="stylesheet" href="<c:url value='/resources/css/front.css'/>"/>
+    <link rel="stylesheet" href="<c:url value='/resources/css/indes.css'/>"/>
     <!-- 구글폰트 링크넣기-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" 
 rel="stylesheet">
@@ -26,13 +26,13 @@ rel="stylesheet">
         <h1 class="maketrip__title">내 여행을 만들어보세요</h1>
         <p class="maketrip__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti voluptates reprehenderit veritatis distinctio blanditiis tempore officia eos amet! Magni dolorum, incidunt sapiente sit aut unde! Sapiente maiores molestias aut quo.</p>  
         <button class="maketrip__btn">여행 만들러 가기</button>
-        <a href="form.do">업로드</a>
     </section>
 
     <!-- pickcity (이런 여행지 어때요?) -->
     <section id="pickcity" class="section section__container">
         <h2 class="pickcity__title">이런 여행지 어때요?</h2>
         <div class="pickcity__container">
+        
             <div class="pickcity__city">
                 <div class="pickcity__img_container">
                 	<!--컨트롤러 요청 -->
@@ -42,17 +42,89 @@ rel="stylesheet">
                 </div>
                 <p class="pickcity__city_name">서울</p>
             </div>
+            
+            
             <div class="pickcity__city">
                 <div class="pickcity__img_container">
-                    <a href=""><img src="resources/img/seoul.jpeg" alt="" class="pickcity__img"></a>
+                	<!--컨트롤러 요청 -->
+                    <a href="company_info.do?company_city=경기도" >
+                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
+                    </a>
                 </div>
-                <p class="pickcity__city_name">서울</p>
-            </div><div class="pickcity__city">
-                <div class="pickcity__img_container">
-                    <a href=""><img src="" alt="" class="pickcity__img"></a>
-                </div>
-                <p class="pickcity__city_name">서울</p>
+                <p class="pickcity__city_name">경기도</p>
             </div>
+            
+            
+            <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                	<!--컨트롤러 요청 -->
+                    <a href="company_info.do?company_city=강원도" >
+                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
+                    </a>
+                </div>
+                <p class="pickcity__city_name">강원도</p>
+            </div>
+            
+            <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                	<!--컨트롤러 요청 -->
+                    <a href="company_info.do?company_city=충청남도" >
+                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
+                    </a>
+                </div>
+                <p class="pickcity__city_name">충청남도</p>
+            </div>
+            
+            <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                	<!--컨트롤러 요청 -->
+                    <a href="company_info.do?company_city=충청북도" >
+                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
+                    </a>
+                </div>
+                <p class="pickcity__city_name">충청북도</p>
+            </div>
+            
+            <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                	<!--컨트롤러 요청 -->
+                    <a href="company_info.do?company_city=경상남도" >
+                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
+                    </a>
+                </div>
+                <p class="pickcity__city_name">경상남도</p>
+            </div>
+            
+            <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                	<!--컨트롤러 요청 -->
+                    <a href="company_info.do?company_city=전라남도" >
+                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
+                    </a>
+                </div>
+                <p class="pickcity__city_name">전라남도</p>
+            </div>
+            
+            <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                	<!--컨트롤러 요청 -->
+                    <a href="company_info.do?company_city=전라북도" >
+                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
+                    </a>
+                </div>
+                <p class="pickcity__city_name">전라북도</p>
+            </div>
+            
+            <div class="pickcity__city">
+                <div class="pickcity__img_container">
+                	<!--컨트롤러 요청 -->
+                    <a href="company_info.do?company_city=제주도" >
+                    <img src="resources/img/seoul.jpeg" alt="city_image" class="pickcity__img">
+                    </a>
+                </div>
+                <p class="pickcity__city_name">제주도</p>
+            </div>
+            
         </div>
     </section>
     

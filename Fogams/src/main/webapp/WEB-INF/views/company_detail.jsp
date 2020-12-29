@@ -6,48 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>업체 상세</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" 
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" 
 rel="stylesheet">
-    <link rel="stylesheet" href="<c:url value='/resources/css/company_detail.css'/>"/>
+
+<!-- js, css -->
+<link rel="stylesheet" href="resources/css/company_detail.css?ver=2" />
+<script type="text/javascript" src="resources/js/company_detail.js" defer></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-
-	
-	$(function(){
-	    $('.company__right_wish_btn').click(function(){
-	       var company_no = $(".company_no").val();
-	       var data = {"company_no" : company_no};	 
-	       var company_name = $(".company__left_description > h2").text().trim();
-	       console.log(company_name);
-	       $.ajax({
-	    	   type: "post",
-	    	   url: "bookmark.do",
-	    	   data: JSON.stringify(data),
-	    	   contentType: "application/json",
-	    	   dataType: "json",
-	    	   success: function(data){
-	    		   
-	    		   if(data == 0){
-	    			   alert("''" + company_name + "''" + " 가 내 북마크에 추가되었습니다.");
-	    		   }
-	    		   
-	    		   if(data == 1){
-	    			   alert("이미 북마크에 추가되었습니다.");
-	    		   }
-	    		   
-	    		   if(data == 2){
-	    			   alert("로그인이 필요합니다.");
-	    		   }
-	    	   },
-	    	   error : function(){
-	    		   alert("통신실패");
-	    	   }
-	       });
-	    	  
-	    });
-	});
-
-</script>
 
 </head>
 <body>

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
     /* Color */
     --color-white: #ffffff;
@@ -104,89 +106,48 @@
     }
 
 
+    /* upload_container */
 
-
-    /* maketrip (내 여행을 만들어보세요) */
-    #maketrip{
-        background-color: #72c0f0;
+    .upload_container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         padding: 50px;
-        text-align: center;
     }
 
-    .maketrip__title,
-    .maketrip__description{
-        color:var(--color-white);
+    #formTag{
+        display: flex;
+        flex-direction:column;
+        width: 400px;
     }
 
-    .maketrip__btn{
-        font-size: var(--font-regular);
-        font-weight: var(--weight-bold);
-        margin: 24px;
-        padding: 8px 12px;
-        border: 2px solid;
+    .upload_input{
+        width: 200px;
+        padding: 8px;
+        margin: 0;
+        margin-left: 30px;
+        border-radius: 5px;
+        border: 1px solid var(--color-dark-grey);
+    }
+
+    .upload_submit{
+        border: 1px solid var(--color-white-grey);
         border-radius: var(--size-border-radius);
+        font-size: var(--font-regular);
+        padding: 8px 48px;
+        margin: 3px;
     }
 
-    .maketrip__description{
-        max-width: 800px;
-        margin: auto;
+    .upload_submit:hover{
+        background-color: var(--color-orange);
+        color: var(--color-white);
     }
 
-
-    /* pickcity (이런 여행지 어때요?) */
-    .pickcity__container{
+    .inputBox_set{
         display: flex;
-        margin: var(--size-margin);
-    }
-
-    .pickcity__img_container{
-        width:var(--size-img);
-        height: var(--size-img);
-        background-color: #ffc061;
-    }
-
-    .pickcity__title,
-    .pickcity__city_name,
-    .pickcity__img_container{
+        justify-content:flex-end;
         margin: 8px;
+        line-height: 43px;
     }
 
-    .pickcity__img{
-	    max-width: 100%;
-	    max-height: 100%;
-    /*자기 컨테이너 안에서만 크고작아지게*/
-    }
-
-
-
-    /* reviews (다른 사람 여행 보기) */
-
-    .reviews__container{
-        display: flex;
-        margin: var(--size-margin);
-    }
-
-    .reviews__img_container{
-        width:var(--size-img);
-        height: var(--size-img);
-        background-color: #ffc061;
-        margin: 8px;
-    }
-
-    .reviews__title,
-    .reviews__name,
-    .reviews__img_container{
-        margin: 8px;
-    }
-
-    .reviews__img{
-	    max-width: 100%;
-	    max-height: 100%;
-    /*자기 컨테이너 안에서만 크고작아지게*/
-    }
-
-
-    
-
-    
-    
+   

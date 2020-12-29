@@ -109,6 +109,7 @@
     /* 숙소 이미지, 맵, 등 첫번째 섹션 */
     #company{
         display: flex;
+        padding-top: 104px;
     }
 
     .company__left{
