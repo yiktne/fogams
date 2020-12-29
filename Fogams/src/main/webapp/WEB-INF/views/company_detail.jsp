@@ -10,7 +10,7 @@
 rel="stylesheet">
 
 <!-- js, css -->
-<link rel="stylesheet" href="resources/css/company_detail.css" />
+<link rel="stylesheet" href="resources/css/company_detail.css?ver=2" />
 <script type="text/javascript" src="resources/js/company_detail.js" defer></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 

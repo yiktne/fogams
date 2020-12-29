@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://kit.fontawesome.com/ea746dc176.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/ea746dc176.js"
+	crossorigin="anonymous"></script>
 <style type="text/css">
-
 .nav_usermenu {
 	position: absolute;
 	top: 50px;
@@ -36,18 +36,23 @@
 				</h1>
 			</div>
 
+			<div class="searchBox">
+				<label for="search_input" style="cursor: pointer;"><i class="fas fa-search"></i></label>
+				 <input id="search_input" type="text">
+			</div>
+
 			<nav class="nav_userinfo">
 				<%
 					if (memberDto == null) {
 				%>
-				<input type="button" class="btn" value="Login" onclick="handleLogin()" />
+				<input type="button" class="btn" value="Login"
+					onclick="handleLogin()" />
 				<%
 					} else {
 				%>
-				<img src="" alt="" />
-				<span class="welcome"><b><%=memberDto.getMember_name()%>님 안녕하세요!&nbsp;&nbsp;</b></span>
-				<input type="button"
-					value="temp" class="btn" onclick="handleOpenMenu()" />
+				<img src="" alt="" /> <span class="welcome"><b><%=memberDto.getMember_name()%>님
+						안녕하세요!&nbsp;&nbsp;</b></span> <input type="button" value="temp" class="btn"
+					onclick="handleOpenMenu()" />
 				<%
 					}
 				%>
@@ -66,8 +71,6 @@
 
 </body>
 <script type="text/javascript">
-	
-
 	function handleCom_info() {
 <%if (memberDto == null) {%>
 	location.href = "loginform.do";
