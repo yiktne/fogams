@@ -23,7 +23,7 @@ public class City_DetailDaoImpl implements City_DetailDao {
 		try {
 			list = sqlSession.selectList(NAMESPACE + "selectlist", company_city);
 		} catch (Exception e) {
-			System.out.println("[ERROR] selectlist");
+			System.out.println("[ERROR] City_DetailDaoImpl selectlist");
 			e.printStackTrace();
 		}
 
@@ -38,7 +38,7 @@ public class City_DetailDaoImpl implements City_DetailDao {
 		try {
 			dto = sqlSession.selectOne(NAMESPACE + "selectOne", company_no);
 		} catch (Exception e) {
-			System.out.println("[ERROR] selectOne");
+			System.out.println("[ERROR] City_DetailDaoImpl selectOne");
 			e.printStackTrace();
 		}
 

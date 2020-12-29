@@ -71,8 +71,6 @@ public class indexController {
 	//업체 상세페이지 이동
 	@RequestMapping("company_detail.do")
 	public String company_selectOne(HttpServletRequest request, int company_no, Model model) {
-		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
-		
 		//MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
 		//int member_no = session.getMember_no();
 		System.out.println("company_selectOne");
@@ -90,8 +88,8 @@ public class indexController {
 	public String company_updateform(Model model, int company_no,int member_no , HttpServletRequest request) {
 		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
 		
-		System.out.println(member_no);
-		
+		System.out.println("updateform : " + member_no);
+		System.out.println("updateform : " + session.getMember_no());
 		
 		if(member_no == session.getMember_no()) {
 			model.addAttribute("dto", biz.selectOne(company_no));
@@ -113,6 +111,8 @@ public class indexController {
 	public String company_updateres(HttpServletRequest request, CompanyDto dto, int company_no, int member_no) {
 		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
 
+		System.out.println("index updateres : " + member_no );
+		
 		int res = biz.update(dto);
 		if(res > 0 && member_no == session.getMember_no()) {
 			return "redirect:company_detail.do?company_no="+company_no;
