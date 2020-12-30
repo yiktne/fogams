@@ -19,8 +19,10 @@
 }
 </style>
 
-<link rel="stylesheet" href="resources/css/header.css" />
+<link rel="stylesheet" href="resources/css/header.css?ver=1" />
 <script type="text/javascript" src="resources/js/header.js" defer></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 </head>
 <body>
@@ -36,10 +38,35 @@
 				</h1>
 			</div>
 
+			<!-- 검색창 -->
 			<div class="searchBox">
-				<label for="search_input" style="cursor: pointer;"><i class="fas fa-search"></i></label>
-				 <input id="search_input" type="text">
+				<form action="searchList.do" method="post">
+					<select name="searchOption" id="company_city" class="upload_input">
+						<option value="서울" selected>서울</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청남도">충청남도</option>
+						<option value="충청북도">충청북도</option>
+						<option value="경상남도">경상남도</option>
+						<option value="경상북도">경상북도</option>
+						<option value="전라남도">전라남도</option>
+						<option value="전라북도">전라북도</option>
+						<option value="제주도">제주도</option>
+					</select>
+
+					<input name="keyword" id="search_input" type="text"> 
+					
+					<label for="search_input" style="cursor: pointer;">
+						<button type="submit">
+							<i class="fas fa-search" id="searchSubmit"></i>
+						</button>
+					</label>
+				</form>
 			</div>
+			
+			
+			
+			
 
 			<nav class="nav_userinfo">
 				<%

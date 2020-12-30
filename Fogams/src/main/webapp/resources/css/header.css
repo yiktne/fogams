@@ -131,6 +131,9 @@
     transform: scale(0.95);
 }
 
+
+/* 검색창 */
+
 .searchBox{
     width: 25%;
     background-color: var(--color-white);
@@ -140,8 +143,10 @@
     color: var(--color-description);
 }
 
-.searchBox>input{
-	width:60%;
+
+
+#search_input{
+
     border: 0px;
     background-color: var(--color-white);
  
@@ -150,6 +155,20 @@
 input:focus {
     outline: none;
 }
+
+#company_city{
+    border: 0px;
+    padding-left: 10px;
+    font-size: var(--font-micro);
+    font-weight: var(--weight-semi-bold);
+}
+
+#company_city:focus{
+    outline: none;
+}
+
+
+/* 로그인 후 유저메뉴 */
 
 
 .nav_usermenu {
@@ -191,4 +210,14 @@ input:focus {
 
 .welcome{
 	color: var(--color-description);
+}
+
+
+@media screen and (max-width: 768px){
+	
+	#search_input{
+	width:10%;
+ 
+}
+	
 }

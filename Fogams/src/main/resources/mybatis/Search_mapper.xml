@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="search">
+
+<select id="searchList" resultType="CompanyDto" parameterType="hashMap">
+	SELECT COMPANY_NO, COMPANY_NAME, COMPANY_SORT, COMPANY_TEL,
+	COMPANY_NUMBER, COMPANY_IMG, COMPANY_ADDR, COMPANY_CITY
+	FROM COMPANY
+
+	<include refid="searchOpt"></include>
+	ORDER BY COMPANY_NO DESC
+</select>
+
+<select id="countList" resultType="int">
+	SELECT COUNT(*)
+	FROM COMPANY
+	<include refid="searchOpt"></include>
+</select>
+
+
+<sql id="searchOpt">
+	<choose>
+		<when test="searchOption == 'all'">
+			WHERE COMPANY_NAME LIKE '%'||#{keyword}||'%'
+			OR COMPANY_SORT LIKE '%'||#{keyword}||'%'
+			OR COMPANY_ADDR LIKE '%'||#{keyword}||'%'
+			AND COMPANY_CITY LIKE '%'||#{searchOption}||'%'
+		</when>
+	</choose>
+</sql>
+
+</mapper>

@@ -146,7 +146,6 @@
     .pickcity__img_container{
         width:var(--size-img);
         height: var(--size-img);
-        background-color: #ffc061;
     }
 
     .pickcity__title,
