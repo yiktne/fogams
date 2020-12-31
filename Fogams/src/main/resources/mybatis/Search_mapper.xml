@@ -9,10 +9,9 @@
 	FROM COMPANY
 
 	<include refid="searchOpt"></include>
-	ORDER BY COMPANY_NO DESC
 </select>
 
-<select id="countList" resultType="int">
+<select id="countList" resultType="int" parameterType="hashMap">
 	SELECT COUNT(*)
 	FROM COMPANY
 	<include refid="searchOpt"></include>
@@ -20,14 +19,10 @@
 
 
 <sql id="searchOpt">
-	<choose>
-		<when test="searchOption == 'all'">
-			WHERE COMPANY_NAME LIKE '%'||#{keyword}||'%'
-			OR COMPANY_SORT LIKE '%'||#{keyword}||'%'
-			OR COMPANY_ADDR LIKE '%'||#{keyword}||'%'
-			AND COMPANY_CITY LIKE '%'||#{searchOption}||'%'
-		</when>
-	</choose>
+	WHERE COMPANY_NAME LIKE '%'||#{keyword}||'%'
+	OR COMPANY_SORT LIKE '%'||#{keyword}||'%'
+	OR COMPANY_ADDR LIKE '%'||#{keyword}||'%'
+	AND COMPANY_CITY LIKE '%'||#{searchOption}||'%'
 </sql>
 
 </mapper>

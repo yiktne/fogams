@@ -34,9 +34,9 @@ public class SearchController {
 		map.put("count", count);
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
-		mav.addObject("map", map);
-		
-		model.addAttribute("mav", mav);
+		//mav.addObject("map", map);
+
+		model.addAttribute("map", map);
 		
 		return "search_result";
 	}

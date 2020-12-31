@@ -152,8 +152,8 @@
     .content-dis{
         display:flex;
         flex-wrap:wrap;
-        justify-content: center;
-        margin: 30px;
+        justify-content: flex-start;
+        margin: 30px 42px;
         
         transition: all var(--animation-duration) ease-out;
     }
@@ -172,6 +172,7 @@
         width: var(--size-img);
         height: var(--size-img);
         cursor: pointer;
+        background-color: var(--color-orange);
     } 
     
     .contents__img img{
@@ -180,7 +181,7 @@
     }
     
     .contents__detail{
-        margin: 40px 30px 40px 30px;
+        margin: 15px;
     } 
     
     @media screen and (max-width: 768px){

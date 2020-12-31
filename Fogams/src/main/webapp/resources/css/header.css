@@ -143,17 +143,20 @@
     color: var(--color-description);
 }
 
-
-
 #search_input{
-
     border: 0px;
     background-color: var(--color-white);
- 
+	display: inline-block;
+	width: 60%;
 }
 
-input:focus {
+input:focus,
+#company_city:focus{
     outline: none;
+}
+
+form{
+	display:flex;
 }
 
 #company_city{
@@ -163,9 +166,6 @@ input:focus {
     font-weight: var(--weight-semi-bold);
 }
 
-#company_city:focus{
-    outline: none;
-}
 
 
 /* 로그인 후 유저메뉴 */

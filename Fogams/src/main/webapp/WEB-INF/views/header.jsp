@@ -19,7 +19,7 @@
 }
 </style>
 
-<link rel="stylesheet" href="resources/css/header.css?ver=1" />
+<link rel="stylesheet" href="resources/css/header.css?ver=2" />
 <script type="text/javascript" src="resources/js/header.js" defer></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
