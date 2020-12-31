@@ -13,7 +13,15 @@ rel="stylesheet">
 <link rel="stylesheet" href="resources/css/company_detail.css?ver=2" />
 <script type="text/javascript" src="resources/js/company_detail.js" defer></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+<script src="http://localhost:5000/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+	function openPop(){
+		var popup = window.open("http://localhost:5000", "채팅팝업", "width=500px,height=600px,scrollbars=yes");
+	}
+	
+	
+	
+</script>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
@@ -57,17 +65,20 @@ rel="stylesheet">
             <div class="tab">
               <label for="tab-1">숙소 정보</label>
               <label for="tab-2">리뷰</label>
-              <label for="tab-3">1:1 채팅</label>
+              <label for="tab-3"><a href="#none" target="_blank" onclick="openPop()">채팅</a></label>
             </div>
             <div class="content">
               <div class="content-dis">
                 ${dto.company_content }
-              </div>
-			<input type="button" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}&member_no=${dto.member_no } '">
+                
+            <input type="button" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}&member_no=${dto.member_no } '">
 			<input type="button" value="삭제" onclick="location.href='company_delete.do?company_no=${dto.company_no}&member_no=${dto.member_no }'">
-				
+              </div>
+	
               <div class="content-dis">
                 Color의 body안 내용을 넣으세요.
+          
+			
                 <!-- 댓글 -->
                	<c:choose>
                		<c:when test="${empty replyList }">
@@ -98,6 +109,8 @@ rel="stylesheet">
               </div>
               <div class="content-dis">
                 Textile의 body안 내용을 넣으세요.
+                <!-- 채팅 -->
+               	<a href="#none" target="_blank" onclick="openPop()">채팅</a>
               </div>
             </div>
         </div>

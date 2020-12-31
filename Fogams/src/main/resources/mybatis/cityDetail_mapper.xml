@@ -27,5 +27,7 @@
 		DELETE FROM COMPANY
 		WHERE COMPANY_NO = #{company_no} AND MEMBER_NO = #{member_no}
 	</delete>
+	
+	
 
 </mapper>

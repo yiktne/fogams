@@ -79,6 +79,7 @@ public class indexController {
 		CompanyDto dto = biz.selectOne(company_no);
 		//model.addAttribute("member_no", member_no);
 		model.addAttribute("dto", dto);
+		model.addAttribute("session", session);
 		
 		
 		
