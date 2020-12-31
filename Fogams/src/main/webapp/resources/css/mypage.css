@@ -1,0 +1,59 @@
+.top{
+	padding: 100px;
+}
+
+.thumb-wrapper{
+	text-align: center;
+}
+
+.img{
+	width : 150px;
+	height : 150px;
+	border-radius: 70%;
+}
+
+.submenu{
+	margin : 100px;
+	width: 200px;
+	list-style: none;
+	left: 50%;
+}
+.subtabs{
+	width: 100%;
+	height: 100px;
+	text-align: center;
+}
+
+.tabs_ul{
+	text-align: center;
+	
+}
+
+.tabs_ul li{
+	list-style: none;
+	float: left;
+	
+	
+}
+
+.content{
+	padding: 50px;
+}
+
+
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+a:visited{
+    color: black;
+}
+
+table{
+	width: 50%;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+

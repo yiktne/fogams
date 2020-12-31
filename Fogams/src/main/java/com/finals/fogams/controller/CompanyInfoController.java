@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -111,6 +112,21 @@ public class CompanyInfoController {
 			return "redirect:company_insertform";
 
 
+	}
+	
+	@RequestMapping("mylist.do")
+	public String mylist(HttpServletRequest request, Model model, int member_no) {
+		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
+
+		List<CompanyDto> list = infobiz.myList(member_no);
+		
+		
+		
+		
+//		System.out.println("member_no : " + member_no );
+		model.addAttribute("member_no", member_no);
+		model.addAttribute("list", list);
+		return "mypage";
 	}
 
 }
