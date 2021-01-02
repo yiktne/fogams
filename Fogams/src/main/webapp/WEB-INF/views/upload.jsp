@@ -35,6 +35,7 @@
 
 	<div class="upload_container">
 		<h1 class="upload_page_title">업체 정보 등록</h1>
+		<!--폼태그 여깄어요 -->
 		<form:form method="post" id="formTag" enctype="multipart/form-data"
 			modelAttribute="dto" action="upload.do">
 			<input type="hidden" value="${member_no }" name="member_no">

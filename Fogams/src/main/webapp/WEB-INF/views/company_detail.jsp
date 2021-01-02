@@ -10,8 +10,8 @@
 rel="stylesheet">
 
 <!-- js, css -->
-<link rel="stylesheet" href="resources/css/company_detail.css?ver=2" />
-<script type="text/javascript" src="resources/js/company_detail.js" defer></script>
+<link rel="stylesheet" href="resources/css/company_detail.css?ver=9" />
+<script type="text/javascript" src="resources/js/company_detail.js?ver=2" defer></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 </head>
@@ -51,16 +51,16 @@ rel="stylesheet">
     <!-- 숙소설명, 리뷰, 1:1챗 -->
     <section id="tabsection">
         <div class="tabsection__main">
-            <input type="radio" id="tab-1" name="show" checked/>
-            <input type="radio" id="tab-2" name="show" />
-            <input type="radio" id="tab-3" name="show" />
-            <div class="tab">
-              <label for="tab-1">숙소 정보</label>
-              <label for="tab-2">리뷰</label>
-              <label for="tab-3">1:1 채팅</label>
+            
+            <!-- 버튼영역 -->
+            <div class="function_filter">
+                <button class="tab_btn selected" data-filter="com_info">업체정보</button>
+                <button class="tab_btn" data-filter="price_info">가격정보</button>
+                <button class="tab_btn" data-filter="review">리뷰</button>
+                <button class="tab_btn" data-filter="chat">1:1 채팅</button>
             </div>
-            <div class="content">
-              <div class="content-dis">
+
+              <div class="content-dis" data-type="com_info">
                 ${dto.company_content }
 				<table>
 					<tr>
@@ -71,8 +71,13 @@ rel="stylesheet">
 					</tr>
 				</table>
               </div>
-              <div class="content-dis">
-                Color의 body안 내용을 넣으세요.
+              
+              
+              <div class="content-dis" data-type="price_info">
+                Textile의 body안 내용을 넣으세요.
+              </div>
+              
+              <div class="content-dis" data-type="review">
                 <!-- 댓글 -->
                	<c:choose>
                		<c:when test="${empty replyList }">
@@ -101,10 +106,9 @@ rel="stylesheet">
                 
                 
               </div>
-              <div class="content-dis">
+              <div class="content-dis" data-type="chat">
                 Textile의 body안 내용을 넣으세요.
               </div>
-            </div>
         </div>
     </section>
 <%@ include file="footer.jsp" %>

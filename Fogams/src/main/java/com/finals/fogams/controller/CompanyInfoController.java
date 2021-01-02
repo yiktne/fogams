@@ -62,8 +62,8 @@ public class CompanyInfoController {
 			MultipartFile file = dto.getUploadfile();
 			String company_img = file.getOriginalFilename();
 
-			CompanyDto infoObj = new CompanyDto();
-			infoObj.setCompany_img(company_img);
+			//CompanyDto infoObj = new CompanyDto();
+			dto.setCompany_img(company_img);
 
 			InputStream inputStream = null;
 			OutputStream outputStream = null;
@@ -102,14 +102,23 @@ public class CompanyInfoController {
 					e.printStackTrace();
 				}
 			}
+			
+			int company_no = dto.getCompany_no();
+			model.addAttribute("company_no", company_no);
+			
+			//boardService.insertBoard(boardContentVO);     // 입력한 게시물의 PK값을 출력
+			//int BBS_NO= boardContentVO.getContentSeq();
 
-			model.addAttribute("infoObj", infoObj);
 
-			return "redirect:company_list.do";
+			return "addCompany_menu";
 		} else
 			return "redirect:company_insertform";
-
-
+	}
+	
+	@RequestMapping("/addMenu.do")
+	public String addMenu() {
+		
+		return "";
 	}
 
 }

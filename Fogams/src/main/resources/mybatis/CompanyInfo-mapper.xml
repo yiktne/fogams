@@ -9,8 +9,9 @@
 	
 	
 	
-	<insert id="insert" parameterType="CompanyDto">
-		INSERT INTO COMPANY
+	<insert id="insert" parameterType="CompanyDto" useGeneratedKeys="true" keyProperty="company_no"  keyColumn="COMPANY_NO">
+		INSERT INTO COMPANY (COMPANY_NO, COMPANY_NAME, MEMBER_NO, COMPANY_SORT, COMPANY_CONTENT,
+		COMPANY_TEL, COMPANY_NUMBER, COMPANY_IMG, COMPANY_ADDR, COMPANY_CITY)
 		VALUES(COMPANY_SEQ.NEXTVAL, #{company_name}, #{member_no}, #{company_sort}, #{company_content}, 
 		#{company_tel}, #{company_number}, #{company_img},
 		#{company_addr} , #{company_city})

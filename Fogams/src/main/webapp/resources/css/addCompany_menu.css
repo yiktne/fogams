@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
     /* Color */
     --color-white: #ffffff;
@@ -104,122 +106,52 @@
     }
 
 
-    /* 숙소 이미지, 맵, 등 첫번째 섹션 */
-    #company{
+
+    /* 메뉴 등록 컨테이너 */
+    .comMenu_container{
         display: flex;
-        padding-top:104px;
-    }
-
-    .company__left{
-        width: 60%;
-        display: flex;
-        padding: 50px 50px 50px 70px;
-        background-color: var(--color-blue);
-    }
-
-    .company__left_imgBox{
-        width: 200px;
-        height: 200px;
-    }
-
-    .company__left_img{
-        max-width: 100%;
-        max-height: 100%;
-        border-radius: var(--size-border-radius);
-    }
-
-    .company__left_description p{
-        display: block;   
-    }
-
-    .company__left_description{
-        margin-left: 30px;   
-    }
-
-    .company_right{
-        width: 40%;
-        padding: 50px 50px 50px 70px;
+        flex-direction: column;
         align-items: center;
-        background-color: var(--color-primary-grey);
+        padding: 50px;
+        margin-bottom: 100px;
     }
 
-    .company__right_mapBox{
-        width: 300px;
-        height: 250px;
-        background-color: var(--color-orange);
-        border-radius: var(--size-border-radius);
+    /* 메뉴등록, +버튼 감싸는 박스 */
+    .submit_container{
+        display: flex;
+        align-items: center;
+        margin: 12px;
     }
 
-    .company__right_wish_btn{
-        border: 1px solid var(--color-white-grey);
-        border-radius: var(--size-border-radius);
+    .btn{
         font-size: var(--font-regular);
-        padding: 8px 48px;
-        margin: 3px;
-    }
-    
-    .company__right_wish_btn:hover{
-        background-color: var(--color-orange);
+        padding: 8px 16px;
+        background-color: var(--color-blue);
+        border-radius: 30px;
         color: var(--color-white);
     }
 
+    .btnAdd{
+       color: var(--color-blue);
+       font-size: 36px;
+       padding: 0;
+       cursor: pointer;
+       margin-left: 8px;
+    }
+
+    .btn:hover{
+        background-color: var(--color-orange);
+    }
+    .btnAdd:hover{
+        color: var(--color-orange);
+    }
 
 
-    
-
-/* 탭으로 바뀌는 메뉴 */
-
-#tabsection{
-    margin: 0 auto;
-    min-width:1380px;
-    max-width: 100%;
-    
-}
-
-.function_filter{
-    /* 버튼 디자인 및 효과 주기 */
-    display: flex;
-}
-
-.tab_btn{
-    width: calc(100%/4);
-    padding: 20px 40px;
-    font-size: var(--font-regular);
-}
-
-/* 버튼영역 */
-.tab_btn:hover,
-.tab_btn.selected{
-    /* 버튼 디자인 및 효과 주기 */
-    margin-top: 0;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: var(--color-white);
-}
-
-  .tabsection__main {
-    margin: 0 auto;
-    max-width: 100%;
-  }
-
-  .content-dis {
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 100%;
-    min-height: 250px;
-    padding: 50px;
-    opacity: 1;
-    transition: all var(--animation-duration) ease-out;
-  }
-
-  .content_dis.anim-out{
-    opacity: 0;
-    transform: scale(0.99) translateY(5px);
-  }
-
-
-  .content-dis.invisible{
-    display: none;
-}
-
-
-/* 리뷰 코멘트 창 */
-
+    .input_menu{
+        width: 200px;
+    padding: 8px;
+    margin: 4px;
+    margin-left: 16px;
+    border-radius: 5px;
+    border: 1px solid var(--color-dark-grey);
+    }
