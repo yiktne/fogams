@@ -44,11 +44,7 @@ CREATE TABLE MEMBER(
 	MEMBER_EMAIL VARCHAR2(40) NOT NULL,
 	MEMBER_GRADE NUMBER
 );
-
-select * from company order by company_no desc
-SELECT idx_test_seq.currval FROM dual
-select COMPANY_SEQ.currval from dual
-select COMPANY_SEQ.nextval from dual
+SELECT * FROM COMPANY_PRICE
 
 SELECT * FROM company;
 insert into member values (member_seq.nextval, '55','55','55','dsfs@dfsd',2)

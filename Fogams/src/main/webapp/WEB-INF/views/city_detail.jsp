@@ -11,7 +11,7 @@
 <!-- CSS 링크 넣기 -->
 <!-- <link rel="stylesheet"
 	href="<c:url value='/resources/css/city_detail.css'/>" />  -->
-<link rel="stylesheet" href="resources/css/city.css?ver=1"/>
+<link rel="stylesheet" href="resources/css/city.css?ver=2"/>
 
 <!-- 구글폰트 링크넣기-->
 <link
@@ -22,7 +22,6 @@
 </style>
 <script type="text/javascript" src="resources/js/city_detail.js" defer></script>
 
-<body>
 <body>
 	<!-- Navbar -->
 	<%@ include file="header.jsp"%>
@@ -129,5 +128,5 @@
 			</div>
 
 	</section>
-
+</body>
 </html>

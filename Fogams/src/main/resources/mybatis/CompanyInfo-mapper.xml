@@ -22,5 +22,16 @@
 		WHERE MEMBER_GRADE = 1
 		AND MEMBER_NO = #{member_no}
 	</update>
+	
+	<insert id="insertCom_menu" parameterType="hashmap">
+		INSERT INTO COMPANY_PRICE(PRICE_NO, COMPANY_NO, COMPANY_PRODUCT, COMPANY_MONEY)
+		SELECT PRICE_SEQ.NEXTVAL, A.* FROM(
+			<foreach collection="list" item="item" separator="UNION ALL">
+				SELECT #{item.company_no} as company_no,
+				#{item.company_product} as company_product,
+				#{item.company_money} as company_money
+				FROM DUAL
+			</foreach>)A
+	</insert>
 
 </mapper>

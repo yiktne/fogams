@@ -9,6 +9,7 @@
 		<typeAlias type="com.finals.fogams.common.util.PagingDto" alias="PagingDto"/>
 		<typeAlias type="com.finals.fogams.common.util.Criteria" alias="Criteria"/>
 		<typeAlias type="com.finals.fogams.model.dto.ReplyDto" alias="ReplyDto"/>
+		<typeAlias type="com.finals.fogams.model.dto.Company_PriceDto" alias="Company_PriceDto"/>
 	</typeAliases>
 
 

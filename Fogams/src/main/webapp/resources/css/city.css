@@ -113,11 +113,17 @@
     /* 맵 */
     #map{
         width: 100%;
-        height: 250px;
+        height: 400px;
         background-color: #555555;
+        padding:0;
     }
-
-
+    
+    .map__container{
+    	width:100%;
+    	height: 100%;
+    	background-color: green;
+    	color:white;
+    }
 
     /* 본문 타이틀 */
     .contents__title{
@@ -149,6 +155,14 @@
 
 
     /* 개별 콘텐츠들 */
+    .contents{
+    	margin:30px;
+    }
+    
+    .contents__title{
+    	margin: 16px;
+    }
+    
     .content-dis{
         display:flex;
         flex-wrap:wrap;

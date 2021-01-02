@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.finals.fogams.model.biz.SearchBiz;
 import com.finals.fogams.model.dto.CompanyDto;
@@ -28,7 +27,6 @@ public class SearchController {
 		
 		List<CompanyDto> list = biz.searchList(searchOption, keyword);
 		int count = biz.countList(searchOption, keyword);
-		ModelAndView mav = new ModelAndView();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
 		map.put("count", count);
