@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cityDetail">
+
+
+	<select id="selectlist" resultType="CompanyDto" parameterType="String">		
+		SELECT * FROM COMPANY WHERE COMPANY_CITY = #{company_city}
+	</select>
+
+
+	<select id="selectOne" resultType="CompanyDto" parameterType="int">
+		SELECT COMPANY_NO, COMPANY_NAME, MEMBER_NO, COMPANY_SORT, COMPANY_CONTENT, COMPANY_TEL,
+		COMPANY_NUMBER, COMPANY_IMG, COMPANY_ADDR, COMPANY_CITY
+		FROM COMPANY
+		WHERE COMPANY_NO = #{company_no}
+	</select>
+	
+	<update id="update" parameterType="CompanyDto">
+		UPDATE COMPANY
+		SET COMPANY_NAME = #{company_name}, COMPANY_CONTENT = #{company_content}
+		, COMPANY_TEL = #{company_tel}, COMPANY_ADDR = #{company_addr}
+		WHERE COMPANY_NO = #{company_no} AND MEMBER_NO = #{member_no}
+	</update>
+	
+	<delete id="delete" parameterType="CompanyDto">
+		DELETE FROM COMPANY
+		WHERE COMPANY_NO = #{company_no} AND MEMBER_NO = #{member_no}
+	</delete>
+
+</mapper>
