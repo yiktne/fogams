@@ -20,7 +20,6 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 	
 	@Override
 	public List<CompanyDto> selectList(int company_no) {
-		System.out.println(sqlSession);
 
 		List<CompanyDto> list = new ArrayList<CompanyDto>();
 
@@ -94,7 +93,5 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 		
 		return res;
 	}
-
-
 
 }

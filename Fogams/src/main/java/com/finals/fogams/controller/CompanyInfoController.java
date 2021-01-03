@@ -120,8 +120,6 @@ public class CompanyInfoController {
 			return "redirect:company_insertform";
 	}
 	
-	
-	
 	//업체 메뉴, 가격 정보 등록
 	@RequestMapping("/addCompany_menu.do")
 	@ResponseBody

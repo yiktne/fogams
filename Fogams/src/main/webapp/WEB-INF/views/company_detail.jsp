@@ -74,8 +74,17 @@ rel="stylesheet">
               
               
               <div class="content-dis" data-type="price_info">
-                Textile의 body안 내용을 넣으세요.
+                <c:choose>
+                	<c:when test="${empty list }"> 등록된 메뉴가 없습니다. </c:when>
+                
+                <c:otherwise>
+                	<c:forEach items="${list }" var="dto">
+                		<b>${dto.company_product } : ${dto.company_money } 원<br/></b> 
+                	</c:forEach>
+                </c:otherwise>
+                </c:choose>
               </div>
+    
               
               <div class="content-dis" data-type="review">
                 <!-- 댓글 -->

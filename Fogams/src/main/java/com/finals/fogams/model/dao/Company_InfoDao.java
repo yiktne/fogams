@@ -19,4 +19,5 @@ public interface Company_InfoDao {
 	public int delete(int company_no);
 
 	public int insertCom_menu(List<Company_PriceDto> list);
+
 }

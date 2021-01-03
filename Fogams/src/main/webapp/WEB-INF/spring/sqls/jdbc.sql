@@ -35,6 +35,7 @@ CREATE SEQUENCE PRICE_SEQ;
 
 alter table 테이블명 add primary key(empno);
 ALTER TABLE company_price add primary key(PRICE_NO)
+ALTER TABLE
 
 CREATE TABLE MEMBER(
 	MEMBER_NO NUMBER PRIMARY KEY NOT NULL,
@@ -44,10 +45,15 @@ CREATE TABLE MEMBER(
 	MEMBER_EMAIL VARCHAR2(40) NOT NULL,
 	MEMBER_GRADE NUMBER
 );
-SELECT * FROM COMPANY_PRICE
 
-SELECT * FROM company;
-insert into member values (member_seq.nextval, '55','55','55','dsfs@dfsd',2)
+SELECT * FROM member
+update member set member_grade = 3 where member_id = 'kkkaaa'
+
+
+select member_no, member_id, substr(member_name,1,1) || lpad('*',length(member_name)-2,'*') || substr(member_name, length(member_name)) as member_name,
+member_email, member_grade
+from member
+order by member_no desc
 
 
 CREATE TABLE COMPANY(

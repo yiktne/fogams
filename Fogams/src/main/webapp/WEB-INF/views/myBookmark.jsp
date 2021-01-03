@@ -87,7 +87,7 @@ $(function(){
 						<div class="Bookmark__btns">
 							<!-- ajax로 컨트롤러요청하기 -->
 							<button class="btns__detail btn" onclick="moveCompany();">보기</button>
-							<button class="btns__delete btn bookmark_no" value="${dto.bookmark_no }">${dto.bookmark_no } 삭제</button>
+							<button class="btns__delete btn bookmark_no" value="${dto.bookmark_no }">삭제</button>
 						</div>
 					</div>
 				</c:forEach>

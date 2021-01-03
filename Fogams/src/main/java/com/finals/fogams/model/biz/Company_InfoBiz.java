@@ -1,6 +1,5 @@
 package com.finals.fogams.model.biz;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.finals.fogams.model.dto.CompanyDto;

@@ -18,6 +18,7 @@ import org.springframework.web.util.WebUtils;
 import com.finals.fogams.model.biz.City_DetailBiz;
 import com.finals.fogams.model.biz.ReplyBiz;
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.Company_PriceDto;
 import com.finals.fogams.model.dto.ReplyDto;
 
 @Controller
@@ -80,6 +81,10 @@ public class indexController {
 		List<ReplyDto> replyList = replybiz.selectList(company_no);
 		model.addAttribute("replyList", replyList);
 		
+		//업체 메뉴 정보 보여주기
+		List<Company_PriceDto> list = biz.showCom_menu(company_no);
+		model.addAttribute("list", list);
+		
 		return "company_detail";
 	}
 	
@@ -103,7 +108,6 @@ public class indexController {
 	
 	@RequestMapping("company_delete.do")
 	public String company_delete(int company_no) {
-		
 		int res = biz.delete(company_no);
 		if(res > 0) {
 			return "redirect:company_info.do";

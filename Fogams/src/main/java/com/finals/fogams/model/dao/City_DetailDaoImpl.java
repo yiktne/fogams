@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.Company_PriceDto;
 
 @Repository
 public class City_DetailDaoImpl implements City_DetailDao {
@@ -78,6 +79,20 @@ public class City_DetailDaoImpl implements City_DetailDao {
 		
 		
 		return res;
+	}
+	
+	@Override
+	public List<Company_PriceDto> showCom_menu(int company_no) {
+		List<Company_PriceDto> list = new ArrayList<Company_PriceDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "showCom_menu", company_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR] showCom_menu");
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 

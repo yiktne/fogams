@@ -1,5 +1,7 @@
 package com.finals.fogams.model.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +47,16 @@ public class MemberBizImpl implements MemberBiz {
 	@Override
 	public boolean checkEmail(String email) {
 		return dao.checkEmail(email);
+	}
+
+	//관리자 메뉴관리 메뉴들
+	@Override
+	public List<MemberDto> memberList() {
+		return dao.memberList();
+	}
+
+	@Override
+	public int deleteMember(int member_no) {
+		return dao.deleteMember(member_no);
 	}
 }

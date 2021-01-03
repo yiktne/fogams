@@ -1,5 +1,8 @@
 package com.finals.fogams.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -122,5 +125,35 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		
 		return res == 0;
+	}
+
+	@Override
+	public List<MemberDto> memberList() {
+		
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		try {
+			list = sqlSession.selectList(NAMESPACE + "memberList");
+		} catch (Exception e) {
+			System.out.println("[ERROR]memberList");
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
+
+	@Override
+	public int deleteMember(int member_no) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "deleteMember", member_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR]deleteMember");
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 }

@@ -1,31 +1,25 @@
 <%@page import="com.finals.fogams.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원관리</title>
+<!-- logo -->
 <script src="https://kit.fontawesome.com/ea746dc176.js"
 	crossorigin="anonymous"></script>
-<style type="text/css">
-.nav_usermenu {
-	position: absolute;
-	top: 50px;
-	right: 10px;
-	background-color: #00000066;
-	width: 300px;
-	padding: 8px;
-}
-</style>
-
-<link rel="stylesheet" href="resources/css/header.css?ver=3" />
-<script type="text/javascript" src="resources/js/header.js?ver=1" defer></script>
+<!-- CSS 링크 넣기 -->
+<link rel="stylesheet" href="resources/css/manager_page.css?var=3" />
+<!-- 구글폰트 링크넣기-->
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+<script type="text/javascript" src="resources/js/manager_page.js" defer></script>
 </head>
 <body>
-	<%
+	<!-- Navbar -->
+		<%
 		MemberDto memberDto = (MemberDto) session.getAttribute("memberDto");
 	%>
 	<header>
@@ -96,34 +90,58 @@
 			</ul>
 		</div>
 	</header>
+
+
+	<section class="manager">
+		<h1 class="page_title">회원관리</h1>
+		<table class="member_table">
+			<tbody>
+				<tr>
+					<th class="table_data">member No</th>
+					<th class="table_id">ID</th>
+					<th class="table_data">Email</th>
+					<th class="table_data">Name</th>
+					<th class="table_data">Grade</th>
+					<th class="table_data del">삭제</th>
+				</tr>
+
+				<c:choose>
+					<c:when test="${empty list }">
+						<tr>
+							<td class="table_data" colspan="6" align="center">----등록된
+								회원이 없습니다----</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${list }" var="dto">
+							<tr>
+								<td class="table_data">${dto.member_no }</td>
+								<td class="table_id">${dto.member_id }</td>
+								<td class="table_data">${dto.member_email }</td>
+								<td class="table_data">${dto.member_name }</td>
+								<td class="table_data">${dto.member_grade }</td>
+								<td class="table_data del_btn del">
+								<button class="delete_btn"
+									value="${dto.member_no }">회원삭제
+									</button></td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
+	</section>
+<%@ include file="footer.jsp" %>
 </body>
-
-
-
 <script type="text/javascript">
-	function handleCom_info() {
-<%if (memberDto == null) {%>
-	location.href = "loginform.do";
-<%} else {%>
-	location.href = "form.do?member_no=" +
-<%=memberDto.getMember_no()%>
-	;
-<%}%>
-	}
-	
-	
-	(function(){
-		var manager = document.querySelector('.manager');
-		
-		<%if(memberDto == null){%>
-			return;
-		<%}else{%>
-			<%if(memberDto.getMember_grade() == 3){%>
-				manager.classList.add('selected');
-			<%}else{%>
-			manager.classList.remove('selected');
-			<%}%>
-		<%}%>
-	})();
+function handleCom_info() {
+	<%if (memberDto == null) {%>
+		location.href = "loginform.do";
+	<%} else {%>
+		location.href = "form.do?member_no=" +
+	<%=memberDto.getMember_no()%>
+		;
+	<%}%>
+		}
 </script>
 </html>

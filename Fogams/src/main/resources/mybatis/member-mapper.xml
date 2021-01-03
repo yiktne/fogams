@@ -3,24 +3,34 @@
 <mapper namespace="com.member">
 
 	<select id="login" parameterType="String" resultType="MemberDto">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_GRADE
+		SELECT
+		MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL,
+		MEMBER_GRADE
 		FROM MEMBER WHERE MEMBER_ID = #{member_id}
 	</select>
 
-	<select id="findUserID" parameterType="MemberDto" resultType="String">
+	<select id="findUserID" parameterType="MemberDto"
+		resultType="String">
 		SELECT MEMBER_ID
-		FROM MEMBER WHERE MEMBER_NAME = #{member_name} AND MEMBER_EMAIL = #{member_email}
-		AND SUBSTR(MEMBER_ID, 1, 1) NOT IN ('F', 'K')
+		FROM MEMBER WHERE MEMBER_NAME =
+		#{member_name} AND MEMBER_EMAIL = #{member_email}
+		AND SUBSTR(MEMBER_ID,
+		1, 1) NOT IN ('F', 'K')
 	</select>
 
-	<select id="findUser" parameterType="MemberDto" resultType="MemberDto">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_GRADE
-		FROM MEMBER WHERE MEMBER_NAME = #{member_name} AND MEMBER_EMAIL = #{member_email} AND MEMBER_ID = #{member_id}
+	<select id="findUser" parameterType="MemberDto"
+		resultType="MemberDto">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME,
+		MEMBER_EMAIL, MEMBER_GRADE
+		FROM MEMBER WHERE MEMBER_NAME =
+		#{member_name} AND MEMBER_EMAIL = #{member_email} AND MEMBER_ID =
+		#{member_id}
 		AND SUBSTR(MEMBER_ID, 1, 1) NOT IN ('F', 'K')
 	</select>
 
 	<select id="checkID" parameterType="String" resultType="int">
-		SELECT COUNT(*)
+		SELECT
+		COUNT(*)
 		FROM MEMBER WHERE MEMBER_ID = #{member_id}
 	</select>
 
@@ -30,12 +40,31 @@
 	</select>
 
 	<update id="updatePassword" parameterType="MemberDto">
-		UPDATE MEMBER SET MEMBER_PW = #{member_pw} WHERE MEMBER_ID = #{member_id}
+		UPDATE MEMBER SET
+		MEMBER_PW = #{member_pw} WHERE MEMBER_ID = #{member_id}
 	</update>
 
 	<insert id="register" parameterType="MemberDto">
 		INSERT INTO MEMBER
-		VALUES(MEMBER_SEQ.NEXTVAL, #{member_id}, #{member_pw}, #{member_name}, #{member_email}, #{member_grade})
+		VALUES(MEMBER_SEQ.NEXTVAL, #{member_id}, #{member_pw}, #{member_name},
+		#{member_email}, #{member_grade})
 	</insert>
+
+
+	<!-- 관리자 멤버관리 메소드들 -->
+	<select id="memberList" resultType="MemberDto">
+		SELECT MEMBER_NO, MEMBER_ID,
+		SUBSTR(MEMBER_NAME,1,1) || LPAD('*',LENGTH(MEMBER_NAME)-2, '*')||
+		SUBSTR(MEMBER_NAME, LENGTH(MEMBER_NAME))AS MEMBER_NAME,
+		MEMBER_EMAIL,
+		MEMBER_GRADE
+		FROM MEMBER
+		ORDER BY MEMBER_NO DESC
+	</select>
+
+	<delete id="deleteMember" parameterType="int">
+		DELETE FROM MEMBER
+		WHERE MEMBER_NO = #{member_no}
+	</delete>
 
 </mapper>
