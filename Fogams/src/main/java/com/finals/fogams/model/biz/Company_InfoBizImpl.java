@@ -36,4 +36,18 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 		return dao.delete(company_no);
 	}
 
+	@Override
+	public List<CompanyDto> myList(int member_no) {
+		return dao.myList(member_no);
+	}
+
+	@Override
+	public List<CompanyDto> selectaddr() {
+		// TODO Auto-generated method stub
+		return dao.selectaddr();
+	}
+	
+	
+
+
 }
