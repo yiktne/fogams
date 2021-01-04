@@ -30,28 +30,32 @@
 <script type="text/javascript">
 
 function updatePassword() {
-	if($("#pw1").val() === $("#pw2").val()) {
-		$.ajax({
-			contentType:"application/json",
-			url:encodeURI("updatePassword.do"),
-			data:JSON.stringify({id:'${id}', password:$("#pw1").val()}),
-			dataType:"json",
-			method:"POST",
-			success:function(res) {
-				if(res.result) {
-					alert("비밀번호를 변경하였습니다.")
-					location.href = "loginform.do";
-				} else {
-					alert("비밀번호 변경에 실패했습니다. 다시 시도해주세요.")
-				}
-			},
-			error:function(res, status, err) {
-				console.log(res);
-				console.log(err);
-			},
-		});
+	if($("#pw1").val().length >= 8) {
+		if($("#pw1").val() === $("#pw2").val()) {
+			$.ajax({
+				contentType:"application/json",
+				url:encodeURI("updatePassword.do"),
+				data:JSON.stringify({id:'${id}', password:$("#pw1").val()}),
+				dataType:"json",
+				method:"POST",
+				success:function(res) {
+					if(res.result) {
+						alert("비밀번호를 변경하였습니다.")
+						location.href = "loginform.do";
+					} else {
+						alert("비밀번호 변경에 실패했습니다. 다시 시도해주세요.")
+					}
+				},
+				error:function(res, status, err) {
+					console.log(res);
+					console.log(err);
+				},
+			});
+		} else {
+			alert("비밀번호 확인이 맞지 않습니다. 다시 한 번 입력해주세요.")
+		}
 	} else {
-		alert("비밀번호 확인이 맞지 않습니다. 다시 한 번 입력해주세요.")
+		alert("비밀번호는 8자 이상으로 입력해주세요.")
 	}
 }
 
