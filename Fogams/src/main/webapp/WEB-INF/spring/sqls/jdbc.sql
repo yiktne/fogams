@@ -37,6 +37,31 @@ alter table 테이블명 add primary key(empno);
 ALTER TABLE company_price add primary key(PRICE_NO)
 ALTER TABLE
 
+insert into member values(member_seq.nextval, 'aaa', '12345', 'testest', 'sdlf@sdlkf.df', 1);
+insert into member values(member_seq.nextval, 'adddaa', '12345', 'testest', 'sdlf@sdlkf.df', 1);
+insert into member values(member_seq.nextval, 'adddlllaa', '12345', 'testest', 'sdlf@sdlkf.df', 1);
+
+SELECT * FROM MEMBER
+
+		SELECT MEMBER_NO, MEMBER_ID,
+		SUBSTR(MEMBER_NAME,1,1) || LPAD('*',LENGTH(MEMBER_NAME)-2, '*')||
+		SUBSTR(MEMBER_NAME, LENGTH(MEMBER_NAME))AS MEMBER_NAME,
+		MEMBER_EMAIL,
+		MEMBER_GRADE
+		FROM (
+			SELECT MEMBER_NO, MEMBER_ID,
+		SUBSTR(MEMBER_NAME,1,1) || LPAD('*',LENGTH(MEMBER_NAME)-2, '*')||
+		SUBSTR(MEMBER_NAME, LENGTH(MEMBER_NAME))AS MEMBER_NAME,
+		MEMBER_EMAIL,
+		MEMBER_GRADE,
+		ROW_NUMBER() OVER(ORDER BY MEMBER_NO DESC)AS RNUM
+		FROM MEMBER
+		)MB
+		WHERE RNUM BETWEEN 1 AND 5
+		ORDER BY MEMBER_NO DESC
+
+
+
 CREATE TABLE MEMBER(
 	MEMBER_NO NUMBER PRIMARY KEY NOT NULL,
 	MEMBER_ID VARCHAR2(20) UNIQUE NOT NULL,

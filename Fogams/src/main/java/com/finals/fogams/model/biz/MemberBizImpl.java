@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.finals.fogams.common.util.Criteria;
 import com.finals.fogams.model.dao.MemberDao;
 import com.finals.fogams.model.dto.MemberDto;
 
@@ -51,12 +52,19 @@ public class MemberBizImpl implements MemberBiz {
 
 	//관리자 메뉴관리 메뉴들
 	@Override
-	public List<MemberDto> memberList() {
-		return dao.memberList();
+	public List<MemberDto> memberList(Criteria cri) {
+		return dao.memberList(cri);
 	}
 
+	@Override
+	public int listCount() {
+		return dao.listCount();
+	}
+	
 	@Override
 	public int deleteMember(int member_no) {
 		return dao.deleteMember(member_no);
 	}
+
+
 }

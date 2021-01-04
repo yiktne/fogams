@@ -52,15 +52,37 @@
 
 
 	<!-- 관리자 멤버관리 메소드들 -->
-	<select id="memberList" resultType="MemberDto">
+
+	<select id="memberList" resultType="MemberDto" parameterType="Criteria">
 		SELECT MEMBER_NO, MEMBER_ID,
 		SUBSTR(MEMBER_NAME,1,1) || LPAD('*',LENGTH(MEMBER_NAME)-2, '*')||
 		SUBSTR(MEMBER_NAME, LENGTH(MEMBER_NAME))AS MEMBER_NAME,
 		MEMBER_EMAIL,
 		MEMBER_GRADE
+		FROM (
+			SELECT MEMBER_NO, MEMBER_ID,
+		SUBSTR(MEMBER_NAME,1,1) || LPAD('*',LENGTH(MEMBER_NAME)-2, '*')||
+		SUBSTR(MEMBER_NAME, LENGTH(MEMBER_NAME))AS MEMBER_NAME,
+		MEMBER_EMAIL,
+		MEMBER_GRADE,
+		ROW_NUMBER() OVER(ORDER BY MEMBER_NO DESC)AS RNUM
 		FROM MEMBER
+		)MB
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
 		ORDER BY MEMBER_NO DESC
 	</select>
+	
+	
+	
+	<select id="listCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(MEMBER_NO)
+			FROM MEMBER
+			WHERE MEMBER_NO > 0
+		]]>
+	</select>
+
+
 
 	<delete id="deleteMember" parameterType="int">
 		DELETE FROM MEMBER

@@ -2,6 +2,7 @@ package com.finals.fogams.model.dao;
 
 import java.util.List;
 
+import com.finals.fogams.common.util.Criteria;
 import com.finals.fogams.model.dto.MemberDto;
 
 public interface MemberDao {
@@ -23,6 +24,12 @@ public interface MemberDao {
 	public boolean checkEmail(String email);
 	
 	//관리자 멤버관리 메소드들
-	public List<MemberDto> memberList();
+	public List<MemberDto> memberList(Criteria cri);
+	public int listCount();
 	public int deleteMember(int member_no);
 }
+
+
+
+
+

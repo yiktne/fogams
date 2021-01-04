@@ -222,7 +222,7 @@ form{
 
 .manager{
 	padding-top:150px;
-	padding-bottom:200px;
+	padding-bottom:30px;
 	max-width: 1200px;
 	margin:auto;
 }
@@ -292,6 +292,21 @@ form{
 	background-image: none;
 }
 
+/* 페이징 버튼 */
+.paging_ul {
+	display: flex;
+	justify-content: center;
+}
+
+.paging_ul li{
+	padding:4px;
+	cursor: pointer;
+}
+
+.paging_ul li:active{
+	font-weight: var(--weight-semi-bold);
+}
+
 @media ( max-width : 1060px) {
 	.delete_btn {
 		padding: 0;
@@ -303,3 +318,12 @@ form{
 		display: none;
 	}
 }
+
+
+@media (max-width : 414px){
+	#paging{
+	display:none;
+	}
+}
+
+

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.finals.fogams.common.util.Criteria;
 import com.finals.fogams.model.dto.MemberDto;
 
 @Repository
@@ -128,11 +129,11 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public List<MemberDto> memberList() {
+	public List<MemberDto> memberList(Criteria cri) {
 		
 		List<MemberDto> list = new ArrayList<MemberDto>();
 		try {
-			list = sqlSession.selectList(NAMESPACE + "memberList");
+			list = sqlSession.selectList(NAMESPACE + "memberList", cri);
 		} catch (Exception e) {
 			System.out.println("[ERROR]memberList");
 			e.printStackTrace();
@@ -141,6 +142,22 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return list;
 	}
+	
+	
+	@Override
+	public int listCount() {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "listCount");
+		} catch (Exception e) {
+			System.out.println("[ERROR]listCount");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	
 
 	@Override
 	public int deleteMember(int member_no) {
@@ -156,4 +173,7 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
+
+
+
 }
