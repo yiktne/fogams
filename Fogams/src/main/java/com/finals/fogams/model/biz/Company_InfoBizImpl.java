@@ -41,6 +41,7 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 		return dao.myList(member_no);
 	}
 
+<<<<<<< HEAD
 	@Override
 	public List<CompanyDto> selectaddr() {
 		// TODO Auto-generated method stub
@@ -50,4 +51,6 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 	
 
 
+=======
+>>>>>>> ca641d7352034e65a3ca734234fbea6643c96e8d
 }

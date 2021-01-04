@@ -93,6 +93,7 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 		return list;
 	}
 
+<<<<<<< HEAD
 	@Override
 	public List<CompanyDto> selectaddr() {
 
@@ -103,6 +104,8 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 		return list;
 	}
 
+=======
+>>>>>>> ca641d7352034e65a3ca734234fbea6643c96e8d
 
 
 }

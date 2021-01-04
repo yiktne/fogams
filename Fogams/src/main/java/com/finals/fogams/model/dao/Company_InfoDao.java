@@ -17,7 +17,10 @@ public interface Company_InfoDao {
 	public int delete(int company_no);
 	
 	public List<CompanyDto> myList(int member_no);
+<<<<<<< HEAD
 	
 	public List<CompanyDto> selectaddr();
+=======
+>>>>>>> ca641d7352034e65a3ca734234fbea6643c96e8d
 
 }
