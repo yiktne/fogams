@@ -82,9 +82,7 @@
 	
 </script>
 
-<script type="text/javascript">
 
-</script>
 </head>
 <body>
 	<%
@@ -98,6 +96,11 @@
 			<img class="img" src="https://placeimg.com/250/250/any" />
 			<h4><%=memberDto.getMember_name()%></h4>
 		</div>
+		<div class="float-right">
+			<button onclick="handledetail()" class="btn btn-primary">계정관리</button>
+			<button onclick="openPop()" class="btn btn-primary">계정관리</button>
+		</div>
+		
 	</div>
 
 
@@ -152,7 +155,7 @@
 					<c:choose>
 						<c:when test="${empty list }">
 							<tr>
-								<td>정보가없습니다.</td>
+								<td colspan="3">정보가없습니다.</td>
 							</tr>
 						</c:when>
 						<c:otherwise>
@@ -204,7 +207,7 @@
 										<div class="Bookmark__btns">
 											<!-- ajax로 컨트롤러요청하기 -->
 											<button class="btn btn-info" onclick="moveCompany();">보기</button>
-											<button class="btn btn-info" value="${dto.bookmark_no }">즐겨찾기
+											<button class="btn btn-info btns__delete" value="${dto.bookmark_no }">즐겨찾기
 												삭제</button>
 										</div>
 									</div>
@@ -257,7 +260,21 @@
         // 클러스터러에 마커들을 추가합니다
         clusterer.addMarkers(markers);
     });
-	
+    
+    
+    function handledetail(){
+		<%if(memberDto == null){%>
+			location.href = "loginform.do";
+		<%} else {%>
+			location.href = "userdetail.do?member_no=" + 
+		<%=memberDto.getMember_no()%>
+		;
+		<%}%>
+		
+	}
+    function openPop(){
+    	var popup = window.open("userdetail.do?member_no="+<%=memberDto.getMember_no()%>, "채팅팝업", "width=500px,height=600px,scrollbars=yes");
+    }
 	
 	</script>
 </body>

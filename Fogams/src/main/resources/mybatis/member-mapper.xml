@@ -89,7 +89,7 @@
 		WHERE MEMBER_NO = #{member_no}
 	</delete>
 
-	<select id="selectOne" resultType="MemberDto">
+	<select id="selectOne" resultType="MemberDto" parameterType="int">
 		SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_GRADE
 		FROM MEMBER WHERE MEMBER_NO = #{member_no}
 	</select>
