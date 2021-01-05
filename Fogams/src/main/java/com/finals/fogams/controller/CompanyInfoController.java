@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,8 +20,12 @@ import org.springframework.web.util.WebUtils;
 
 import com.finals.fogams.common.util.FileValidator;
 import com.finals.fogams.model.biz.Company_InfoBiz;
+import com.finals.fogams.model.biz.Personal_menu_Biz;
+import com.finals.fogams.model.dto.BookmarkDto;
 import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.MemberDto;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class CompanyInfoController {
@@ -29,6 +34,9 @@ public class CompanyInfoController {
 	private Company_InfoBiz infobiz;
 	@Autowired
 	private FileValidator fileValidator;
+	@Autowired
+	private Personal_menu_Biz biz;
+
 
 	@RequestMapping("/form.do")
 	public String list(HttpServletRequest request, Model model, int member_no) throws IOException {
@@ -112,5 +120,40 @@ public class CompanyInfoController {
 
 
 	}
+	
+	@RequestMapping("mylist.do")
+	public String mylist(HttpServletRequest request, Model model, int member_no) {
+		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
+
+		List<CompanyDto> list = infobiz.myList(member_no);
+		List<BookmarkDto> booklist = biz.bookMarkList(member_no);
+		Gson gson = new GsonBuilder().create();
+		
+		
+		
+			List<CompanyDto> comdto = infobiz.selectaddr();
+			if(comdto == null) {
+				System.out.println("Addr Error");
+			}
+			
+			String	json = gson.toJson(comdto);
+			System.out.println("json : "+json);
+			
+		
+		
+		
+//		System.out.println("member_no : " + member_no );
+		model.addAttribute("member_no", member_no);
+		model.addAttribute("list", list);
+		model.addAttribute("booklist", booklist);
+		model.addAttribute("json", json);
+		return "mypage";
+	}
+	@RequestMapping("index.do")
+	public String index() {
+		
+		return "index";
+	}
+	
 
 }

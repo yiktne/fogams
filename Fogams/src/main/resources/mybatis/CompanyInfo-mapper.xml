@@ -21,5 +21,13 @@
 		WHERE MEMBER_GRADE = 1
 		AND MEMBER_NO = #{member_no}
 	</update>
+	
+	<select id="mylist" resultType="CompanyDto" parameterType="int">
+		SELECT * FROM COMPANY WHERE MEMBER_NO = #{member_no}
+	</select>
 
+
+	<select id="addrlist" resultType="CompanyDto">
+		SELECT COMPANY_ADDR FROM COMPANY
+	</select>
 </mapper>

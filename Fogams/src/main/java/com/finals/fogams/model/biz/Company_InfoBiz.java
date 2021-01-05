@@ -13,4 +13,8 @@ public List<CompanyDto> selectList(int company_no);
 	public int updateMemberGrade(int member_no);
 	
 	public int delete(int company_no);
+	
+	public List<CompanyDto> myList(int member_no);
+	
+	public List<CompanyDto> selectaddr();
 }

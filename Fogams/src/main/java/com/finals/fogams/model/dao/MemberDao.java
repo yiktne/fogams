@@ -19,4 +19,6 @@ public interface MemberDao {
 	public boolean checkID(String id);
 	
 	public boolean checkEmail(String email);
+	
+	public MemberDto selectOne(int member_no);
 }

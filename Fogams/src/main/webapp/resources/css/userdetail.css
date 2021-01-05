@@ -1,0 +1,14 @@
+.top{
+	padding: 100px;
+}
+
+.thumb-wrapper{
+	text-align: center;
+}
+
+.img{
+	width : 150px;
+	height : 150px;
+	border-radius: 70%;
+	padding: 20px;
+}
