@@ -21,6 +21,7 @@ import com.finals.fogams.model.biz.City_DetailBiz;
 import com.finals.fogams.model.biz.ReplyBiz;
 import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.MemberDto;
+import com.finals.fogams.model.dto.Company_PriceDto;
 import com.finals.fogams.model.dto.ReplyDto;
 
 @Controller
@@ -82,6 +83,10 @@ public class indexController {
 		model.addAttribute("session", session);
 		
 		
+		
+		//업체 메뉴 정보 보여주기
+		List<Company_PriceDto> list = biz.showCom_menu(company_no);
+		model.addAttribute("list", list);
 		
 		return "company_detail";
 	}

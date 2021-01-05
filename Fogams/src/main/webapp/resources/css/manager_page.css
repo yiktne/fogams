@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@charset "UTF-8";
+
 :root {
     /* Color */
     --color-white: #ffffff;
@@ -170,7 +172,6 @@ form{
 
 /* 로그인 후 유저메뉴 */
 
-
 .nav_usermenu {
     position: absolute;
     top:60px;
@@ -224,16 +225,118 @@ form{
 	color: var(--color-description);
 }
 
-/* my menu */
-.manager{
-	display:none;
+
+/* 테이블 */
+
+/* 타이틀 */
+.page_title {
+	text-align: center;
+	margin: 16px;
 }
-.manager.selected{
-	display:list-item;
+
+.manager {
+	padding-top: 150px;
+	padding-bottom: 30px;
+	max-width: 1200px;
+	margin: auto;
+}
+
+.member_table {
+	width: 70%;
+	border-top: 1px solid #444444;
+	border-collapse: collapse;
+	margin: auto;
+}
+
+.member_table tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+.member_table tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+.member_table th, .member_table td {
+	border-bottom: 1px solid var(--color-dark-grey);
+	text-align: left;
+	padding: 10px;
+}
+
+.member_table th {
+	background: #ECEFF1;
+	font-size: var(--font-small);
+}
+
+.member_table td {
+	font-size: var(--font-micro);
+}
+
+.table_data {
+	color: #263238;
+}
+
+.table_id {
+	color: #1E88E5;
+}
+
+.delete_btn {
+	background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, .075),
+		rgba(255, 255, 255, .045));
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.137),
+		rgba(117, 117, 117, 0.13));
+	border-radius: 100px;
+	border: 0.5px solid #2632381f;
+	color: #263238;
+	font-size: 12px;
+	font-weight: var(--weight-semi-bold);
+	text-align: center;
+	padding: 2px 12px;
+	overflow: hidden;
+	transition: all .3s cubic-bezier(.67, .13, .1, .81), transform .15s
+		cubic-bezier(.67, .13, .1, .81);
+}
+
+.delete_btn:hover {
+	background-color: #F44336;
+	color: var(--color-white);
+	background-image: none;
+}
+
+/* 페이징 버튼 */
+.paging_ul {
+	display: flex;
+	justify-content: center;
+}
+
+.paging_ul li {
+	padding: 4px;
+	cursor: pointer;
+}
+
+.paging_ul li:active {
+	font-weight: var(--weight-semi-bold);
+}
+
+@media ( max-width : 1060px) {
+	.delete_btn {
+		padding: 0;
+	}
 }
 
 
 @media ( max-width : 768px) {
+.del {
+	display: none;
+}
+#paging {
+	display: none;
+}
+	
+	
 .searchBox{
 	display:none;
 }

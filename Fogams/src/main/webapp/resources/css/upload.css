@@ -145,7 +145,7 @@
 
     .inputBox_set{
         display: flex;
-        justify-content:flex-end;
+        justify-content:space-between;
         margin: 8px;
         line-height: 43px;
     }

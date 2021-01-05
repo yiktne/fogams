@@ -9,8 +9,9 @@
 	
 	
 	
-	<insert id="insert" parameterType="CompanyDto">
-		INSERT INTO COMPANY
+	<insert id="insert" parameterType="CompanyDto" useGeneratedKeys="true" keyProperty="company_no"  keyColumn="COMPANY_NO">
+		INSERT INTO COMPANY (COMPANY_NO, COMPANY_NAME, MEMBER_NO, COMPANY_SORT, COMPANY_CONTENT,
+		COMPANY_TEL, COMPANY_NUMBER, COMPANY_IMG, COMPANY_ADDR, COMPANY_CITY)
 		VALUES(COMPANY_SEQ.NEXTVAL, #{company_name}, #{member_no}, #{company_sort}, #{company_content}, 
 		#{company_tel}, #{company_number}, #{company_img},
 		#{company_addr} , #{company_city})
@@ -21,5 +22,16 @@
 		WHERE MEMBER_GRADE = 1
 		AND MEMBER_NO = #{member_no}
 	</update>
+	
+	<insert id="insertCom_menu" parameterType="hashmap">
+		INSERT INTO COMPANY_PRICE(PRICE_NO, COMPANY_NO, COMPANY_PRODUCT, COMPANY_MONEY)
+		SELECT PRICE_SEQ.NEXTVAL, A.* FROM(
+			<foreach collection="list" item="item" separator="UNION ALL">
+				SELECT #{item.company_no} as company_no,
+				#{item.company_product} as company_product,
+				#{item.company_money} as company_money
+				FROM DUAL
+			</foreach>)A
+	</insert>
 
 </mapper>
