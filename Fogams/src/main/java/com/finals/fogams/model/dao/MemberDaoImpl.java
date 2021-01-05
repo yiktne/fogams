@@ -176,4 +176,17 @@ public class MemberDaoImpl implements MemberDao {
 
 
 
+	public MemberDto selectOne(int member_no) {
+
+		MemberDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR] MemberDao selectOne");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 }

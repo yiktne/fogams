@@ -67,4 +67,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 
+	@Override
+	public MemberDto selectOne(int member_no) {
+		return dao.selectOne(member_no);
+	}
 }

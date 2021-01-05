@@ -87,7 +87,7 @@
 
 		<div class="nav_usermenu">
 			<ul>
-				<li><a href="mylist.do">마이페이지</a></li>
+				<li><a onclick="handlemylist()">마이페이지</a></li>
 				<li><a onclick="handleCom_info()">업체정보 등록하기</a></li>
 				<li><a href="bookmarklist.do">나의 북마크 보기</a></li>
 				<li><a onclick="handleLogout()">로그아웃</a></li>
@@ -125,5 +125,18 @@
 			<%}%>
 		<%}%>
 	})();
+	function handlemylist(){
+		<%if(memberDto == null){%>
+			location.href = "loginform.do";
+		<%} else {%>
+			location.href = "mylist.do?member_no=" + 
+		<%=memberDto.getMember_no()%>
+		;
+		<%}%>
+		
+	}
+	
+	
+	
 </script>
 </html>
