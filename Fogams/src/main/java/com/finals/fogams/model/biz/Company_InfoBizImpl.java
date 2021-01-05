@@ -43,4 +43,16 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 		return dao.insertCom_menu(list);
 	}
 
+	public List<CompanyDto> myList(int member_no) {
+		return dao.myList(member_no);
+	}
+
+	@Override
+	public List<CompanyDto> selectaddr() {
+		return dao.selectaddr();
+	}
+	
+	
+
+
 }

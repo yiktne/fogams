@@ -93,5 +93,30 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 		
 		return res;
 	}
+	public List<CompanyDto> myList(int member_no) {
+		
+		List<CompanyDto> list = new ArrayList<CompanyDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "mylist", member_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR] Company_InfoDao  myList");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<CompanyDto> selectaddr() {
+
+		List<CompanyDto> list = new ArrayList<CompanyDto>();
+		
+		list = sqlSession.selectList(NAMESPACE + "addrlist");
+		
+		return list;
+	}
+
+
 
 }

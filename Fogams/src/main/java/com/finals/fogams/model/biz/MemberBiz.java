@@ -25,4 +25,6 @@ public interface MemberBiz {
 	public List<MemberDto> memberList(Criteria cri);
 	public int listCount();
 	public int deleteMember(int member_no);
+	public MemberDto selectOne(int member_no);
+
 }
