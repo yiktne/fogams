@@ -19,7 +19,6 @@ public interface Company_InfoDao {
 	public int delete(int company_no);
 	
 	public List<CompanyDto> myList(int member_no);
-	public List<CompanyDto> selectaddr();
 
 	public int insertCom_menu(List<Company_PriceDto> list);
 
