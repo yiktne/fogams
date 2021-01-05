@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="personalMenu">
+	 
+	<insert id="insertBookmark" parameterType="BookmarkDto">
+		INSERT INTO BOOKMARK
+		VALUES(BOOKMARK_SEQ.NEXTVAL, #{company_no}, #{member_no})
+	</insert>
+	
+	<select id="bookmarkValidityCheck" parameterType="BookmarkDto" resultType="int">
+		SELECT COUNT(*)
+		FROM BOOKMARK
+		WHERE COMPANY_NO = #{company_no}
+		AND MEMBER_NO = #{member_no}
+	</select>
+	
+	<select id="myBookmarkList" parameterType="int" resultType="BookmarkDto">
+		SELECT B.BOOKMARK_NO, B.COMPANY_NO, B.MEMBER_NO, 
+		C.COMPANY_IMG, C.COMPANY_NAME, C.COMPANY_ADDR, C.COMPANY_TEL, C.COMPANY_SORT, C.COMPANY_CITY
+		FROM BOOKMARK B, COMPANY C
+		WHERE B.MEMBER_NO = #{member_no}
+		AND B.COMPANY_NO = C.COMPANY_NO
+	</select>
+	
+	<delete id="deleteBookmark" parameterType="int">
+		DELETE FROM BOOKMARK
+		WHERE BOOKMARK_NO = #{bookmark_no} 
+	</delete>
+
+
+</mapper>
