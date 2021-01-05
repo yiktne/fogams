@@ -149,5 +149,11 @@ public class CompanyInfoController {
 		model.addAttribute("json", json);
 		return "mypage";
 	}
+	@RequestMapping("index.do")
+	public String index() {
+		
+		return "index";
+	}
+	
 
 }

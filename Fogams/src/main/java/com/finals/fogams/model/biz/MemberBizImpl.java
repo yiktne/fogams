@@ -46,4 +46,9 @@ public class MemberBizImpl implements MemberBiz {
 	public boolean checkEmail(String email) {
 		return dao.checkEmail(email);
 	}
+
+	@Override
+	public MemberDto selectOne(int member_no) {
+		return dao.selectOne(member_no);
+	}
 }
