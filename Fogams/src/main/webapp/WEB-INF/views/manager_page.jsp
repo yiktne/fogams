@@ -85,7 +85,7 @@
 				<li><a onclick="handleCom_info()">업체정보 등록하기</a></li>
 				<li><a href="bookmarklist.do">나의 북마크 보기</a></li>
 				<li><a onclick="handleLogout()">로그아웃</a></li>
-				<li>-----------------------------</li>
+				<li></li>
 				<li class="manager"><a href="managing_member.do">회원관리</a></li>
 			</ul>
 		</div>

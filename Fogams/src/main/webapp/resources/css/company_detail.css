@@ -135,6 +135,22 @@
     .company__left_description{
         margin-left: 30px;   
     }
+    
+    .company__right_wish_btn{
+        border: 1px solid var(--color-white-grey);
+        border-radius: var(--size-border-radius);
+        font-size: var(--font-regular);
+        padding: 8px 24px;
+        margin: 3px;
+    }
+    
+    
+    .company__right_wish_btn:hover{
+        background-color: var(--color-orange);
+        color: var(--color-white);
+    }
+    
+    /*맵 영역*/
 
     .company_right{
         width: 40%;
@@ -143,29 +159,14 @@
         background-color: var(--color-primary-grey);
     }
 
-    .company__right_mapBox{
-        width: 300px;
-        height: 250px;
-        background-color: var(--color-orange);
-        border-radius: var(--size-border-radius);
-    }
-
-    .company__right_wish_btn{
-        border: 1px solid var(--color-white-grey);
-        border-radius: var(--size-border-radius);
-        font-size: var(--font-regular);
-        padding: 8px 48px;
-        margin: 3px;
-    }
-    
-    .company__right_wish_btn:hover{
-        background-color: var(--color-orange);
-        color: var(--color-white);
-    }
+	.company__right_map{
+		max-width: 100%;
+		max-height: 100%;
+	}
 
 
 
-    
+
 
 /* 탭으로 바뀌는 메뉴 */
 
