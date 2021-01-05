@@ -107,16 +107,5 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 		return list;
 	}
 
-	@Override
-	public List<CompanyDto> selectaddr() {
-
-		List<CompanyDto> list = new ArrayList<CompanyDto>();
-		
-		list = sqlSession.selectList(NAMESPACE + "addrlist");
-		
-		return list;
-	}
-
-
 
 }

@@ -44,7 +44,6 @@ public class CompanyInfoController {
 	@Autowired
 	private Personal_menu_Biz biz;
 
-
 	@RequestMapping("/form.do")
 	public String list(HttpServletRequest request, Model model, int member_no) throws IOException {
 		
@@ -153,26 +152,10 @@ public class CompanyInfoController {
 
 		List<CompanyDto> list = infobiz.myList(member_no);
 		List<BookmarkDto> booklist = biz.bookMarkList(member_no);
-		Gson gson = new GsonBuilder().create();
 		
-		
-		
-			List<CompanyDto> comdto = infobiz.selectaddr();
-			if(comdto == null) {
-				System.out.println("Addr Error");
-			}
-			
-			String	json = gson.toJson(comdto);
-			System.out.println("json : "+json);
-			
-		
-		
-		
-//		System.out.println("member_no : " + member_no );
 		model.addAttribute("member_no", member_no);
 		model.addAttribute("list", list);
 		model.addAttribute("booklist", booklist);
-		model.addAttribute("json", json);
 		return "mypage";
 	}
 	@RequestMapping("index.do")
