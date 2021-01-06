@@ -85,7 +85,7 @@
 			</div>
 			
 			
-			<div class="content-dis" data-type="destination">
+			<div class="content-dis invisible" data-type="destination">
 				<c:choose>
 					<c:when test="${empty list }">
 						<span>등록된 정보가 없습니다.</span>
@@ -114,7 +114,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div class="content-dis" data-type="restaurant">
+			<div class="content-dis invisible" data-type="restaurant">
 				<c:choose>
 					<c:when test="${empty list }">
 						<span>등록된 정보가 없습니다.</span>
