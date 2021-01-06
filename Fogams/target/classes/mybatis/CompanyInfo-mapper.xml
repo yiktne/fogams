@@ -9,8 +9,9 @@
 	
 	
 	
-	<insert id="insert" parameterType="CompanyDto">
-		INSERT INTO COMPANY
+	<insert id="insert" parameterType="CompanyDto" useGeneratedKeys="true" keyProperty="company_no"  keyColumn="COMPANY_NO">
+		INSERT INTO COMPANY (COMPANY_NO, COMPANY_NAME, MEMBER_NO, COMPANY_SORT, COMPANY_CONTENT,
+		COMPANY_TEL, COMPANY_NUMBER, COMPANY_IMG, COMPANY_ADDR, COMPANY_CITY)
 		VALUES(COMPANY_SEQ.NEXTVAL, #{company_name}, #{member_no}, #{company_sort}, #{company_content}, 
 		#{company_tel}, #{company_number}, #{company_img},
 		#{company_addr} , #{company_city})
@@ -22,36 +23,20 @@
 		AND MEMBER_NO = #{member_no}
 	</update>
 	
-	
-	<select id="allList" resultType="CompanyDto">
-		SELECT COM.COMPANY_NO,COM.COMPANY_IMG,PRICE.COMPANY_MONEY,PRICE.COMPANY_PRODUCT,COM.COMPANY_NAME 
-		FROM COMPANY_PRICE PRICE INNER JOIN COMPANY COM 
-		ON PRICE.COMPANY_NO=COM.COMPANY_NO
+	<insert id="insertCom_menu" parameterType="hashmap">
+		INSERT INTO COMPANY_PRICE(PRICE_NO, COMPANY_NO, COMPANY_PRODUCT, COMPANY_MONEY)
+		SELECT PRICE_SEQ.NEXTVAL, A.* FROM(
+			<foreach collection="list" item="item" separator="UNION ALL">
+				SELECT #{item.company_no} as company_no,
+				#{item.company_product} as company_product,
+				#{item.company_money} as company_money
+				FROM DUAL
+			</foreach>)A
+	</insert>
+	<select id="mylist" resultType="CompanyDto" parameterType="int">
+		SELECT * FROM COMPANY WHERE MEMBER_NO = #{member_no}
 	</select>
-	
-	
-	<select id="roomsList" resultType="CompanyDto">
-		SELECT COM.COMPANY_NO,COM.COMPANY_IMG,PRICE.COMPANY_MONEY,PRICE.COMPANY_PRODUCT,COM.COMPANY_NAME
-		FROM COMPANY_PRICE PRICE INNER JOIN COMPANY COM 
-		ON PRICE.COMPANY_NO=COM.COMPANY_NO
-		WHERE COMPANY_SORT='숙소'
-	</select>
-	
-	<select id="foodList" resultType="CompanyDto">
-		SELECT COM.COMPANY_NO,COM.COMPANY_IMG,PRICE.COMPANY_MONEY,PRICE.COMPANY_PRODUCT,COM.COMPANY_NAME 
-		FROM COMPANY_PRICE PRICE INNER JOIN COMPANY COM 
-		ON PRICE.COMPANY_NO=COM.COMPANY_NO
-		WHERE COMPANY_SORT='음식점'
-	</select>
-	
-	<select id="tourList" resultType="CompanyDto">
-		SELECT COM.COMPANY_NO,COM.COMPANY_IMG,PRICE.COMPANY_MONEY,PRICE.COMPANY_PRODUCT,COM.COMPANY_NAME 
-		FROM COMPANY_PRICE PRICE INNER JOIN COMPANY COM 
-		ON PRICE.COMPANY_NO=COM.COMPANY_NO
-		WHERE COMPANY_SORT='명소'
-	</select>
-	
-	
-	
 
+
+	
 </mapper>

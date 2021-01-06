@@ -33,7 +33,7 @@
 		$("#tabs").tabs();
 
 	});
-	function openPop() {
+	function openChat() {
 		var popup = window.open("http://localhost:5000", "채팅팝업",
 				"width=500px,height=600px,scrollbars=yes");
 	}
@@ -163,7 +163,7 @@
 								<tr>
 									<td><a onclick="moveCompany();">${dto.company_name }</a></td>
 									<td>${dto.company_addr }</td>
-									<td><button onclick="openPop()"
+									<td><button onclick="openChat()"
 											style="text-align: center;">채팅</button></td>
 								</tr>
 							</c:forEach>
