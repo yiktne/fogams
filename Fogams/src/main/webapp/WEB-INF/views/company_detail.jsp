@@ -75,7 +75,7 @@ rel="stylesheet">
               </div>
               
               
-              <div class="content-dis" data-type="price_info">
+              <div class="content-dis invisible" data-type="price_info">
                 <c:choose>
                 	<c:when test="${empty list }"> 등록된 메뉴가 없습니다. </c:when>
                 
@@ -88,7 +88,7 @@ rel="stylesheet">
               </div>
     
               
-              <div class="content-dis" data-type="review">
+              <div class="content-dis invisible" data-type="review">
                 <!-- 댓글 -->
                	<c:choose>
                		<c:when test="${empty replyList }">
@@ -117,7 +117,7 @@ rel="stylesheet">
                 
                 
               </div>
-              <div class="content-dis" data-type="chat">
+              <div class="content-dis invisible" data-type="chat">
                               <!-- 채팅 -->
                	<a href="#none" target="_blank" onclick="openPop()">채팅</a>
               </div>
