@@ -1,6 +1,7 @@
 package com.finals.fogams.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.Company_PriceDto;
 
 @Repository
 public class Company_InfoDaoImpl implements Company_InfoDao {
@@ -18,7 +20,6 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 	
 	@Override
 	public List<CompanyDto> selectList(int company_no) {
-		System.out.println(sqlSession);
 
 		List<CompanyDto> list = new ArrayList<CompanyDto>();
 
@@ -142,6 +143,34 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 		}
 		return list;
 	}
+	public int insertCom_menu(List<Company_PriceDto> list) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "insertCom_menu", list);
+		} catch (Exception e) {
+			System.out.println("[ERROR] insertCom_menu");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	public List<CompanyDto> myList(int member_no) {
+		
+		List<CompanyDto> list = new ArrayList<CompanyDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "mylist", member_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR] Company_InfoDao  myList");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	
 
 
 

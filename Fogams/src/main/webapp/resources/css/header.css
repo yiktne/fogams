@@ -131,6 +131,9 @@
     transform: scale(0.95);
 }
 
+
+/* 검색창 */
+
 .searchBox{
     width: 25%;
     background-color: var(--color-white);
@@ -140,25 +143,53 @@
     color: var(--color-description);
 }
 
-.searchBox>input{
-	width:60%;
+#search_input{
     border: 0px;
     background-color: var(--color-white);
- 
+	display: inline-block;
+	width: 60%;
 }
 
-input:focus {
+input:focus,
+#company_city:focus{
     outline: none;
 }
+
+form{
+	display:flex;
+}
+
+#company_city{
+    border: 0px;
+    padding-left: 10px;
+    font-size: var(--font-micro);
+    font-weight: var(--weight-semi-bold);
+}
+
+
+
+/* 로그인 후 유저메뉴 */
 
 
 .nav_usermenu {
     position: absolute;
-    top:50px;
+    top:60px;
     right:10px;
     background-color: #00000066;
-    width: 300px;
+    width: 200px;
     padding: 8px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.nav_usermenu li a{
+    color: var(--color-white);
+    margin:8px;
+}
+
+.nav_usermenu li{
+    margin-top: 8px;
 }
 
 .btn{
@@ -191,4 +222,38 @@ input:focus {
 
 .welcome{
 	color: var(--color-description);
+}
+
+/* my menu */
+.manager{
+	display:none;
+}
+.manager.selected{
+	display:list-item;
+}
+
+
+@media ( max-width : 768px) {
+.searchBox{
+	display:none;
+}
+
+.nav_logo,
+.nav_logo>a{
+	font-size: var( --font-medium);
+}
+
+.btn{
+	padding:8px 16px;
+	font-size: var(--font-small);
+}
+
+.btn:hover{
+    transform: scale(0.95);
+    background-color: coral;
+}
+
+.welcome{
+	display:none;
+}
 }

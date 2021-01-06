@@ -1,5 +1,6 @@
 package com.finals.fogams.model.biz;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.finals.fogams.model.dao.Company_InfoDao;
 import com.finals.fogams.model.dao.Company_InfoDaoImpl;
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.Company_PriceDto;
 
 @Service
 public class Company_InfoBizImpl implements Company_InfoBiz {
@@ -65,5 +67,17 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 		// TODO Auto-generated method stub
 		return dao.markList(member_no);
 	}
+	public int insertCom_menu(List<Company_PriceDto> list) {
+		return dao.insertCom_menu(list);
+	}
+
+	public List<CompanyDto> myList(int member_no) {
+		return dao.myList(member_no);
+	}
+
+	
+	
+	
+
 
 }

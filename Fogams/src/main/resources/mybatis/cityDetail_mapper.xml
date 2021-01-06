@@ -28,6 +28,9 @@
 		WHERE COMPANY_NO = #{company_no} AND MEMBER_NO = #{member_no}
 	</delete>
 	
-	
+	<select id="showCom_menu" parameterType="int" resultType="Company_PriceDto">
+		SELECT * FROM COMPANY_PRICE
+		WHERE COMPANY_NO = #{company_no}
+	</select>
 
 </mapper>

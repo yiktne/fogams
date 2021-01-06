@@ -1,9 +1,13 @@
 package com.finals.fogams.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.finals.fogams.common.util.Criteria;
 import com.finals.fogams.model.dto.MemberDto;
 
 @Repository
@@ -122,5 +126,67 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		
 		return res == 0;
+	}
+
+	@Override
+	public List<MemberDto> memberList(Criteria cri) {
+		
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		try {
+			list = sqlSession.selectList(NAMESPACE + "memberList", cri);
+		} catch (Exception e) {
+			System.out.println("[ERROR]memberList");
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+	}
+	
+	
+	@Override
+	public int listCount() {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE + "listCount");
+		} catch (Exception e) {
+			System.out.println("[ERROR]listCount");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	
+
+	@Override
+	public int deleteMember(int member_no) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.delete(NAMESPACE + "deleteMember", member_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR]deleteMember");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+
+
+	public MemberDto selectOne(int member_no) {
+
+		MemberDto dto = null;
+		
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "selectOne", member_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR] MemberDao selectOne");
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 }

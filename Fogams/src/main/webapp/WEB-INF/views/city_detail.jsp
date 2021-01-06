@@ -11,7 +11,7 @@
 <!-- CSS 링크 넣기 -->
 <!-- <link rel="stylesheet"
 	href="<c:url value='/resources/css/city_detail.css'/>" />  -->
-<link rel="stylesheet" href="resources/css/city.css"/>
+<link rel="stylesheet" href="resources/css/city.css?ver=2"/>
 
 <!-- 구글폰트 링크넣기-->
 <link
@@ -20,9 +20,8 @@
 <style type="text/css">
 	li {list-style: none; float: left; padding: 6px;}
 </style>
-<script type="text/javascript">
-</script>
-<body>
+<script type="text/javascript" src="resources/js/city_detail.js" defer></script>
+
 <body>
 	<!-- Navbar -->
 	<%@ include file="header.jsp"%>
@@ -39,16 +38,16 @@
 					${dto.company_city }
 			</c:forEach>
 		</h1>
-		<input type="radio" id="tab-1" name="show" checked /> <input
-			type="radio" id="tab-2" name="show" /> <input type="radio"
-			id="tab-3" name="show" />
-		<div class="tab">
-			<label for="tab-1" class="tab_btn">숙소</label> 
-			<label for="tab-2" class="tab_btn">명소</label> 
-				<label for="tab-3" class="tab_btn">음식점</label>
-		</div>
-		<div class="content">
-			<div class="content-dis">
+		
+		<!--버튼 영역-->
+        <div class="company_categories">
+            <button class="tab_btn selected" data-filter="room">숙소</button>
+            <button class="tab_btn" data-filter="destination">명소</button>
+            <button class="tab_btn" data-filter="restaurant">음식점</button>
+        </div>
+
+	
+			<div class="content-dis" data-type="room">
 				<c:choose>
 					<c:when test="${empty list }">
 						<span>등록된 정보가 없습니다.</span>
@@ -77,7 +76,7 @@
 			</div>
 			
 			
-			<div class="content-dis">
+			<div class="content-dis" data-type="destination">
 				<c:choose>
 					<c:when test="${empty list }">
 						<span>등록된 정보가 없습니다.</span>
@@ -102,7 +101,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div class="content-dis">
+			<div class="content-dis" data-type="restaurant">
 				<c:choose>
 					<c:when test="${empty list }">
 						<span>등록된 정보가 없습니다.</span>
@@ -127,7 +126,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-		</div>
-	</section>
 
+	</section>
+</body>
 </html>

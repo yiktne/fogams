@@ -72,15 +72,13 @@ public class PagingDto {
 		next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
 	}
 	
-	public String makeQuery(int page, String company_city) {
+	public String makeQuery(int page) {
 		//jsp페이지에서 페이징버튼(1이나 2 등 숫자)를 받음. 그러면 그게 현재페이지.
 		UriComponents uriComponents =
 		UriComponentsBuilder.newInstance()
 						    .queryParam("page", page) //현재페이지
 							.queryParam("perPageNum", cri.getPerPageNum()) //페이징으로 표시된 숫자
-							.queryParam("company_city", company_city)
 							.build();
-		System.out.println("uriComponents : " + uriComponents);
 		return uriComponents.toUriString();
 		// UriComponents : URI를 동적으로 생성해주는 클래스. 파라미터가 조합된 URI를 손쉽게 만듦.
 		//ex) ?page=1&perPageNum=10

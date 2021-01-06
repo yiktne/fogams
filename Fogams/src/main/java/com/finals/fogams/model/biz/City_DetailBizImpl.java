@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.finals.fogams.model.dao.City_DetailDao;
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.Company_PriceDto;
 
 @Service
 public class City_DetailBizImpl implements City_DetailBiz{
@@ -37,6 +38,11 @@ public class City_DetailBizImpl implements City_DetailBiz{
 	@Override
 	public int delete(CompanyDto dto) {
 		return dao.delete(dto);
+	}
+
+	@Override
+	public List<Company_PriceDto> showCom_menu(int company_no) {
+		return dao.showCom_menu(company_no);
 	}
 
 }

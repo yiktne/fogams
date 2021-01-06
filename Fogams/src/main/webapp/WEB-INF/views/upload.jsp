@@ -35,6 +35,7 @@
 
 	<div class="upload_container">
 		<h1 class="upload_page_title">업체 정보 등록</h1>
+		<!--폼태그 여깄어요 -->
 		<form:form method="post" id="formTag" enctype="multipart/form-data"
 			modelAttribute="dto" action="upload.do">
 			<input type="hidden" value="${member_no }" name="member_no">
@@ -42,7 +43,7 @@
 			<div class="inputBox_set">
 				<label for="company_name">업체 이름 </label> <input type="text"
 					name="company_name" id="company_name" class="upload_input"
-					required="required"><br>
+					required="required">
 			</div>
 
 
@@ -53,7 +54,7 @@
 					<option value="숙소" selected>숙소</option>
 					<option value="명소">명소</option>
 					<option value="음식점">음식점</option>
-				</select><br />
+				</select>
 			</div>
 
 
@@ -72,14 +73,14 @@
 					<option value="전라남도">전라남도</option>
 					<option value="전라북도">전라북도</option>
 					<option value="제주도">제주도</option>
-				</select><br />
+				</select>
 			</div>
 
 
 			<div class="inputBox_set">
 				<label for="company_tel">전화번호 </label> <input type="text"
 					name="company_tel" id="company_tel" class="upload_input"
-					required="required"><br>
+					required="required">
 			</div>
 
 
@@ -87,7 +88,7 @@
 			<div class="inputBox_set">
 				<label for="company_number">사업자번호 </label> <input type="text"
 					name="company_number" id="company_number" class="upload_input"
-					required="required"><br>
+					required="required">
 			</div>
 
 
@@ -95,17 +96,16 @@
 			<div class="inputBox_set">
 				<label for="company_addr">업체 주소 </label> <input type="text"
 					name="company_addr" id="company_addr" class="upload_input"
-					required="required"><br>
+					required="required">
 			</div>
 
 			<div class="inputBox_set">
 				<label for="uploadfile">대표이미지 </label> <input type="file"
 					name="uploadfile" id="uploadfile" class="upload_input"
-					required="required"><br>
+					required="required">
+			</div>
 				<p style="color: red; font-weight: bold;"></p>
 				<form:errors path="uploadfile"></form:errors>
-			</div>
-
 
 			<div class="inputBox_set">
 				<label for="company_content">업체 상세설명 </label>

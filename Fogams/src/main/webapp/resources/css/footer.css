@@ -1,0 +1,191 @@
+:root {
+    /* Color */
+    --color-white: #ffffff;
+    --color-white-grey: #e9e9e9;
+    --color-primary-grey: #f4f2ec;
+    --color-middle-grey: #7f7d79;
+    --color-light-grey: #c1bfba;
+    --color-dark-grey: #a9a7a3;
+    --color-description: #555555;
+    --color-black: #000000;
+    --color-blue: #72c0f0;
+    --color-yellow: #fff7d1;
+    --color-orange: #f0a272;
+
+    /* Font size */
+    --font-large: 38px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+
+    /* Size(패딩,마진 등의 규격) */
+    --size-border-radius: 4px;
+    --size-img : 150px;
+    --size-margin : 16px 0px 28px 0px;
+
+    /* Animation */
+    --animation-duration: 300ms;
+}
+
+
+    /* Universal tags (전체에 입힐 효과) */
+    * {
+        box-sizing: border-box;
+    }
+    
+    a {
+        text-decoration: none;
+        color: var(--color-black);
+        cursor: pointer;
+    }
+    
+    body {
+        font-family: 'Open Sans', sans-serif;
+        margin: 0;
+        cursor: default;
+    }
+    
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    button{
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    /* Section Common (각 섹션에 공통으로 줄 스타일) */
+    .section {
+        padding: 50px;
+        margin: auto;
+    }
+    
+    .section__container{
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* Typograpy (글자 규격 맞춰놓기) */
+    h1{
+        font-size: var(--font-large);
+        font-weight: var(--weight-bold);
+        color: var(--color-black);
+        margin: 16px 0;
+    }
+    
+    h2{
+        font-size: var(--font-medium);
+        font-weight: var(--weight-semi-bold);
+        color:var(--color-black);
+        margin: 8px 0px;
+    }
+    
+    h3{
+        font-size: var(--font-regular);
+        font-weight: var(--weight-regular);
+        color: var(--color-black);
+        margin: 8px 0;
+    }
+    
+    p{
+        font-size: var(--font-small);
+        font-weight: var(--weight-regular);
+        color: var(--color-black);
+        margin: 4px 0;
+    }
+
+
+/* Contact */
+
+#contact{
+    background-color: var(--color-description);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact__title,
+.contect__us,
+.contact__email,
+.contact__links a,
+.contact__rights{
+    color:var(--color-yellow);
+}
+
+.contact__title{
+    margin: 8px 0;
+}
+
+.contact__email{
+    font-size: var(--font-micro);
+}
+
+.contect__us{
+    font-size: var(--font-small);
+    color: lightpink;
+}
+
+.members{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: space-between;
+}
+
+.github_link{
+    font-size: var(--font-small);
+    margin: 4px 0;
+    margin-left: 8px;
+    color: var(--color-yellow);
+    -webkit-animation:blink 1s ease-in-out infinite alternate;
+    -moz-animation:blink 1s ease-in-out infinite alternate;
+    animation:blink 1s ease-in-out infinite alternate;
+
+    
+}
+
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+
+.github_link i:hover{
+    transform: scale(1.1);
+    color: lightpink;
+    transition: all var(--animation-duration) ease-in;
+}
+
+
+/* logo */
+.footer_logo,
+.footer_logo>a{
+    font-size: var(--font-medium);
+    color:var(--color-yellow);
+    transition: all 300ms ease-in-out;
+    letter-spacing: -1.2px;
+}
+
+.footer_logo:hover,
+.footer_logo>a:hover{
+    color: lightpink;
+    transform: scale(0.95);
+}

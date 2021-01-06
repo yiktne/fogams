@@ -6,6 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,14 +18,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
 import com.finals.fogams.common.util.FileValidator;
 import com.finals.fogams.model.biz.Company_InfoBiz;
+import com.finals.fogams.model.biz.Personal_menu_Biz;
+import com.finals.fogams.model.dto.BookmarkDto;
 import com.finals.fogams.model.dto.CompanyDto;
+import com.finals.fogams.model.dto.Company_PriceDto;
 import com.finals.fogams.model.dto.MemberDto;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class CompanyInfoController {
@@ -29,6 +41,9 @@ public class CompanyInfoController {
 	private Company_InfoBiz infobiz;
 	@Autowired
 	private FileValidator fileValidator;
+	@Autowired
+	private Personal_menu_Biz biz;
+
 
 	@RequestMapping("/form.do")
 	public String list(HttpServletRequest request, Model model, int member_no) throws IOException {
@@ -40,13 +55,13 @@ public class CompanyInfoController {
 		return "upload";
 	}
 
+	
+	// 업체정보 등록 + 업체이미지 등록
 	@RequestMapping("/upload.do")
 	public String insertres(Model model, HttpServletRequest request, String member_no, CompanyDto dto,
 			BindingResult result) {
 
 		System.out.println("Company insertres.do");
-		System.out.println(dto.getCompany_city());
-		System.out.println(dto.getCompany_addr());
 
 		// int member_no = session.getMember_no();
 		dto.setMember_no(Integer.parseInt(member_no));
@@ -63,8 +78,8 @@ public class CompanyInfoController {
 			MultipartFile file = dto.getUploadfile();
 			String company_img = file.getOriginalFilename();
 
-			CompanyDto infoObj = new CompanyDto();
-			infoObj.setCompany_img(company_img);
+			//CompanyDto infoObj = new CompanyDto();
+			dto.setCompany_img(company_img);
 
 			InputStream inputStream = null;
 			OutputStream outputStream = null;
@@ -103,14 +118,57 @@ public class CompanyInfoController {
 					e.printStackTrace();
 				}
 			}
+			
+			
+			int company_no = dto.getCompany_no();
+			System.out.println("회사번호 : " + company_no);
+			model.addAttribute("company_no", company_no);
 
-			model.addAttribute("infoObj", infoObj);
-
-			return "redirect:company_list.do";
+			return "addCompany_menu";
 		} else
 			return "redirect:company_insertform";
-
-
 	}
+	
+	//업체 메뉴, 가격 정보 등록
+	@RequestMapping("/addCompany_menu.do")
+	@ResponseBody
+	public int addMenu(@RequestBody List<Company_PriceDto> list) {
+		System.out.println("addMenu");
+		
+	    int res = infobiz.insertCom_menu(list);
+	    
+	    if(res>0) {
+	    	System.out.println("insert com menu 성공");
+	    	return 0;
+	    }else {
+	    	System.out.println("insert com menu 실패");
+	    }
+		
+		return 3;
+	}
+	
+	@RequestMapping("mylist.do")
+	public String mylist(HttpServletRequest request, Model model, int member_no) {
+		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
+
+		List<CompanyDto> list = infobiz.myList(member_no);
+		List<BookmarkDto> booklist = biz.bookMarkList(member_no);
+		
+			
+		
+		
+		
+//		System.out.println("member_no : " + member_no );
+		model.addAttribute("member_no", member_no);
+		model.addAttribute("list", list);
+		model.addAttribute("booklist", booklist);
+		return "mypage";
+	}
+	@RequestMapping("index.do")
+	public String index() {
+		
+		return "index";
+	}
+	
 
 }

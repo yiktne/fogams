@@ -6,15 +6,10 @@ public class Criteria {
 	private int perPageNum;
 	private int rowStart;
 	private int rowEnd;
-	private String company_city;
 
 	public Criteria() {
 		this.page = 1; //페이지 초기값은 1
 		this.perPageNum = 10; //한 페이지당 보여질 갯수 10
-	}
-	
-	public Criteria(String company_city) {
-		this.company_city = company_city;
 	}
 
 	public void setPage(int page) {
@@ -56,14 +51,6 @@ public class Criteria {
 	public int getRowEnd() {
 		rowEnd = rowStart + perPageNum - 1;
 		return rowEnd;
-	}
-
-	public String getCompany_city() {
-		return company_city;
-	}
-
-	public void setCompany_city(String company_city) {
-		this.company_city = company_city;
 	}
 
 
