@@ -61,7 +61,7 @@ public class LoginController {
 		return "findpwauth";
 	}
 	
-	@RequestMapping(path="/resetpwform.do", method=RequestMethod.GET)
+	@RequestMapping(path="/resetpwform.do", method=RequestMethod.POST)
 	public String resetPWForm(Model model, String id) {
 		
 		model.addAttribute("id", id);

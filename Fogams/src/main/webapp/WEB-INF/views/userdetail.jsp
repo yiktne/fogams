@@ -61,9 +61,6 @@
 </head>
 <body>
 
-	<%
-		MemberDto memberDto = (MemberDto) session.getAttribute("memberDto");
-	%>
 
 
 

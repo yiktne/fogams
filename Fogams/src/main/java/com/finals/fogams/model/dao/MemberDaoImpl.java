@@ -175,7 +175,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 
-
+	@Override
 	public MemberDto selectOne(int member_no) {
 
 		MemberDto dto = null;

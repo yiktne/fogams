@@ -17,9 +17,9 @@
 			checkIdOverlap();
 		});
 		
-		$("#id").on("change", function() {
+		$("#register_id").on("change", function() {
 			var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
-	        if( !idReg.test( $("#id").val() ) ) {
+	        if( !idReg.test( $("#register_id").val() ) ) {
 				$("#idInvalid").css("visibility", "visible");
 				idValid = false;
 	        } else {
@@ -115,7 +115,7 @@
 				contentType:"application/json",
 				url:"register.do",
 				data:JSON.stringify({
-					member_id:$("#id").val(),
+					member_id:$("#register_id").val(),
 					member_pw:$("#pw1").val(),
 					member_name:$("#name").val(),
 					member_email:$("#email").val()
@@ -140,7 +140,7 @@
 	
 	function checkIdOverlap() {
 		if(idValid) {
-			var id = $("#id");
+			var id = $("#register_id");
 			
 			$.ajax({
 				contentType:"application/json",

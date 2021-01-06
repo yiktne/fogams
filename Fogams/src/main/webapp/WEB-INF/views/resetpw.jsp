@@ -5,7 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
+
+<link rel="stylesheet" href="resources/css/resetpw.css"/>
+
+<!-- <style type="text/css">
 
  	body {
 		text-align: center;
@@ -25,7 +28,10 @@
 		height: 30px;
 		margin: 8px;
 	}
-</style>
+</style> -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 
@@ -63,7 +69,7 @@ function updatePassword() {
 </head>
 <body>
 
-	<h1>Fogams</h1>
+	<%-- <h1>Fogams</h1>
 
 	<table>
 		<tr>
@@ -80,7 +86,71 @@ function updatePassword() {
 		<tr>
 			<td colspan="2"><input type="button" value="변경하기" id="change" onclick="updatePassword()"/></td>
 		</tr>
-	</table>
+	</table> --%>
+	
+	
+	<div class="login-reg-panel">
+		<div class="login-info-box">
+			<h2>Have an account?</h2>
+			<p>Lorem ipsum dolor sit amet</p>
+			<label id="label-register" for="log-reg-show">Password</label>
+			<input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+		</div>
+							
+		<div class="register-info-box">
+			<h2>Don't have an account?</h2>
+			<p>Lorem ipsum dolor sit amet</p>
+		</div>
+							
+		<div class="white-panel">
+			<div class="login-show">
+				<h2>Password</h2>
+				<input type="password" id="pw1" placeholder="Password">
+				<input type="password" id="pw2" placeholder="Confirm Password">
+				<input type="button" value="비밀번호 수정" onclick="updatePassword()">
+			</div>
+			
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+
+    $(document).ready(function(){
+    $('.login-info-box').fadeOut();
+    $('.login-show').addClass('show-log-panel');
+});
+
+
+$('.login-reg-panel input[type="radio"]').on('change', function() {
+    if($('#log-login-show').is(':checked')) {
+        $('.register-info-box').fadeOut(); 
+        $('.login-info-box').fadeIn();
+        
+        $('.white-panel').addClass('right-log');
+        $('.register-show').addClass('show-log-panel');
+        $('.login-show').removeClass('show-log-panel');
+        
+    }
+    else if($('#log-reg-show').is(':checked')) {
+        $('.register-info-box').fadeIn();
+        $('.login-info-box').fadeOut();
+        
+        $('.white-panel').removeClass('right-log');
+        
+        $('.login-show').addClass('show-log-panel');
+        $('.register-show').removeClass('show-log-panel');
+    }
+});
+  
+	</script>
 	
 </body>
 </html>
