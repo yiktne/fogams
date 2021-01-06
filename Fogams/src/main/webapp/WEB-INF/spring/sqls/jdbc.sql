@@ -35,12 +35,14 @@ CREATE SEQUENCE PRICE_SEQ;
 
 alter table 테이블명 add primary key(empno);
 ALTER TABLE company_price add primary key(PRICE_NO)
-ALTER TABLE
+
 
 insert into member values(member_seq.nextval, 'aaa', '12345', 'testest', 'sdlf@sdlkf.df', 1);
 insert into member values(member_seq.nextval, 'adddaa', '12345', 'testest', 'sdlf@sdlkf.df', 1);
 insert into member values(member_seq.nextval, 'adddlllaa', '12345', 'testest', 'sdlf@sdlkf.df', 1);
 
+update member set member_grade = 3 where member_id = 'kkkaaa'
+update company set company_addr = '서울특별시 용산구 용산동6가 168-6' where company_no = 135
 SELECT * FROM MEMBER
 
 		SELECT MEMBER_NO, MEMBER_ID,

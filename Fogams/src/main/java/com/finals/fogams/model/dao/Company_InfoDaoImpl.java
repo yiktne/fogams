@@ -170,8 +170,5 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 		return list;
 	}
 
-	
-
-
 
 }

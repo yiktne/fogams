@@ -8,14 +8,11 @@
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/ea746dc176.js"
 	crossorigin="anonymous"></script>
+	
 <style type="text/css">
-.nav_usermenu {
-	position: absolute;
-	top: 50px;
-	right: 10px;
-	background-color: #00000066;
-	width: 300px;
-	padding: 8px;
+header,header_body{
+	z-index: 9999;
+	position: relative;
 }
 </style>
 

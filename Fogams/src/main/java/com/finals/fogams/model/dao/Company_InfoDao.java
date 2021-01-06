@@ -13,7 +13,7 @@ public interface Company_InfoDao {
 	public List<CompanyDto> selectList(int company_no);
 	
 	public int insert(CompanyDto dto);
-	
+	public int insertCom_menu(List<Company_PriceDto> list);
 	public int updateMemberGrade(int member_no);
 	
 	public int delete(int company_no);
@@ -29,6 +29,5 @@ public interface Company_InfoDao {
 	public List<CompanyDto> markList(int member_no);
 	public List<CompanyDto> myList(int member_no);
 
-	public int insertCom_menu(List<Company_PriceDto> list);
 
 }

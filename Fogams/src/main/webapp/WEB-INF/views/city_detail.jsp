@@ -20,15 +20,20 @@
 <style type="text/css">
 	li {list-style: none; float: left; padding: 6px;}
 </style>
-<script type="text/javascript" src="resources/js/city_detail.js" defer></script>
+<!-- 제이쿼리 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript" src="resources/js/city_detail.js?ver=2" defer></script>
+<!-- 카카오맵 -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=3a1eab4890ae0b2c4a4c97691189904b&libraries=services"></script>
 
 <body>
 	<!-- Navbar -->
 	<%@ include file="header.jsp"%>
 
 	<!-- 맵 -->
-	<section id="map" class="section">
-		<div class="map__container">map</div>
+	<section  id="map" style="width:100%;height:400px;">
+	<!--<div id="map" style="width:100%;height:100%;"></div>  -->
 	</section>
 
 	<!-- 본문 (버튼, 이미지, 제목) -->
@@ -57,6 +62,10 @@
 							<c:choose>
 								<c:when test="${dto.company_sort eq '숙소' }">
 									<div class="contents__detail">
+										<!-- 주소 -->
+										<input type="hidden" class="com_addr" value="${dto.company_addr }"/>
+										<!-- 회사번호 -->
+										<input type="hidden" class="com_no" value="${dto.company_no }"/>
 										<div class="contents__img">
 											<!-- 업체 상세정보 보기 컨트롤러 요청 -->
 											<a href="company_detail.do?company_no=${dto.company_no }" class="project"> 
@@ -65,7 +74,7 @@
 											</a>
 										</div>
 										<div class="contents__name">
-											<span>${dto.company_name }</span>
+											<span><input type="hidden" class="com_name" value="${dto.company_name }">${dto.company_name }</span>
 										</div>
 									</div>
 								</c:when>
@@ -86,13 +95,17 @@
 							<c:choose>
 								<c:when test="${dto.company_sort eq '명소' }">
 									<div class="contents__detail">
+										<!-- 주소 -->
+										<input type="hidden" class="com_addr" value="${dto.company_addr }"/>
+										<!-- 회사번호 -->
+										<input type="hidden" class="com_no" value="${dto.company_no }"/>
 										<div class="contents__img">
 											<a href="company_detail.do?company_no=${dto.company_no }" class="project"> 
 											<img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" />
 											</a>
 										</div>
 										<div class="contents__name">
-											<span>${dto.company_name }</span>
+											<span><input type="hidden" class="com_name" value="${dto.company_name }">${dto.company_name }</span>
 										</div>
 									</div>
 								</c:when>
@@ -111,13 +124,17 @@
 							<c:choose>
 								<c:when test="${dto.company_sort eq '음식점' }">
 									<div class="contents__detail">
+										<!-- 주소 -->
+										<input type="hidden" class="com_addr" value="${dto.company_addr }"/>
+										<!-- 회사번호 -->
+										<input type="hidden" class="com_no" value="${dto.company_no }"/>
 										<div class="contents__img">
 											<a href="company_detail.do?company_no=${dto.company_no }" class="project">  <img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
 												alt="${dto.company_img }" />
 											</a>
 										</div>
 										<div class="contents__name">
-											<span>${dto.company_name }</span>
+											<span><input type="hidden" class="com_name" value="${dto.company_name }">${dto.company_name }</span>
 										</div>
 									</div>
 								</c:when>
@@ -126,7 +143,8 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-
 	</section>
+	
+
 </body>
 </html>

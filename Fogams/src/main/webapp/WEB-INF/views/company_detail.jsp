@@ -14,12 +14,14 @@ rel="stylesheet">
 <script type="text/javascript" src="resources/js/company_detail.js?" defer></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+<!-- 카카오맵 -->
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=3a1eab4890ae0b2c4a4c97691189904b&libraries=services"></script>
 <script type="text/javascript">
 	function openPop(){
 		var popup = window.open("http://localhost:5000", "채팅팝업", "width=500px,height=600px,scrollbars=yes");
 	}
 	
-	
+
 	
 </script>
 </head>
@@ -47,10 +49,9 @@ rel="stylesheet">
             </div>
         </div>
 
+		<!-- 맵 -->
         <div class="company_right">
-            <div id="company__right_map">
-
-            </div>
+			<div id="map" style="width:100%;height:100%;"></div>
         </div>
     </section>
 
@@ -69,8 +70,8 @@ rel="stylesheet">
               <div class="content-dis" data-type="com_info">
                 ${dto.company_content }
                 
-            <input type="button" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}&member_no=${dto.member_no } '">
-			<input type="button" value="삭제" onclick="location.href='company_delete.do?company_no=${dto.company_no}&member_no=${dto.member_no }'">
+            <input type="button" class="isCompany" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}&member_no=${dto.member_no } '">
+			<input type="button" class="isCompany" value="삭제" onclick="location.href='company_delete.do?company_no=${dto.company_no}&member_no=${dto.member_no }'">
               </div>
               
               
@@ -117,63 +118,12 @@ rel="stylesheet">
                 
               </div>
               <div class="content-dis" data-type="chat">
-                Textile의 body안 내용을 넣으세요.
-                <!-- 채팅 -->
+                              <!-- 채팅 -->
                	<a href="#none" target="_blank" onclick="openPop()">채팅</a>
               </div>
         </div>
     </section>
 <%@ include file="footer.jsp" %>
-
-
-
-<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=3a1eab4890ae0b2c4a4c97691189904b&libraries=services"></script>
-<script>
-//맵
-var mapContainer = document.getElementById('company__right_map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
-var name = document.getElementById('com_name').textContent;
-var addr = document.getElementById('addr').innerText;
-console.log(`name: ${name}, addr: ${addr}`);
-
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
-// 주소로 좌표를 검색합니다
-function addrFind(name,addr){
-   geocoder.addressSearch(addr, function(result, status) {
-
-       // 정상적으로 검색이 완료됐으면 
-        if (status === kakao.maps.services.Status.OK) {
-
-           var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-           // 결과값으로 받은 위치를 마커로 표시합니다
-           var marker = new kakao.maps.Marker({
-               map: map,
-               position: coords
-           });
-
-           // 인포윈도우로 장소에 대한 설명을 표시합니다
-           var infowindow = new kakao.maps.InfoWindow({
-               content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name+'</div>'
-           });
-           infowindow.open(map, marker);
-
-           // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-           map.panTo(coords);
-       } 
-   });   
-}
-
-
-</script>
 
 </body>
 </html>

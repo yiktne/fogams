@@ -44,7 +44,6 @@ public class CompanyInfoController {
 	@Autowired
 	private Personal_menu_Biz biz;
 
-
 	@RequestMapping("/form.do")
 	public String list(HttpServletRequest request, Model model, int member_no) throws IOException {
 		
@@ -153,12 +152,7 @@ public class CompanyInfoController {
 
 		List<CompanyDto> list = infobiz.myList(member_no);
 		List<BookmarkDto> booklist = biz.bookMarkList(member_no);
-		
-			
-		
-		
-		
-//		System.out.println("member_no : " + member_no );
+
 		model.addAttribute("member_no", member_no);
 		model.addAttribute("list", list);
 		model.addAttribute("booklist", booklist);

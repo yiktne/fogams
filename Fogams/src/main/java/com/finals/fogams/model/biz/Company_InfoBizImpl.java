@@ -75,9 +75,5 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 		return dao.myList(member_no);
 	}
 
-	
-	
-	
-
 
 }
