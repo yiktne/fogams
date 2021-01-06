@@ -141,30 +141,6 @@ rel="stylesheet">
             
         </div>
     </section>
-    
-    <!-- reviews (다른 사람 여행 보기) -->
-    <section id="reviews" class="section section__container">
-        <h2 class="reviews__title">다른 사람 여행 보기</h2>
-        <div class="reviews__container">
-            <div class="reviews__recommend">
-                <div class="reviews__img_container">
-                    <a href="#"><img src="" alt="city_image" class="reviews__img"></a>
-                </div>
-                <p class="reviews__name">서울</p>
-            </div>
-            <div class="reviews__recommend">
-                <div class="reviews__img_container">
-                    <a href=""><img src="" alt="" class="reviews__img"></a>
-                </div>
-                <p class="reviews__name">서울</p>
-            </div><div class="reviews__recommend">
-                <div class="reviews__img_container">
-                    <a href=""><img src="" alt="" class="reviews__img"></a>
-                </div>
-                <p class="reviews__name">서울</p>
-            </div>
-        </div>
-    </section>
 
 
 <%@ include file="./WEB-INF/views/footer.jsp" %>

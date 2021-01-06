@@ -41,7 +41,7 @@ CREATE SEQUENCE BOOKMARK_SEQ;
 			AND COMPANY_CITY LIKE '%서울%'
 
 
-drop table company
+
 
 select company_img from company_info;
 select * from member;
@@ -64,7 +64,7 @@ insert, update 따로. -> 하나의 컨트롤러에서.
 update member set member_grade = 2
 where member_grade = 1
 and member_no = #{};
-
+delete from company
 select * from company where company_city = '서울';
 
 
@@ -73,8 +73,7 @@ select * from company where company_city = '서울';
 관리자(3)
 탈퇴(0)
 
-DELETE FROM bookmark 
-WHERE bookmark_no = 22
+
 
 
 		SELECT B.BOOKMARK_NO, B.COMPANY_NO, B.MEMBER_NO, 

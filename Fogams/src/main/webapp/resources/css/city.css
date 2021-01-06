@@ -111,19 +111,14 @@
 
 
     /* 맵 */
-    #map{
+
+   #map{
         width: 100%;
         height: 400px;
         background-color: #555555;
         padding:0;
     }
-    
-    .map__container{
-    	width:100%;
-    	height: 100%;
-    	background-color: green;
-    	color:white;
-    }
+
 
     /* 본문 타이틀 */
     .contents__title{
@@ -191,7 +186,7 @@
     
     .contents__img img{
         max-width: 100%;
-        min-width: 100%;
+        max-width: 100%;
     }
     
     .contents__detail{
@@ -202,7 +197,7 @@
     
         .content {
         margin: 0 auto;
-        min-width:786px;
+        max-width:786px;
         max-width: 100%;
     }
     
