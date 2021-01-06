@@ -36,4 +36,34 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 		return dao.delete(company_no);
 	}
 
+	@Override
+	public List<CompanyDto> allList() {
+		// TODO Auto-generated method stub
+		return dao.allList();
+	}
+
+	@Override
+	public List<CompanyDto> roomsList() {
+		// TODO Auto-generated method stub
+		return dao.roomsList();
+	}
+
+	@Override
+	public List<CompanyDto> foodList() {
+		// TODO Auto-generated method stub
+		return dao.foodList();
+	}
+
+	@Override
+	public List<CompanyDto> tourList() {
+		// TODO Auto-generated method stub
+		return dao.tourList();
+	}
+
+	@Override
+	public List<CompanyDto> markList(int member_no) {
+		// TODO Auto-generated method stub
+		return dao.markList(member_no);
+	}
+
 }

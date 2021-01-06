@@ -1,0 +1,61 @@
+@charset "EUC-KR";
+
+:root {
+    /* Color */
+    --color-white: #ffffff;
+    --color-white-grey: #e9e9e9;
+    --color-primary-grey: #f4f2ec;
+    --color-middle-grey: #7f7d79;
+    --color-light-grey: #c1bfba;
+    --color-dark-grey: #a9a7a3;
+    --color-description: #555555;
+    --color-black: #000000;
+    --color-blue: #72c0f0;
+    --color-yellow: #fff7d1;
+    --color-orange: #f0a272;
+
+    /* Font size */
+    --font-large: 38px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+
+    /* Size(패딩,마진 등의 규격) */
+    --size-border-radius: 4px;
+    --size-img : 150px;
+    --size-margin : 16px 0px 28px 0px;
+
+    /* Animation */
+    --animation-duration: 300ms;
+}
+
+
+    /* Universal tags (전체에 입힐 효과) */
+    * {
+        box-sizing: border-box;
+    }
+    
+    #mapcss{
+    	margin-top: 150px;
+    }
+    
+	#company_list{
+		float: left;
+		height:600px;
+		width: 350px;
+	}
+	#map{
+		float: left;
+		
+	}
+	#plan{
+		float: left;
+		height: 600px;
+		width: 650px;
+	}

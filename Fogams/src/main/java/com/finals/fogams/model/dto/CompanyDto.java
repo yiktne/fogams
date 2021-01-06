@@ -15,7 +15,8 @@ public class CompanyDto {
 	private String company_addr;
 	private String company_city;
 	private MultipartFile uploadfile;
-	
+	private String company_product;
+	private String company_money;
 
 	public CompanyDto() {
 	}
@@ -122,6 +123,22 @@ public class CompanyDto {
 
 	public void setCompany_city(String company_city) {
 		this.company_city = company_city;
+	}
+
+	public String getCompany_product() {
+		return company_product;
+	}
+
+	public void setCompany_product(String company_product) {
+		this.company_product = company_product;
+	}
+
+	public String getCompany_money() {
+		return company_money;
+	}
+
+	public void setCompany_money(String company_money) {
+		this.company_money = company_money;
 	}
 	
 	

@@ -25,7 +25,7 @@ rel="stylesheet">
     <section id="maketrip">
         <h1 class="maketrip__title">내 여행을 만들어보세요</h1>
         <p class="maketrip__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti voluptates reprehenderit veritatis distinctio blanditiis tempore officia eos amet! Magni dolorum, incidunt sapiente sit aut unde! Sapiente maiores molestias aut quo.</p>  
-        <button class="maketrip__btn">여행 만들러 가기</button>
+        <button class="maketrip__btn" onclick="location.href='map.do'">여행 만들러 가기</button>
     </section>
 
     <!-- pickcity (이런 여행지 어때요?) -->

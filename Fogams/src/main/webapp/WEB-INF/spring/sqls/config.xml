@@ -9,6 +9,7 @@
 		<typeAlias type="com.finals.fogams.common.util.PagingDto" alias="PagingDto"/>
 		<typeAlias type="com.finals.fogams.common.util.Criteria" alias="Criteria"/>
 		<typeAlias type="com.finals.fogams.model.dto.ReplyDto" alias="ReplyDto"/>
+		<typeAlias type="com.finals.fogams.model.dto.ReplyDto" alias="PlanDto"/>
 	</typeAliases>
 
 
@@ -19,6 +20,7 @@
 		<mapper resource="/mybatis/member-mapper.xml"/>
 		<mapper resource="/mybatis/Personal_menu-mapper.xml"/>
 		<mapper resource="/mybatis/Reply-mapper.xml"/>
+		<mapper resource="/mybatis/Plan-mapper.xml"/>
 	</mappers>
 
 

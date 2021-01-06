@@ -78,6 +78,71 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 		return res;
 	}
 
+	@Override
+	public List<CompanyDto> allList() {
+		List<CompanyDto> list=new ArrayList<CompanyDto>();
+		try {
+			list=sqlSession.selectList(NAMESPACE+"allList");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error [company_allList]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<CompanyDto> roomsList() {
+		List<CompanyDto> list=new ArrayList<CompanyDto>();
+		try {
+			list=sqlSession.selectList(NAMESPACE+"roomsList");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error [company_roomsList]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<CompanyDto> foodList() {
+		List<CompanyDto> list=new ArrayList<CompanyDto>();
+		try {
+			list=sqlSession.selectList(NAMESPACE+"foodList");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error [company_foodList]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<CompanyDto> tourList() {
+		List<CompanyDto> list=new ArrayList<CompanyDto>();
+		try {
+			list=sqlSession.selectList(NAMESPACE+"tourList");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error [company_tourList]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<CompanyDto> markList(int member_no) {
+		List<CompanyDto> list=new ArrayList<CompanyDto>();
+		try {
+			list=sqlSession.selectList(NAMESPACE+"markList", member_no);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error [company_markList]");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 
 }
