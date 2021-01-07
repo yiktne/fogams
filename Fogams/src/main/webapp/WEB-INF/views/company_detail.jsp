@@ -69,9 +69,6 @@ rel="stylesheet">
 
               <div class="content-dis" data-type="com_info">
                 ${dto.company_content }
-                
-            <input type="button" class="isCompany" value="수정" onclick="location.href='company_updateform.do?company_no=${dto.company_no}&member_no=${dto.member_no } '">
-			<input type="button" class="isCompany" value="삭제" onclick="location.href='company_delete.do?company_no=${dto.company_no}&member_no=${dto.member_no }'">
               </div>
               
               
@@ -92,7 +89,7 @@ rel="stylesheet">
                 <!-- 댓글 -->
                	<c:choose>
                		<c:when test="${empty replyList }">
-               			<span>등록된 댓글이 없습니다.</span>
+               			<span></span>
                		</c:when>
                		<c:otherwise>
                			<c:forEach items="${replyList }" var="rdto">
@@ -119,7 +116,7 @@ rel="stylesheet">
               </div>
               <div class="content-dis invisible" data-type="chat">
                               <!-- 채팅 -->
-               	<a href="#none" target="_blank" onclick="openPop()">채팅</a>
+               	<a href="#none" class="chat_btn" target="_blank" onclick="openPop()">이 업체와 채팅 시작하기</a>
               </div>
         </div>
     </section>
