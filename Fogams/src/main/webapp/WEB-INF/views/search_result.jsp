@@ -80,7 +80,7 @@
 			</div>
 			
 			
-			<div class="content-dis" data-type="destination">
+			<div class="content-dis invisible" data-type="destination">
 				<c:choose>
 					<c:when test="${empty map.list }">
 						<span>등록된 정보가 없습니다.</span>
@@ -109,7 +109,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div class="content-dis" data-type="restaurant">
+			<div class="content-dis invisible" data-type="restaurant">
 				<c:choose>
 					<c:when test="${empty map.list }">
 						<span>등록된 정보가 없습니다.</span>
@@ -140,7 +140,7 @@
 			</div>
 
 	</section>
-	
+	<%@ include file="footer.jsp" %>
 	<script type="text/javascript">
 	
 	//맵
@@ -205,8 +205,7 @@ $('input[class=com_addr]').each(function(index, item){
 
 	           // 인포윈도우로 장소에 대한 설명을 표시합니다
 	           var infowindow = new kakao.maps.InfoWindow({
-	               content: `<div style="width:150px;text-align:center;padding:6px 0;">
-						<a href="company_detail.do?company_no=${com_no}">${name}</a></div>`
+	               content: `<div style="width:150px;text-align:center;padding:6px 0;"><a href="company_detail.do?company_no=${com_no}">${name}</a></div>`
 	           });
 	           infowindow.open(map, marker);
 
