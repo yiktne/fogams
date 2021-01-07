@@ -51,7 +51,7 @@
 											alt="${dto.company_img }" class="company__left_img"
 											style="width: 150px; height: 150px;"><br/>
 									<a onclick="roomsSelect(${dto.company_no },'${dto.company_product }','${dto.company_money }')">${dto.company_product }</a>
-									가격 : ${dto.company_money }
+									<br/>가격 : ${dto.company_money }원<br/>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -139,7 +139,7 @@
 			<div id="planfooter" class="dates">
 				<p>
 					<input type="button" value="계획 저장" onclick="sandplan()">
-					총<label><b id="totalmoney">0</b>원</label>
+					총<label><input type="text" value="0" id="totalMoney" readonly="readonly" size=10>원</label>
 				</p>
 				
 			</div>
@@ -226,8 +226,8 @@
 		document.getElementsByClassName('plandaylist')[plandate].appendChild(addPlanTime);
 		document.getElementsByClassName('plandaylist')[plandate].appendChild(addPlanDate);
 		count++;
-		money=money+companyMoney;
-		
+		money=parseInt(money)+parseInt(companyMoney);
+		document.getElementById("totalMoney").value=money;
 		closePlanTime();
 	}
 	
