@@ -27,10 +27,14 @@ import org.springframework.web.util.WebUtils;
 import com.finals.fogams.common.util.FileValidator;
 import com.finals.fogams.model.biz.Company_InfoBiz;
 import com.finals.fogams.model.biz.Personal_menu_Biz;
+import com.finals.fogams.model.biz.PlanBiz;
 import com.finals.fogams.model.dto.BookmarkDto;
 import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.Company_PriceDto;
 import com.finals.fogams.model.dto.MemberDto;
+import com.finals.fogams.model.dto.PlanDto;
+import com.finals.fogams.model.dto.PlanListDto;
+import com.finals.fogams.model.dto.TestBean;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -43,6 +47,9 @@ public class CompanyInfoController {
 	private FileValidator fileValidator;
 	@Autowired
 	private Personal_menu_Biz biz;
+	@Autowired
+	private PlanBiz planbiz;
+	
 
 	@RequestMapping("/form.do")
 	public String list(HttpServletRequest request, Model model, int member_no) throws IOException {
@@ -152,10 +159,13 @@ public class CompanyInfoController {
 
 		List<CompanyDto> list = infobiz.myList(member_no);
 		List<BookmarkDto> booklist = biz.bookMarkList(member_no);
-
+		List<PlanListDto> planlist = planbiz.selectplan(member_no);
 		model.addAttribute("member_no", member_no);
 		model.addAttribute("list", list);
 		model.addAttribute("booklist", booklist);
+		model.addAttribute("planlist", planlist);
+		
+		
 		return "mypage";
 	}
 	@RequestMapping("index.do")
@@ -163,6 +173,21 @@ public class CompanyInfoController {
 		
 		return "index";
 	}
+	
+	@RequestMapping("plandetail.do")
+	public String plandetail(HttpServletRequest request,int plan_no, int member_no, PlanDto dto, Model model) {
+		MemberDto session = (MemberDto) request.getSession().getAttribute("memberDto");
+		
+		TestBean list = planbiz.testBean(plan_no);
+		
+		model.addAttribute("list", list);
+		
+		
+		return "plandetail";
+	}
+	
+	
+	
 	
 
 }

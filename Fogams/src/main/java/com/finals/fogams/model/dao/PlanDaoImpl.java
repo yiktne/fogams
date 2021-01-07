@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.PlanDto;
+import com.finals.fogams.model.dto.PlanListDto;
+import com.finals.fogams.model.dto.TestBean;
 
 
 @Repository
@@ -36,7 +38,7 @@ public class PlanDaoImpl implements PlanDao {
 	@Override
 	public int planListInsert(PlanDto dto) {
 		int i=0;
-		System.out.println("플랜 리스트다오 도착 번호:"+dto.getPlan_no());
+		System.out.println("플랜 리스트다오 도착 번호 : " + dto.getPlan_no());
 		try {
 			i=sqlSession.insert(NAMESPACE+"planListInsert", dto);
 		} catch (Exception e) {
@@ -73,4 +75,30 @@ public class PlanDaoImpl implements PlanDao {
 		return no;
 	}
 
+	@Override
+	public List<PlanListDto> selectplan(int member_no) {
+
+		List<PlanListDto> list = new ArrayList<PlanListDto>();
+		
+		try {
+			list = sqlSession.selectList(NAMESPACE + "selectList", member_no);
+		} catch (Exception e) {
+			System.out.println("[ERROR] plandao selectplan");
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public TestBean testBean(int plan_no) {
+
+		List<PlanDto> list = new ArrayList<PlanDto>();
+		
+		list = sqlSession.selectList(NAMESPACE + "testBean");
+		
+		
+		return (TestBean) list;
+	}
+ 
 }

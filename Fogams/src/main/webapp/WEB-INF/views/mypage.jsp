@@ -117,15 +117,32 @@
 
 			<!-- 여행계획 -->
 			<div id="tabs-1">
-				<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a,
-					risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris.
-					Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem.
-					Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo.
-					Vivamus sed magna quis ligula eleifend adipiscing. Duis orci.
-					Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam
-					molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut
-					dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique
-					tempus lectus.</p>
+				<table border="1" class="table" style="text-align: center;">
+					<tr class="thead-dark">
+						<th scope="col">No</th>
+						<th scope="col">Title</th>
+						<th scope="col">Date</th>
+					</tr>
+					<c:choose>
+						<c:when test="${empty planlist }">
+							<tr>
+								<td colspan="3">정보가없습니다.</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${planlist }" var="dto">
+								<tr>
+									<td><a href="#">${dto.plan_no }</a></td>
+									<td>${dto.plan_title }</td>
+									<td>
+									${dto.plan_date }
+									</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</table>
+
 			</div>
 
 			<!-- 리뷰 -->
@@ -274,6 +291,10 @@
     function openPop(){
     	var popup = window.open("userdetail.do?member_no="+<%=memberDto.getMember_no()%>, "채팅팝업", "width=500px,height=600px,scrollbars=yes");
     }
+    
+   
+    
+    
 	
 	</script>
 </body>

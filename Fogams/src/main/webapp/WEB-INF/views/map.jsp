@@ -51,7 +51,7 @@
 											alt="${dto.company_img }" class="company__left_img"
 											style="width: 150px; height: 150px;"><br/>
 									<a onclick="roomsSelect(${dto.company_no },'${dto.company_product }','${dto.company_money }')">${dto.company_product }</a>
-									가격 : ${dto.company_money }
+										<br>/가격 : ${dto.company_money }원<br>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
