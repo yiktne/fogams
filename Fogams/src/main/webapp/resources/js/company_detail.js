@@ -50,7 +50,6 @@ function_filter.addEventListener('click', (e) => {
 	active.classList.remove('selected');
 	//이미 selected 되어있던 요소에서 selected를 없앰
 	const target = e.target;
-	console.log(target);
 	target.classList.add('selected');
 	//클릭된 노드의 클래스이름으로 selected 추가
 
