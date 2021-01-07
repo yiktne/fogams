@@ -1,8 +1,14 @@
 package com.finals.fogams.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -10,6 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.ColumnMapRowMapper;
 import org.springframework.stereotype.Controller;
@@ -32,6 +42,8 @@ public class indexController {
 	@Autowired
 	private ReplyBiz replybiz;
 
+	private String recommendServerURL = "http://localhost:8585";
+	
 	//도시별 업체 정보 리스트 조회
 	@RequestMapping("/company_info.do")
 	public String moveToCityDetail(Model model, String company_city) {
@@ -81,8 +93,8 @@ public class indexController {
 		//model.addAttribute("member_no", member_no);
 		model.addAttribute("dto", dto);
 		model.addAttribute("session", session);
-		
-		
+
+		model.addAttribute("recommend", getRecommendList(dto));
 		
 		//업체 메뉴 정보 보여주기
 		List<Company_PriceDto> list = biz.showCom_menu(company_no);
@@ -148,6 +160,45 @@ public class indexController {
 		
 	}
 	
-	
+	private List<CompanyDto> getRecommendList(CompanyDto dto) {
+
+		List<CompanyDto> result = new ArrayList<CompanyDto>();
+		
+		try {
+			String path = recommendServerURL + "/get/" + dto.getCompany_no() + "/" + URLEncoder.encode(dto.getCompany_city(), "UTF-8") + "/" + URLEncoder.encode(dto.getCompany_sort(), "UTF-8");
+			
+			URL url = new URL(path);
+			HttpURLConnection con = (HttpURLConnection)url.openConnection();
+			
+			con.setRequestMethod("GET");
+			con.setRequestProperty("User-Agent", "Mozilla/5.0");
+			
+			int resCode = con.getResponseCode();
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream())); 
+			String inputLine; 
+			StringBuffer response = new StringBuffer(); 
+			
+			while ((inputLine = in.readLine()) != null) { 
+				response.append(inputLine); 
+			} 
+			
+			in.close(); 
+			
+			JSONParser parser = new JSONParser();
+			
+			JSONObject obj = (JSONObject) parser.parse(response.toString());
+			
+			JSONArray data = (JSONArray) obj.get("id");
+			
+			for(int i = 0; i < data.size(); i++) {
+				result.add(biz.selectOne(Integer.parseInt((String)data.get(i))));
+			}
+			
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
 }
