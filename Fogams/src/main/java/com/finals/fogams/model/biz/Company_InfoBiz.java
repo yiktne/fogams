@@ -8,7 +8,7 @@ import com.finals.fogams.model.dto.Company_PriceDto;
 
 public interface Company_InfoBiz {
 
-public List<CompanyDto> selectList(int company_no);
+	public List<CompanyDto> selectList();
 	
 	public int insert(CompanyDto dto);
 	

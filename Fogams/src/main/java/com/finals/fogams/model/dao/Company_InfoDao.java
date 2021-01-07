@@ -10,7 +10,7 @@ public interface Company_InfoDao {
 	
 	String NAMESPACE = "com.companyinfo.";
 	
-	public List<CompanyDto> selectList(int company_no);
+	public List<CompanyDto> selectList();
 	
 	public int insert(CompanyDto dto);
 	
