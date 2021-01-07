@@ -9,7 +9,7 @@ public class PlanDto {
 	private int company_no;
 	private String plan_time;
 	private String plan_price;
-
+	private String plan_title;
 	public PlanDto() {
 	}
 
@@ -18,6 +18,17 @@ public class PlanDto {
 		this.company_no = company_no;
 		this.plan_time = plan_time;
 		this.plan_price = plan_price;
+	}
+	
+	
+
+	public PlanDto(int member_no, int plan_no, int company_no, String plan_time, String plan_price, String plan_title) {
+		this.member_no = member_no;
+		this.plan_no = plan_no;
+		this.company_no = company_no;
+		this.plan_time = plan_time;
+		this.plan_price = plan_price;
+		this.plan_title = plan_title;
 	}
 
 	public int getPlan_no() {
@@ -58,5 +69,13 @@ public class PlanDto {
 
 	public void setMember_no(int member_no) {
 		this.member_no = member_no;
+	}
+
+	public String getPlan_title() {
+		return plan_title;
+	}
+
+	public void setPlan_title(String plan_title) {
+		this.plan_title = plan_title;
 	}
 }

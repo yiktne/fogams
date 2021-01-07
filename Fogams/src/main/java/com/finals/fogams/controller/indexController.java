@@ -86,6 +86,7 @@ public class indexController {
 		
 		//업체 메뉴 정보 보여주기
 		List<Company_PriceDto> list = biz.showCom_menu(company_no);
+		System.out.println("업체 이름ㅣ"+list.get(0).getCompany_money());
 		model.addAttribute("list", list);
 		
 		return "company_detail";

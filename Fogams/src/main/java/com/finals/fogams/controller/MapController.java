@@ -10,6 +10,8 @@ import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.finals.fogams.model.biz.Company_InfoBizImpl;
 import com.finals.fogams.model.biz.PlanBiz;
 import com.finals.fogams.model.biz.PlanBizImpl;
+import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.MemberDto;
 import com.finals.fogams.model.dto.PlanDto;
 import com.google.code.geocoder.Geocoder;
@@ -53,6 +56,7 @@ public class MapController {
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("all_list", company_infobiz.allList());
 		model.addAttribute("rooms_list", company_infobiz.roomsList());
 		model.addAttribute("food_list", company_infobiz.foodList());
 		model.addAttribute("tour_list", company_infobiz.tourList());
@@ -80,9 +84,12 @@ public class MapController {
 		Map<String, Object> map = new HashMap<String, Object>();
 			
 		PlanDto planDto=new PlanDto();
-		planDto.setMember_no(member_no);;
+		planDto.setMember_no(member_no);
+		System.out.println("계획 제목:"+list.get(0).get("plan_title").toString());
+		planDto.setPlan_title(list.get(0).get("plan_title").toString());
 		planbiz.planListInsert(planDto);
 		int plan_no=planDto.getPlan_no();
+		
 		for(Map<String, Object> m : list) {
 			PlanDto dto = new PlanDto();
 			dto.setPlan_no(plan_no);
@@ -93,33 +100,59 @@ public class MapController {
 		}
 		map.put("list", planList);
 		planbiz.planInsert(map);
+		
 		return 1;
 	}
-	
+	//마커 클러스터러 json파일로 건내기
+	@RequestMapping("markercluster.do")
+	public JSONObject marker() {
+		JSONObject jsonObject = new JSONObject();
+		List<CompanyDto> list=new ArrayList<CompanyDto>();
+		list=company_infobiz.allList();
+		System.out.println("코더 테스트 경기도 성남시 분당구"+geoCoding("경기도 성남시 분당구"));
+		JSONObject data=null;
+		JSONArray req_array = new JSONArray();
+        
+		for(int i=0; i<list.size(); i++) {
+			data = new JSONObject();
+			System.out.println("주소 출력 중");
+			String addr=list.get(i).getCompany_addr();
+			
+			Float[] coords=geoCoding(addr);
+	        data.put("lat", coords[1]);
+	        data.put("lng", coords[2]);
+	        req_array.add(data);
+		}
+        jsonObject.put("positions", req_array);
+        System.out.println("Json 압축 성공"+req_array+"끝");
+        return jsonObject;
+	}
 	public static Float[] geoCoding(String location) {
-		Float[] coords = new Float[2];
-		  if (location == null)
-		    return null;
-
-		  Geocoder geocoder = new Geocoder();
-		  // setAddress : 변환하려는 주소 (경기도 성남시 분당구 등)
-		  // setLanguate : 인코딩 설정
-		  GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setAddress(location).setLanguage("ko").getGeocoderRequest();
-
-		  try {
-		    GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
-		    if (geocoderResponse.getStatus() == GeocoderStatus.OK & !geocoderResponse.getResults().isEmpty()) {
-		      GeocoderResult geocoderResult=geocoderResponse.getResults().iterator().next();
-		      LatLng latitudeLongitude = geocoderResult.getGeometry().getLocation();
-
-		      
-		      coords[0] = latitudeLongitude.getLat().floatValue();
-		      coords[1] = latitudeLongitude.getLng().floatValue();
-		      
-		    }
-		  } catch (IOException ex) {
-		    ex.printStackTrace();
-		  }
-		  ​return coords;
+		if (location == null) { 
+			System.out.println("주소 실패"+location);
+			return null;
+		}
+		Geocoder geocoder = new Geocoder();
+		// setAddress : 변환하려는 주소 (경기도 성남시 분당구 등)
+		// setLanguate : 인코딩 설정
+		GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setAddress(location).setLanguage("ko").getGeocoderRequest();
+		GeocodeResponse geocoderResponse;
+			try {
+				geocoderResponse = geocoder.geocode(geocoderRequest);
+				if (geocoderResponse.getStatus() == GeocoderStatus.OK & !geocoderResponse.getResults().isEmpty()) {
+					GeocoderResult geocoderResult=geocoderResponse.getResults().iterator().next();
+					LatLng latitudeLongitude = geocoderResult.getGeometry().getLocation();			  
+					Float[] coords = new Float[2];
+					coords[0] = latitudeLongitude.getLat().floatValue();
+					System.out.println("지오코딩 변환중");
+					coords[1] = latitudeLongitude.getLng().floatValue();
+					return coords;
+			}
+		} catch (IOException ex) {
+			System.out.println("지오코딩 에러");
+			ex.printStackTrace();
+		}
+		System.out.println("지오코딩 변환 실패");
+		return null;
 		}
 }

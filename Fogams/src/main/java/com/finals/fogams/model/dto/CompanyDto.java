@@ -36,9 +36,30 @@ public class CompanyDto {
 		this.company_city = company_city;
 		this.uploadfile = uploadfile;
 	}
+	
+	
 
 	public int getCompany_no() {
 		return company_no;
+	}
+
+	public CompanyDto(int company_no, String company_name, int member_no, String company_sort, String company_content,
+			String company_tel, String company_number, String company_img, String company_addr, String company_city,
+			MultipartFile uploadfile, String company_product, String company_money) {
+		super();
+		this.company_no = company_no;
+		this.company_name = company_name;
+		this.member_no = member_no;
+		this.company_sort = company_sort;
+		this.company_content = company_content;
+		this.company_tel = company_tel;
+		this.company_number = company_number;
+		this.company_img = company_img;
+		this.company_addr = company_addr;
+		this.company_city = company_city;
+		this.uploadfile = uploadfile;
+		this.company_product = company_product;
+		this.company_money = company_money;
 	}
 
 	public void setCompany_no(int company_no) {
