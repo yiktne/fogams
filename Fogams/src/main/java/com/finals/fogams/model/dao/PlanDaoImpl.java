@@ -36,11 +36,12 @@ public class PlanDaoImpl implements PlanDao {
 	@Override
 	public int planListInsert(PlanDto dto) {
 		int i=0;
+		System.out.println("플랜 리스트다오 도착 번호:"+dto.getPlan_no());
 		try {
 			i=sqlSession.insert(NAMESPACE+"planListInsert", dto);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("계획 리스트 추가 에러 회원 번호:"+dto);
+			System.out.println("계획 리스트 추가 에러 계획 번호:"+dto.getPlan_no());
 			e.printStackTrace();
 		}
 		return i;
@@ -54,7 +55,7 @@ public class PlanDaoImpl implements PlanDao {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("계획 저장 오류");
+			System.out.println("계획 저장 오류 계획"+e);
 		}
 		return i;
 	}

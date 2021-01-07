@@ -1,3 +1,7 @@
+<%@page import="org.springframework.ui.Model"%>
+<%@page import="com.finals.fogams.model.dto.CompanyDto"%>
+<%@page import="java.util.List"%>
+<%@page import="com.finals.fogams.model.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -9,7 +13,7 @@
 <style type="text/css">
 </style>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3a1eab4890ae0b2c4a4c97691189904b&libraries=clusterer"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3a1eab4890ae0b2c4a4c97691189904b&libraries=services"></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -23,7 +27,8 @@
 	rel="stylesheet">
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	 <%@ include file="header.jsp"%> 
+	 <% List<CompanyDto> companyList=(List<CompanyDto>)request.getAttribute("all_list"); %>
 	<section class="wholeSection">
 		<div id="tabs">
 			<div id="functionFilter">
@@ -39,7 +44,8 @@
 								숙소가 존재하지 않습니다
 							</c:when>
 							<c:otherwise>
-								<c:forEach items="${rooms_list }" var="dto" begin="0" end="10">
+								<c:forEach items="${rooms_list }" var="dto">
+								<a style="font: bold;">${dto.company_name }</a>
 									<img
 											src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
 											alt="${dto.company_img }" class="company__left_img"
@@ -59,6 +65,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${tour_list }" var="dto" begin="0" end="10">
+									<a style="font: bold;">${dto.company_name }</a>
 									<img
 											src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
 											alt="${dto.company_img }" class="company__left_img" style="width: 150px; height: 150px;"><br/>
@@ -81,6 +88,7 @@
 
 							<c:otherwise>
 								<c:forEach items="${food_list }" var="dto" begin="0" end="10">
+									<a style="font: bold;">${dto.company_name }</a>
 									<img
 											src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
 											alt="${dto.company_img }" class="company__left_img" style="width: 150px; height: 150px;"><br/>
@@ -100,12 +108,13 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${list }" var="dto">
+									<a style="font: bold;">${dto.company_name }</a>
 									<img
 											src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
 											alt="${dto.company_img }" class="company__left_img" style="width: 150px; height: 150px;"><br/>
 											<a
-											onclick="roomsSelect(${dto.company_no },'${dto.company_product }','${dto.company_money }')">${dto.company_product }</a><
-											가격 : ${dto.company_money }
+											onclick="roomsSelect(${dto.company_no },'${dto.company_product }','${dto.company_money }')">${dto.company_product }</a><br/>
+											<a>가격 : ${dto.company_money }</a><br/>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
@@ -129,10 +138,10 @@
 
 			<div id="planfooter" class="dates">
 				<p>
-					총<label>원</label>
+					<input type="button" value="계획 저장" onclick="sandplan()">
+					총<label><b id="totalmoney">0</b>원</label>
 				</p>
-				<input type="button" onclick="sandplan()" value="저장" /> <input
-					type="button" value="자동계획" />
+				
 			</div>
 		</form>
 		<div id="plantime" style="display: none">
@@ -165,7 +174,7 @@
 	var sdate=0;
 	var ldate=0;
 	var count=0;
-	
+	var money=0;
 	var companyNo;
 	var companyProduct;
 	var companyMoney;
@@ -217,6 +226,7 @@
 		document.getElementsByClassName('plandaylist')[plandate].appendChild(addPlanTime);
 		document.getElementsByClassName('plandaylist')[plandate].appendChild(addPlanDate);
 		count++;
+		money=money+companyMoney;
 		
 		closePlanTime();
 	}
@@ -236,37 +246,54 @@
 	//지도
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	mapOption = { 
-	    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	    center: new kakao.maps.LatLng(37.5642135, 127.0016985), // 지도의 중심좌표
 	    level: 7	 // 지도의 확대 레벨
 	};
 	
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	// 주소로 좌표를 검색합니다
+	<%for(int i=0;i<companyList.size();i++){
+	%>
+	geocoder.addressSearch('<%=companyList.get(i).getCompany_addr()%>', function(result, status) {
+
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	     }
+	});
+	<%
+		}
 	
-	// 마커 클러스터러를 생성합니다 
-    var clusterer = new kakao.maps.MarkerClusterer({
-        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
-        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-        minLevel: 10 // 클러스터 할 최소 지도 레벨 
-    });
-    // 데이터를 가져오기 위해 jQuery를 사용합니다
-    // 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨줍니다 여기에 json 타입으로 넘겨주면 됨
-    $.get("/download/web/data/chicken.json", function(data) {
-        // 데이터에서 좌표 값을 가지고 마커를 표시합니다
-        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-        var markers = $(data.positions).map(function(i, position) {
-            return new kakao.maps.Marker({
-                position : new kakao.maps.LatLng(position.lat, position.lng)
-            });
-        });
-        // 클러스터러에 마커들을 추가합니다
-        clusterer.addMarkers(markers);
-    });
+    %>
+
     
-    
+   
     //계획
     
     function planstart(){
-
+	<%
+	if(memberDto==null){
+		%>
+		alert("로그인을 확인해 주세요")
+	<%
+	
+	}else{
+	%>		
+	
+	if(sdate!=0){
+		alert("이미 날짜를 지정 하셨습니다.");
+		return false;
+	}
 	var startdate=document.getElementById("startdate").value;
 	var lastdate=document.getElementById("lastdate").value;
 	
@@ -278,6 +305,12 @@
 	if(day<0){
 		alert('마지막 날짜는 시작 날짜 이후로 선택해 주세요.');
 	}else{
+		var plantitle=prompt("제목을 입력해 주세요");
+		var p=document.createElement("p");
+		var ptxt=document.createTextNode(plantitle);
+		p.setAttribute("id", "plantitle");
+		p.appendChild(ptxt);
+		document.getElementById('planlist').appendChild(p);
 		for(i=1;i<day+2;i++){
 			var div=document.createElement("div");
 			var txt=document.createTextNode(i+"일차");
@@ -286,12 +319,18 @@
 			document.getElementById('planlist').appendChild(div);	
 		}
 	}
-}
+	<%		
+	}
+	%>
+}	
+	
+	
 	//계획 전송
 	function sandplan(){
 		var arr = new Array();
 		var planlist = new Object();
 		for(var i = 0; i<count; i++){
+			planlist.plan_title=document.getElementById('plantitle').innerText;
 			planlist.company_no=document.getElementsByName('company_No')[i].value;
 			planlist.plan_price=document.getElementsByName('company_Money')[i].value;
 			planlist.plan_time=(document.getElementsByName('plan_Date')[i].value)+"_"+(document.getElementsByName('plan_Time')[i].value);
@@ -309,7 +348,7 @@
 		    	alert('저장 성공');
 		    },
 		    error:function(request){
-		    	alert('로그인을 확인해주세요')
+		    	alert('저장 실패')
 		    }
 		});
 	}

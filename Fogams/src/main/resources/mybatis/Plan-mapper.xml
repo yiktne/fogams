@@ -3,17 +3,16 @@
 <mapper namespace="com.plan">
 
 	<insert id="planListInsert" parameterType="PlanDto">
-		<selectKey keyProperty="plan_no" resultType="PlanDto" order="BEFORE">
+		<selectKey keyProperty="plan_no" resultType="int" order="BEFORE">
 			SELECT PLANLIST_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO PLANLIST VALUES(#{plan_no }, #{member_no}, SYSDATE);
+		INSERT INTO PLANLIST VALUES(#{plan_no },#{plan_title }, #{member_no}, SYSDATE)
 	</insert>
 	
 	<insert id="planInsert" parameterType="java.util.Map">
-		INSERT 
-		<foreach collection="list" item="dto" >
-			INTO PLAN(PLAN_NO, COMPANY_NO, PLAN_TIME, PLAN_PRICE) VALUES
+		<foreach collection="list" item="dto" index="index" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
+                 INTO PLAN(PLAN_NO, COMPANY_NO, PLAN_TIME, PLAN_PRICE) VALUES
 			(#{dto.plan_no},#{dto.company_no},#{dto.plan_time},#{dto.plan_price})
-		</foreach>
+         </foreach>
 	</insert>
 </mapper>

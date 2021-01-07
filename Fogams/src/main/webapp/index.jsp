@@ -29,7 +29,7 @@ rel="stylesheet">
         <h1 class="maketrip__title">내 여행을 만들어보세요</h1>
         <p class="maketrip__description">
         포감스가 쉽고 재밌는 여행을 돕기위해 왔습니다.<br/>눈을 반짝반짝 뜨고 새로운 것을 찾을 준비가 되셨나요?<br/>그렇다면 아래의 버튼을 눌러 여행을 만들어보세요.</p>  
-        <button class="maketrip__btn">여행 만들러 가기</button>
+        <button class="maketrip__btn" onclick="location.href='map.do'">여행 만들러 가기</button>
     </section>
 
     <!-- pickcity (이런 여행지 어때요?) -->
