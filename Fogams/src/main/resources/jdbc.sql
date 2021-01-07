@@ -45,7 +45,7 @@ CREATE SEQUENCE BOOKMARK_SEQ;
 select * from planlist;
 select company_img from company_info;
 select * from member;
-select * from company
+select * from company;
 select * from BOOKMARK;
 ALTER TABLE company ADD COMPANY_CONTENT VARCHAR2(2000) DEFAULT '애름다운곳' not null;
 ALTER TABLE company ADD COMPANY_TEL VARCHAR2(30) DEFAULT '020989-3339' not null;

@@ -10,6 +10,8 @@ import com.finals.fogams.model.dao.PlanDao;
 import com.finals.fogams.model.dao.PlanDaoImpl;
 import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.PlanDto;
+import com.finals.fogams.model.dto.PlanListDto;
+import com.finals.fogams.model.dto.TestBean;
 
 @Service
 public class PlanBizImpl implements PlanBiz{
@@ -39,6 +41,18 @@ public class PlanBizImpl implements PlanBiz{
 	public int planNowNo() {
 		// TODO Auto-generated method stub
 		return dao.planNowNo();
+	}
+
+	@Override
+	public List<PlanListDto> selectplan(int member_no) {
+		// TODO Auto-generated method stub
+		return dao.selectplan(member_no);
+	}
+
+	@Override
+	public TestBean testBean(int plan_no) {
+		// TODO Auto-generated method stub
+		return dao.testBean(plan_no);
 	}
 	
 }

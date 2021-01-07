@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.finals.fogams.model.dto.CompanyDto;
 import com.finals.fogams.model.dto.PlanDto;
+import com.finals.fogams.model.dto.PlanListDto;
+import com.finals.fogams.model.dto.TestBean;
 
 public interface PlanBiz {
 	public List<PlanDto> planList();
@@ -14,4 +16,9 @@ public interface PlanBiz {
 	public int planInsert(Map<String, Object> map);
 	
 	public int planNowNo();
+	
+	public List<PlanListDto> selectplan(int member_no);
+
+	public TestBean testBean(int plan_no);
+
 }

@@ -11,6 +11,7 @@
 		<typeAlias type="com.finals.fogams.model.dto.ReplyDto" alias="ReplyDto"/>
 		<typeAlias type="com.finals.fogams.model.dto.ReplyDto" alias="PlanDto"/>
 		<typeAlias type="com.finals.fogams.model.dto.Company_PriceDto" alias="Company_PriceDto"/>
+		<typeAlias type="com.finals.fogams.model.dto.PlanListDto" alias="PlanListDto"/>
 	</typeAliases>
 
 
