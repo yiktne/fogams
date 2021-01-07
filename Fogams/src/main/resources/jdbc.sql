@@ -42,7 +42,7 @@ CREATE SEQUENCE BOOKMARK_SEQ;
 
 
 
-
+select * from planlist;
 select company_img from company_info;
 select * from member;
 select * from company
@@ -66,7 +66,7 @@ where member_grade = 1
 and member_no = #{};
 delete from company
 select * from company where company_city = '서울';
-
+select*from PLANLIST;
 
 일반멤버(1)
 사업자등록하면(2)
