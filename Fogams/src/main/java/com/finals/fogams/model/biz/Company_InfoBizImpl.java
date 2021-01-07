@@ -18,8 +18,8 @@ public class Company_InfoBizImpl implements Company_InfoBiz {
 	private Company_InfoDao dao = new Company_InfoDaoImpl();
 	
 	@Override
-	public List<CompanyDto> selectList(int company_no) {
-		return dao.selectList(company_no);
+	public List<CompanyDto> selectList() {
+		return dao.selectList();
 	}
 
 	@Override

@@ -19,7 +19,7 @@ public class Company_InfoDaoImpl implements Company_InfoDao {
 
 	
 	@Override
-	public List<CompanyDto> selectList(int company_no) {
+	public List<CompanyDto> selectList() {
 
 		List<CompanyDto> list = new ArrayList<CompanyDto>();
 

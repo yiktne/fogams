@@ -164,5 +164,24 @@ public class CompanyInfoController {
 		return "index";
 	}
 	
-
+	@RequestMapping("alllist.do")
+	@ResponseBody public List<HashMap<String, String>> alllist() {
+		
+		List<HashMap<String, String>> result = new ArrayList<HashMap<String, String>>();
+		
+		List<CompanyDto> list = infobiz.selectList();
+		
+		for(int i = 0; i < list.size(); i++) {
+			HashMap<String, String> data = new HashMap<String, String>();
+			
+			data.put("id", list.get(i).getCompany_no() + "");
+			data.put("city", list.get(i).getCompany_city());
+			data.put("sort", list.get(i).getCompany_sort());
+			data.put("url", list.get(i).getCompany_img());
+			
+			result.add(data);
+		}
+		
+		return result;
+	}
 }

@@ -159,8 +159,32 @@
         background-color: var(--color-primary-grey);
     }
 
+	.company__right_map{
+		max-width: 100%;
+		max-height: 100%;
+	}
 
+	/* 추천 업체 */
+	
+	.recommend__detail {
+		display: inline-block;
+	}
 
+    .recommend__img{
+        width: var(--size-img);
+        height: var(--size-img);
+        cursor: pointer;
+        background-color: var(--color-orange);
+    } 
+    
+    .recommend__img img{
+        max-width: 100%;
+        min-width: 100%;
+    }
+    
+    .recommend__detail{
+        margin: 15px;
+    } 
 
 
 /* 탭으로 바뀌는 메뉴 */

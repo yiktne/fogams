@@ -65,6 +65,7 @@ rel="stylesheet">
                 <button class="tab_btn" data-filter="price_info">가격정보</button>
                 <button class="tab_btn" data-filter="review">리뷰</button>
                 <button class="tab_btn" data-filter="chat" onclick="openPop();">채팅</button>
+                <button class="tab_btn" data-filter="recommend">추천</button>
             </div>
 
               <div class="content-dis" data-type="com_info">
@@ -120,6 +121,36 @@ rel="stylesheet">
               <div class="content-dis invisible" data-type="chat">
                               <!-- 채팅 -->
                	<a href="#none" target="_blank" onclick="openPop()">채팅</a>
+              </div>
+              <div>
+              <div class="content-dis" data-type="recommend">
+              
+				<div>
+					이 업체와 비슷한 곳
+				</div>
+              
+				<c:choose>
+					<c:when test="${empty recommend }">
+						<span>등록된 정보가 없습니다.</span>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${recommend }" var="dto">
+							<div class="recommend__detail">
+								<div class="recommend__img">
+									<!-- 업체 상세정보 보기 컨트롤러 요청 -->
+									<a href="company_detail.do?company_no=${dto.company_no }" class="project"> 
+									<!-- 이미지뿌리기 컨트롤러 요청 -->
+									<img src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}" />
+									</a>
+								</div>
+								<div class="recommend__name">
+									<span>${dto.company_name }</span>
+								</div>
+							</div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+              </div>
               </div>
         </div>
     </section>
