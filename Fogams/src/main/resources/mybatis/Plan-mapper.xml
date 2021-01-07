@@ -15,4 +15,9 @@
 			(#{dto.plan_no},#{dto.company_no},#{dto.plan_time},#{dto.plan_price})
          </foreach>
 	</insert>
+	
+	
+	
+	
+	
 </mapper>
