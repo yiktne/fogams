@@ -1,11 +1,17 @@
 package com.finals.fogams.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,6 +20,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +51,8 @@ public class CompanyInfoController {
 	@Autowired
 	private Personal_menu_Biz biz;
 
-
+	private String recommendServerURL = "http://localhost:8585";
+	
 	@RequestMapping("/form.do")
 	public String list(HttpServletRequest request, Model model, int member_no) throws IOException {
 		
@@ -118,6 +126,8 @@ public class CompanyInfoController {
 					e.printStackTrace();
 				}
 			}
+
+			addRecommendData(dto.getCompany_no(), dto.getCompany_city(), dto.getCompany_sort(), dto.getCompany_img());
 			
 			
 			int company_no = dto.getCompany_no();
@@ -154,10 +164,6 @@ public class CompanyInfoController {
 		List<CompanyDto> list = infobiz.myList(member_no);
 		List<BookmarkDto> booklist = biz.bookMarkList(member_no);
 		
-			
-		
-		
-		
 //		System.out.println("member_no : " + member_no );
 		model.addAttribute("member_no", member_no);
 		model.addAttribute("list", list);
@@ -189,5 +195,46 @@ public class CompanyInfoController {
 		}
 		
 		return result;
+	}
+	
+	private void addRecommendData(int no, String city, String sort, String imageURL) {
+		try {
+			URL url = new URL(recommendServerURL + "/add");
+
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setDoOutput(true);
+			con.setDoInput(true);
+			con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+			con.setRequestProperty("Accept", "application/json");
+			con.setRequestMethod("POST");
+			
+			JSONObject params = new JSONObject();
+			
+			params.put("id", no);
+			params.put("city", city);
+			params.put("sort", sort);
+			params.put("url", imageURL);
+
+			OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
+			wr.write(params.toString());
+			wr.flush();
+			
+			StringBuilder sb = new StringBuilder();  
+			int HttpResult = con.getResponseCode(); 
+			if (HttpResult == HttpURLConnection.HTTP_OK) {
+			    BufferedReader br = new BufferedReader(
+			            new InputStreamReader(con.getInputStream(), "utf-8"));
+			    String line = null;  
+			    while ((line = br.readLine()) != null) {  
+			        sb.append(line + "\n");  
+			    }
+			    br.close();
+			    System.out.println("" + sb.toString());  
+			} else {
+			    System.out.println(con.getResponseMessage());  
+			}  
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
