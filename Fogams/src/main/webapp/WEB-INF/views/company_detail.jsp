@@ -14,6 +14,8 @@ rel="stylesheet">
 <script type="text/javascript" src="resources/js/company_detail.js?" defer></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <!-- 카카오맵 -->
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=3a1eab4890ae0b2c4a4c97691189904b&libraries=services"></script>
 <script type="text/javascript">
@@ -79,7 +81,9 @@ rel="stylesheet">
                 
                 <c:otherwise>
                 	<c:forEach items="${list }" var="dto">
-                		<b>${dto.company_product } : ${dto.company_money } 원<br/></b> 
+                		<b>${dto.company_product } : ${dto.company_money } 원
+                		<input type="button" onclick="fogamsPay('${dto.company_product}','${dto.company_money }')" value="결제">
+                		<br/></b> 
                 	</c:forEach>
                 </c:otherwise>
                 </c:choose>
@@ -109,6 +113,31 @@ rel="stylesheet">
    		 s.setAttribute('data-timestamp', +new Date());
    		 (d.head || d.body).appendChild(s);
   	  })();
+    
+    //결제
+    var IMP = window.IMP; // 생략해도 괜찮습니다.
+  	IMP.init("imp74200275"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+  	function fogamspay(companyName,companyAddr){
+  		 // IMP.request_pay(param, callback) 호출
+  	  IMP.request_pay({ // param
+  	    pg: "kakaopay",
+  	    pay_method: "card",
+  	    merchant_uid: "ORD20180131-0000011",
+  	    name: companyName,
+  	    amount: companyAddr,
+  	    buyer_email: "gildong@gmail.com",
+  	    buyer_name: "홍길동",
+  	    buyer_tel: "010-4242-4242",
+  	    buyer_addr: "서울특별시 강남구 신사동",
+  	    buyer_postcode: "01181"
+  	  }, function (rsp) { // callback
+  	    if (rsp.success) {
+  	        alert("결제 성공");
+  	    } else {
+  	        alert("결제 실패");
+  	    }
+  	  });
+  	}
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                	
