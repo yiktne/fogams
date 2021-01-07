@@ -181,12 +181,13 @@
         width: var(--size-img);
         height: var(--size-img);
         cursor: pointer;
-        background-color: var(--color-orange);
     } 
     
     .contents__img img{
-        max-width: 100%;
-        max-width: 100%;
+        width: 150px;
+	    height: 150px;
+	    object-fit: cover;
+	    border-radius: 5%;
     }
     
     .contents__detail{
@@ -204,6 +205,24 @@
     }
     
 
-    
+@media ( max-width : 768px) {
+
+	.contents__img{
+		display:flex;
+		align-items: center;
+		width: 250px;
+		height: 250px;
+		margin: 8px 0px 14px;
+		
+	}
+	
+	.contents__img img{
+		width: 250px;
+		height: 250px;
+		object-fit:cover;
+	}
+
+	
+}
 
 

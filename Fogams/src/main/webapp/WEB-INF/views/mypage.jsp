@@ -97,7 +97,6 @@
 			<h4><%=memberDto.getMember_name()%></h4>
 		</div>
 		<div class="float-right">
-			<button onclick="handledetail()" class="btn btn-primary">계정관리</button>
 			<button onclick="openPop()" class="btn btn-primary">계정관리</button>
 		</div>
 		

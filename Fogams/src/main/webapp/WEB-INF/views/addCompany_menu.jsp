@@ -37,8 +37,7 @@
     $(document).ready(function() {
     	$('.btnAdd').click(function() {
     		$('.addInput').append(
-    			`<div>
-                        <input type='hidden' name="company_no" value="${company_no }"/><br/>
+    			`<div><input type='hidden' name="company_no" value="${company_no }"/><br/>
                         상품 이름 <input type='text' class="input_menu" name='company_product' required="required"/><br/>
                         상품 가격  <input type="number" class="input_menu" name="company_money" required="required"/>
                         </div>
@@ -53,6 +52,6 @@
     	});
     });
     </script>
-
+<%@ include file="footer.jsp" %>	
 </body>
 </html>

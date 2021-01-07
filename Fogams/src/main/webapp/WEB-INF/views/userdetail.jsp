@@ -57,6 +57,13 @@
 			alert("비밀번호는 8자 이상으로 입력해주세요.")
 		}
 	}
+	
+	function moveClose(){
+		opener.location.href="finduserform.do";
+		self.close();
+	}
+	
+	
 </script>
 </head>
 <body>
@@ -72,7 +79,7 @@
 		<div class="subtabs">
 			<ul class="nav nav-pills">
 				<li role="presentation"><a href="#tabs-1" class="submenu">계정정보</a></li>
-				<li role="presentation"><a href="#tabs-2" class="submenu">비밀번호변경</a></li>
+				<li role="presentation"><a href="#tabs-2" class="submenu" onclick="moveClose();">비밀번호변경</a></li>
 			</ul>
 		</div>
 		<div class="content">

@@ -64,7 +64,7 @@ rel="stylesheet">
                 <button class="tab_btn selected" data-filter="com_info">업체정보</button>
                 <button class="tab_btn" data-filter="price_info">가격정보</button>
                 <button class="tab_btn" data-filter="review">리뷰</button>
-                <button class="tab_btn" data-filter="chat">1:1 채팅</button>
+                <button class="tab_btn" data-filter="chat" onclick="openPop();">채팅</button>
             </div>
 
               <div class="content-dis" data-type="com_info">
