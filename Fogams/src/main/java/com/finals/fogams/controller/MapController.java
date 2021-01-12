@@ -60,6 +60,8 @@ public class MapController {
 		model.addAttribute("rooms_list", company_infobiz.roomsList());
 		model.addAttribute("food_list", company_infobiz.foodList());
 		model.addAttribute("tour_list", company_infobiz.tourList());
+		List<CompanyDto> tour = company_infobiz.tourList();
+		System.out.println(tour);
 		model.addAttribute("mark_list", company_infobiz.markList(member_no));
 		
 		return "map";

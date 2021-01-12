@@ -15,7 +15,7 @@ import com.finals.fogams.model.dto.PlanDto;
 public class PlanBizImpl implements PlanBiz{
 
 	@Autowired
-	private PlanDao dao=new PlanDaoImpl();
+	private PlanDao dao = new PlanDaoImpl();
 	
 	@Override
 	public List<PlanDto> planList() {
