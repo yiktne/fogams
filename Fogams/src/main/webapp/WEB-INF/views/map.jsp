@@ -57,27 +57,29 @@
 						</c:choose>
 				</div>
 			</div>
-			<div id="tabs-2" class="company_list invisible" data-type="famous">
+
+				<div id="tabs-2" class="company_list invisible" data-type="famous">
 				<div class="list_table" style="width: 200px; height: 600px; overflow-y: scroll;">
 						<c:choose>
 							<c:when test="${empty tour_list }">
 								관광지가 존재하지 않습니다
 							</c:when>
+
+
 							<c:otherwise>
 								<c:forEach items="${tour_list }" var="dto" begin="0" end="10">
 									<a style="font: bold;">${dto.company_name }</a>
 									<img
 											src="${pageContext.request.contextPath}/img.do?img=${dto.company_img}"
 											alt="${dto.company_img }" class="company__left_img" style="width: 150px; height: 150px;"><br/>
-										<a
-											onclick="roomsSelect(${dto.company_no },'${dto.company_product }','${dto.company_money }')">${dto.company_product }</a>
-									
-										가격 : ${dto.company_money }
+									<a
+											onclick="roomsSelect(${dto.company_no },'${dto.company_product }','${dto.company_money }')">${dto.company_product }<br/>가격 : ${dto.company_money }원</a>
+									<br/><br/>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
 				</div>
-			</div>
+			</div>			
 			<div id="tabs-3" class="company_list invisible" data-type="food">
 				<div class="list_table" style="width: 200px; height: 600px; overflow-y: scroll;">
 						<c:choose>
